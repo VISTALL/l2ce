@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="version" type="versionType"/>
+  <xs:complexType name="fileType">
+    <xs:sequence>
+      <xs:element type="nodeType" name="node"/>
+      <xs:element type="forType" name="for"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="pattern" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="versionType">
+    <xs:sequence>
+      <xs:element type="fileType" name="file" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="name"/>
+  </xs:complexType>
+  <xs:complexType name="forType" mixed="true">
+    <xs:choice maxOccurs="unbounded">
+      <xs:element type="nodeType" name="node" maxOccurs="unbounded"/>
+      <xs:element type="forType" name="for"  maxOccurs="unbounded"//>
+    </xs:choice>
+    <xs:attribute type="xs:string" name="name" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="nodeType" mixed="true">
+    <xs:sequence>
+      <xs:element type="nodeType" name="node"  maxOccurs="unbounded"//>
+      <xs:element type="forType" name="for"  maxOccurs="unbounded"//>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="name" use="required"/>
+    <xs:attribute type="xs:string" name="reader" use="required"/>
+    <xs:attribute type="xs:string" name="value" use="optional"/>
+  </xs:complexType>
+</xs:schema>

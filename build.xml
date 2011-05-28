@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="L2CE" default="main" basedir=".">
+	<description>jdevelopstation.com</description>
+
+	<property name="java" location="src"/>
+	<property name="lib" location="dist/lib"/>
+	<property name="build" value="build"/>
+	<property name="build.classes" value="${build}/classes"/>
+
+	<property name="jar_name" value="l2ce.jar"/>
+	<property name="jar_class" value="com.jdevelopstation.l2ce.Main"/>
+
+	<path id="classpath">
+		<fileset dir="${lib}">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="clean" description="Remove output files/directories.">
+		<delete dir="${build}"/>
+	</target>
+
+	<target name="make" description="Create the output directories.">
+		<mkdir dir="${build}"/>
+		<mkdir dir="${build.classes}"/>
+	</target>
+
+	<target name="compile" description="Compile the source.">
+		<javac destdir="${build.classes}" optimize="off" debug="on" source="1.6" target="1.6" encoding="UTF-8" nowarn="off" srcdir="${java}">
+			<classpath refid="classpath"/>
+		</javac>
+	</target>
+
+	<target name="jar" description="Create the jar file">
+		<delete file="${lib}/${jar_name}"/>
+		<jar destfile="${lib}/${jar_name}">
+			<fileset dir="${build.classes}"/>
+			<manifest>
+				<attribute name="Company" value="J Develop Station"/>
+				<attribute name="Main-Class" value="${jar_class}"/>
+			</manifest>
+		</jar>
+	</target>
+
+
+	<target name="main">
+		<antcall target="clean"/>
+		<antcall target="make"/>
+		<antcall target="compile"/>
+		<antcall target="jar"/>
+		<antcall target="clean"/>
+	</target>
+</project>

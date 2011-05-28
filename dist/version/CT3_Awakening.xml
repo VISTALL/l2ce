@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='utf-8'?>
+<version name="CT3_Awakening" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="version.xsd">
+	<file pattern="flymovename-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="path" reader="UINT" />
+			<node name="node" reader="UINT" />
+			<node name="name" reader="ASCF" />
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
+	</file>
+	<file pattern="actionname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="tag" reader="UINT" />
+			<node name="id" reader="UINT" />
+			<node name="type" reader="INT" />
+			<node name="category" reader="UINT" />
+			<node name="category2" reader="SHORT_SHORT" />
+			<for name="category2">
+				<node name="category2_value" reader="INT" />
+			</for>
+			<node name="cmd" reader="ASCF" />
+			<node name="icon" reader="ASCF" />
+			<node name="icon_ex" reader="ASCF" />
+			<node name="desc" reader="ASCF" />
+			<node name="toggle_group_id" reader="INT" />
+			<node name="command" reader="UNICODE" />
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
+	</file>
+	<file pattern="skillname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="level" reader="UINT" />
+			<node name="name" reader="ASCF" />
+			<node name="description" reader="ASCF" />
+			<node name="enchant_power" reader="ASCF" />
+			<node name="enchant_description" reader="ASCF" />
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
+	</file>
+	<file pattern="sysstring-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="name" reader="ASCF" />
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
+	</file>
+	<file pattern="questmarkconditiondata.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="quest_id" reader="UINT" />
+			<node name="npc_id" reader="UINT" />
+			<node name="race_filter" reader="SHORT_SHORT" />
+			<for name="race_filter">
+				<node name="race" reader="UINT" />
+			</for>
+			<node name="class_filter" reader="SHORT_SHORT" />
+			<for name="class_filter">
+				<node name="class" reader="UINT" />
+			</for>
+			<node name="start_npc_x" reader="FLOAT" />
+			<node name="start_npc_y" reader="FLOAT" />
+			<node name="start_npc_z" reader="FLOAT" />
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
+	</file>
+	<file pattern="usmmoviedata.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="movie_id" reader="UINT" />
+			<node name="file_name" reader="ASCF" />
+			<node name="pos_x" reader="UINT" />
+			<node name="pos_y" reader="UINT" />
+			<node name="width" reader="UINT" />
+			<node name="height" reader="UINT" />
+			<node name="target_anchor_point_type" reader="UINT" />
+			<node name="clip_anchor_point_type" reader="UINT" />
+			<node name="skin_type" reader="ASCF" />
+			<node name="skin_button_type" reader="ASCF" />
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
+	</file>
+	<file pattern="itemstatdata.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="item_id" reader="UINT" />
+			<node name="p_def" reader="FLOAT" />
+			<node name="m_def" reader="FLOAT" />
+			<node name="p_attack" reader="FLOAT" />
+			<node name="m_attack" reader="FLOAT" />
+			<node name="p_attack_speed" reader="FLOAT" />
+			<node name="m_attack_speed" reader="FLOAT" />
+			<node name="p_hit" reader="FLOAT" />
+			<node name="m_hit" reader="FLOAT" />
+			<node name="p_crit" reader="FLOAT" />
+			<node name="m_crit" reader="FLOAT" />
+			<node name="speed" reader="FLOAT" />
+			<node name="shield_defence" reader="FLOAT" />
+			<node name="shield_defence_rate" reader="FLOAT" />
+			<node name="p_void" reader="FLOAT" />
+			<node name="m_void" reader="FLOAT" />
+			<node name="property_params" reader="INT" />
+		</for>
+	</file>
+	<file pattern="itemname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="item_id" reader="UINT" />
+			<node name="name" reader="UNICODE" />
+			<node name="additionalname" reader="UNICODE" />
+			<node name="popup" reader="ASCF" />
+			<node name="description" reader="INT" />
+			<node name="name_class" reader="UINT" />
+			<for name="name_class">
+				<node name="name_class_sub" reader="UINT" />
+				<for name="name_class_sub">
+					<node name="name_class_sub2" reader="UINT" />
+				</for>
+			</for>
+			<node name="setid_1" reader="UINT" />
+			<for name="setid_1">
+				<node name="seteffect_1" reader="ASCF" />
+			</for>
+			<node name="setid_2" reader="UINT" />
+			<for name="setid_2">
+				<node name="seteffect_2_sub" reader="UINT" />
+				<for name="seteffect_2_sub">
+					<node name="seteffect_2_sub2" reader="UINT" />
+				</for>
+			</for>
+			<node name="setid_3" reader="UINT" />
+			<for name="setid_3">
+				<node name="seteffect_3" reader="ASCF" />
+			</for>
+			<node name="unknown_1" reader="UINT" />
+			<node name="unknown_2" reader="UINT" />
+			<node name="set_enchant_count" reader="UINT" />
+			<node name="set_enchant_effect" reader="ASCF" />
+			<node name="color" reader="UINT" />
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
+	</file>
+</version>
