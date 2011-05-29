@@ -1,6 +1,7 @@
 package com.jdevelopstation.l2ce.gui.pane;
 
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +9,7 @@ import java.io.File;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -22,6 +24,9 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
 import com.jdevelopstation.l2ce.Config;
 import com.jdevelopstation.l2ce.data.xml.holder.ClientVersionHolder;
+import com.jdevelopstation.l2ce.gui.pane.actions.FileLoadInfo;
+import com.jdevelopstation.l2ce.gui.pane.actions.ListRepaintTask;
+import com.jdevelopstation.l2ce.gui.renders.DatFileListRender;
 import com.jdevelopstation.l2ce.gui.window.MainWindow;
 import com.jdevelopstation.l2ce.version.ClientVersion;
 import com.jdevelopstation.l2ce.version.node.file.ClientFile;
@@ -32,14 +37,19 @@ import com.jdevelopstation.l2ce.version.node.file.ClientFile;
  */
 public class DatPane extends JPanel
 {
+
 	private JList _fileList;
 	private JPanel _contentPane;
-	private JButton _button1;
-	private JButton _button2;
+	private JButton _loadButton;
+	private JButton _saveButton;
 	private JComboBox _versionList;
 	private JButton _updateFiles;
 	private JButton _selectDir;
 	private JLabel _dirName;
+	private JButton _importButton;
+	private JButton _exportButton;
+	private JButton _clearButton;
+	private JLabel _importedCount;
 
 	public DatPane()
 	{
@@ -58,16 +68,13 @@ public class DatPane extends JPanel
 				ClientVersion v = ClientVersionHolder.getInstance().getVersion((String) o);
 				File[] files = new File(Config.DIRECTORY).listFiles();
 
-				Set<String> s = new TreeSet<String>();
+				Set<FileLoadInfo> s = new TreeSet<FileLoadInfo>();
 				for(ClientFile cf : v.getClientFiles())
-				{
 					for(File f : files)
-					{
 						if(cf.getPattern().matcher(f.getName()).find())
-							s.add(f.getName());
-					}
-				}
-				_fileList.setListData(s.toArray(new Object[s.size()]));
+							s.add(new FileLoadInfo(cf, f));
+
+				_fileList.setListData(s.toArray(new FileLoadInfo[s.size()]));
 			}
 		});
 
@@ -76,7 +83,7 @@ public class DatPane extends JPanel
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				final JFileChooser chooser = new JFileChooser();  //TODO [VISTALL] last folder
+				final JFileChooser chooser = new JFileChooser(Config.DIRECTORY);  //TODO [VISTALL] last folder
 				final int returnVal = chooser.showOpenDialog(MainWindow.getInstance());
 
 				if(returnVal == JFileChooser.APPROVE_OPTION)
@@ -85,11 +92,29 @@ public class DatPane extends JPanel
 				}
 			}
 		});
+		_loadButton.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				FileLoadInfo c = (FileLoadInfo) _fileList.getSelectedValue();
+				if(c == null)
+					return;
+				c.load(DatPane.this);
+			}
+		});
+	}
+
+	public void repaintList()
+	{
+		EventQueue.invokeLater(new ListRepaintTask(_fileList));
 	}
 
 	private void createUIComponents()
 	{
 		_contentPane = this;
+		_fileList = new JList();
+		_fileList.setCellRenderer(new DatFileListRender());
 	}
 
 	/**
@@ -104,32 +129,47 @@ public class DatPane extends JPanel
 		createUIComponents();
 		_contentPane.setLayout(new GridLayoutManager(3, 2, new Insets(5, 5, 5, 5), -1, -1));
 		final JPanel panel1 = new JPanel();
-		panel1.setLayout(new GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), -1, -1));
-		_contentPane.add(panel1, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+		panel1.setLayout(new GridLayoutManager(3, 1, new Insets(0, 0, 0, 0), -1, -1));
+		_contentPane.add(panel1, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_VERTICAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
 		final JPanel panel2 = new JPanel();
-		panel2.setLayout(new GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), -1, -1));
-		panel1.add(panel2, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-		_button1 = new JButton();
-		_button1.setText("Button");
-		panel2.add(_button1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(77, 25), null, 0, false));
-		_button2 = new JButton();
-		_button2.setText("Button");
-		panel2.add(_button2, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(77, 25), null, 0, false));
+		panel2.setLayout(new GridLayoutManager(4, 1, new Insets(0, 0, 0, 0), -1, -1));
+		panel1.add(panel2, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(101, 119), null, 0, false));
+		_loadButton = new JButton();
+		_loadButton.setText("Load");
+		panel2.add(_loadButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(77, 25), null, 0, false));
+		_saveButton = new JButton();
+		_saveButton.setText("Save");
+		panel2.add(_saveButton, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(77, 25), null, 0, false));
+		_importButton = new JButton();
+		_importButton.setText("Import");
+		panel2.add(_importButton, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+		_exportButton = new JButton();
+		_exportButton.setText("Export");
+		panel2.add(_exportButton, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+		final JPanel panel3 = new JPanel();
+		panel3.setLayout(new GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), -1, -1));
+		panel1.add(panel3, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(101, 80), null, 0, false));
+		panel3.setBorder(BorderFactory.createTitledBorder("Load count:"));
+		_clearButton = new JButton();
+		_clearButton.setText("Clear");
+		panel3.add(_clearButton, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+		_importedCount = new JLabel();
+		_importedCount.setText("0");
+		panel3.add(_importedCount, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 		final Spacer spacer1 = new Spacer();
-		panel1.add(spacer1, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
+		panel1.add(spacer1, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(101, 14), null, 0, false));
 		final JScrollPane scrollPane1 = new JScrollPane();
 		scrollPane1.setVerticalScrollBarPolicy(22);
-		_contentPane.add(scrollPane1, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
-		_fileList = new JList();
+		_contentPane.add(scrollPane1, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(224, 128), null, 0, false));
 		scrollPane1.setViewportView(_fileList);
 		_versionList = new JComboBox();
-		_contentPane.add(_versionList, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+		_contentPane.add(_versionList, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(224, 24), null, 0, false));
 		_updateFiles = new JButton();
 		_updateFiles.setText("Update");
 		_contentPane.add(_updateFiles, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 		_dirName = new JLabel();
 		_dirName.setText("NONE");
-		_contentPane.add(_dirName, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+		_contentPane.add(_dirName, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(224, 14), null, 0, false));
 		_selectDir = new JButton();
 		_selectDir.setText("Select Dir");
 		_contentPane.add(_selectDir, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));

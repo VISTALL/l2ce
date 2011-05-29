@@ -7,6 +7,7 @@ import javax.swing.UIManager;
 import com.jdevelopstation.commons.logging.Log4JHelper;
 import com.jdevelopstation.l2ce.data.xml.parser.ClientVersionParser;
 import com.jdevelopstation.l2ce.gui.window.MainWindow;
+import com.jdevelopstation.l2ce.utils.ThreadPoolManager;
 
 /**
  * @author VISTALL
@@ -17,6 +18,7 @@ public class Main
 	public static void main(String... arg) throws Exception
 	{
 		Log4JHelper.load();
+		ThreadPoolManager.getInstance();
 		ClientVersionParser.getInstance().load();
 
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
