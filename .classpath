@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="src-test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="dist/lib/commons-io-2.0.1.jar"/>
+	<classpathentry kind="lib" path="dist/lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="dist/lib/dom4j-2.0.0-alpha-2.jar"/>
+	<classpathentry kind="lib" path="dist/lib/forms_rt.jar"/>
+	<classpathentry kind="lib" path="dist/lib/l2ce.jar"/>
+	<classpathentry kind="lib" path="dist/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="dist/lib/org.napile.primitive.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
