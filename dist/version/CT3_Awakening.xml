@@ -106,6 +106,72 @@
 			<node name="property_params" reader="INT" />
 		</for>
 	</file>
+	<file pattern="npcgrp.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="npc_id" reader="UINT" />
+			<node name="npc_name" reader="UNICODE" />
+			<node name="npc_icon_name" reader="UNICODE" />
+			<node name="texture_name_size" reader="UINT" />
+			<for name="texture_name_size">
+				<node name="texture_name" reader="UNICODE" />
+			</for>
+			<node name="texture_name_second_size" reader="UINT" />
+			<for name="texture_name_second_size">
+				<node name="texture_name_second" reader="UNICODE" />
+			</for>
+			<node name="skill_data_size" reader="SHORT_SHORT" />
+			<for name="skill_data_size">
+				<node name="skill_data" reader="UINT" />
+			</for>
+			<node name="npc_speed" reader="FLOAT" />
+			<node name="unknown_0_size" reader="UINT" />
+			<for name="unknown_0_size">
+				<node name="unknown_0" reader="UINT" />
+			</for>
+			<node name="attack_sound1_size" reader="UINT" />
+			<for name="attack_sound1_size">
+				<node name="attack_sound1" reader="UNICODE" />
+			</for>
+			<node name="defence_sound1_size" reader="UINT" />
+			<for name="defence_sound1_size">
+				<node name="defence_sound1" reader="UNICODE" />
+			</for>
+			<node name="damage_sound_size" reader="UINT" />
+			<for name="damage_sound_size">
+				<node name="damage_sound" reader="UNICODE" />
+			</for>
+			<node name="deco_effect_size" reader="UINT" />
+			<for name="deco_effect_size">
+				<node name="deco_effect" reader="UNICODE" />
+				<node name="deco_effect_scale" reader="FLOAT" />
+			</for>
+			<node name="unknown_1_size" reader="SHORT_SHORT" />
+			<for name="unknown_1_size">
+				<node name="unknown_1" reader="UINT" />
+			</for>
+			<node name="unknown_2_size" reader="SHORT_SHORT" />
+			<for name="unknown_2_size">
+				<node name="unknown_2" reader="UINT" />
+			</for>
+			<node name="attack_effect" reader="UNICODE" />
+			<node name="unknown_2" reader="UINT" />
+			<node name="sound_vol" reader="FLOAT" />
+			<node name="sound_radius" reader="FLOAT" />
+			<node name="sound_random" reader="FLOAT" />
+			<node name="quest_be" reader="UINT" />
+			<node name="quest_step" reader="UINT" />
+			<node name="dialog_sound_size" reader="UINT" />
+			<for name="dialog_sound_size">
+				<node name="dialog_sound" reader="ASCF" />
+			</for>
+			<node name="unknown_3" reader="UINT" />
+			<node name="unknown_4" reader="UINT" />
+			<node name="unknown_5" reader="UINT" />
+			<node name="unknown_6" reader="UINT" />
+			<node name="icon" reader="ASCF" />
+		</for>
+	</file>
 	<file pattern="itemname-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
