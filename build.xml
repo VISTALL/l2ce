@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="L2CE" default="main" basedir=".">
+<project name="Jn" default="main" basedir=".">
 	<description>jdevelopstation.com</description>
-
 	<property name="java" location="src"/>
+	<property name="java-resources" location="src-resource"/>
+	<property name="resource" location="dist"/>
 	<property name="lib" location="dist/lib"/>
-	<property name="build" value="build"/>
-	<property name="build.classes" value="${build}/classes"/>
+	<property name="build" location="build"/>
+	<property name="build.classes" location="${build}/classes"/>
 
-	<property name="jar_name" value="l2ce.jar"/>
-	<property name="jar_class" value="com.jdevelopstation.l2ce.Main"/>
+	<property name="l2ce.jar" value="l2ce.jar" />
+	<property name="l2ce-resources.jar" value="l2ce-resources.jar" />
 
 	<path id="classpath">
 		<fileset dir="${lib}">
@@ -16,38 +17,63 @@
 		</fileset>
 	</path>
 
-	<target name="clean" description="Remove output files/directories.">
-		<delete dir="${build}"/>
-	</target>
-
 	<target name="make" description="Create the output directories.">
 		<mkdir dir="${build}"/>
 		<mkdir dir="${build.classes}"/>
 	</target>
 
-	<target name="compile" description="Compile the source.">
-		<javac destdir="${build.classes}" optimize="off" debug="on" source="1.6" target="1.6" encoding="UTF-8" nowarn="off" srcdir="${java}">
+	<target name="l2ce.jar" description="Compile the source.">
+
+		<echo message="compile: ${l2ce.jar}" />
+		<delete dir="${build.classes}"/>
+		<delete file="${build}/${l2ce.jar}"/>
+		<delete file="${lib}/${l2ce.jar}"/>
+
+		<antcall target="make"/>
+
+		<javac destdir="${build.classes}" optimize="off" debug="on" source="1.6" target="1.6" encoding="UTF-8" nowarn="off" srcdir="${java}/com">
 			<classpath refid="classpath"/>
 		</javac>
-	</target>
-
-	<target name="jar" description="Create the jar file">
-		<delete file="${lib}/${jar_name}"/>
-		<jar destfile="${lib}/${jar_name}">
+		<copy todir="${build.classes}/com/jdevelopstation/commons/logging">
+			<fileset dir="${java}/com/jdevelopstation/commons/logging">
+				<include name="log4j.xml"/>
+				<include name="log4j.dtd"/>
+			</fileset>
+		</copy>
+		<jar destfile="${lib}/${l2ce.jar}">
 			<fileset dir="${build.classes}"/>
 			<manifest>
 				<attribute name="Company" value="J Develop Station"/>
-				<attribute name="Main-Class" value="${jar_class}"/>
+				<attribute name="Main-Class" value="com.jdevelopstation.l2ce.Main"/>
 			</manifest>
 		</jar>
 	</target>
 
+	<target name="l2ce-resources.jar" description="Compile the source.">
+		<echo message="compile: ${l2ce-resources.jar}" />
+		<delete dir="${build.classes}"/>
+		<delete file="${build}/${l2ce-resources.jar}"/>
+		<delete file="${lib}/${l2ce-resources.jar}"/>
+
+		<antcall target="make"/>
+
+		<copy todir="${build.classes}/com/jdevelopstation/l2ce/strings">
+			<fileset dir="${java-resources}/com/jdevelopstation/l2ce/strings">
+				<include name="*.properties"/>
+			</fileset>
+		</copy>
+
+		<jar destfile="${lib}/${l2ce-resources.jar}">
+			<fileset dir="${build.classes}"/>
+			<manifest>
+				<attribute name="Company" value="J Develop Station"/>
+				<attribute name="Main-Class" value="com.jdevelopstation.l2ce.Main"/>
+			</manifest>
+		</jar>
+	</target>
 
 	<target name="main">
-		<antcall target="clean"/>
-		<antcall target="make"/>
-		<antcall target="compile"/>
-		<antcall target="jar"/>
-		<antcall target="clean"/>
+		<antcall target="l2ce.jar" />
+		<antcall target="l2ce-resources.jar" />
 	</target>
 </project>

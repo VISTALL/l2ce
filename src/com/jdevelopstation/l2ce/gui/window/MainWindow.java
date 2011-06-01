@@ -2,6 +2,7 @@ package com.jdevelopstation.l2ce.gui.window;
 
 import javax.swing.JFrame;
 
+import com.jdevelopstation.l2ce.gui.listeners.window.MainWindowListenerImpl;
 import com.jdevelopstation.l2ce.gui.pane.MainPane;
 
 /**
@@ -24,5 +25,7 @@ public class MainWindow extends JFrame
 		setSize(350, 550);
 		setResizable(false);
 		setTitle("L2CE");
+
+		addWindowListener(new MainWindowListenerImpl());
 	}
 }

@@ -7,6 +7,7 @@ import javax.swing.UIManager;
 import com.jdevelopstation.commons.logging.Log4JHelper;
 import com.jdevelopstation.l2ce.data.xml.parser.ClientVersionParser;
 import com.jdevelopstation.l2ce.gui.window.MainWindow;
+import com.jdevelopstation.l2ce.utils.BundleUtils;
 import com.jdevelopstation.l2ce.utils.ThreadPoolManager;
 
 /**
@@ -18,6 +19,7 @@ public class Main
 	public static void main(String... arg) throws Exception
 	{
 		Log4JHelper.load();
+		BundleUtils.getInstance();
 		ThreadPoolManager.getInstance();
 		ClientVersionParser.getInstance().load();
 
