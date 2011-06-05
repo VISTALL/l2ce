@@ -49,6 +49,38 @@
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
+	<file pattern="msconditiondata.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="skill_id" reader="UINT" />
+			<node name="skill_level" reader="UINT" />
+			<node name="equiptype" reader="UINT" />
+			<node name="attack_item_types" reader="SHORT_SHORT" />
+			<for name="attack_item_types">
+				<node name="attack_item_type" reader="UINT" />
+			</for>
+			<node name="stattype" reader="UINT" />
+			<node name="statpercentage" reader="UINT" />
+			<node name="up" reader="UINT" />
+			<node name="hpconsume" reader="UINT" />
+			<node name="mpconsume1" reader="UINT" />
+			<node name="mpconsume2" reader="UINT" />
+			<node name="item_id" reader="UINT" />
+			<node name="itemnum" reader="UINT" />
+			<node name="caster_buffs" reader="SHORT_SHORT" />
+			<for name="caster_buffs">
+				<node name="buff_id" reader="UINT" />
+				<node name="buff_level" reader="UINT" />
+			</for>
+			<node name="target_buffs" reader="SHORT_SHORT" />
+			<for name="target_buffs">
+				<node name="buff_id" reader="UINT" />
+				<node name="buff_level" reader="UINT" />
+			</for>
+			<node name="ultimateconsumegauge" reader="UINT" />
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
+	</file>
 	<file pattern="questmarkconditiondata.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
@@ -112,16 +144,16 @@
 			<node name="npc_id" reader="UINT" />
 			<node name="npc_name" reader="UNICODE" />
 			<node name="npc_icon_name" reader="UNICODE" />
-			<node name="texture_name_size" reader="UINT" />
-			<for name="texture_name_size">
+			<node name="textures_name" reader="UINT" />
+			<for name="textures_name">
 				<node name="texture_name" reader="UNICODE" />
 			</for>
-			<node name="texture_name_second_size" reader="UINT" />
-			<for name="texture_name_second_size">
+			<node name="textures_name_second" reader="UINT" />
+			<for name="textures_name_second">
 				<node name="texture_name_second" reader="UNICODE" />
 			</for>
-			<node name="skill_data_size" reader="SHORT_SHORT" />
-			<for name="skill_data_size">
+			<node name="skill_datas" reader="SHORT_SHORT" />
+			<for name="skill_datas">
 				<node name="skill_data" reader="UINT" />
 			</for>
 			<node name="npc_speed" reader="FLOAT" />
@@ -129,29 +161,29 @@
 			<for name="unknown_0_size">
 				<node name="unknown_0" reader="UINT" />
 			</for>
-			<node name="attack_sound1_size" reader="UINT" />
-			<for name="attack_sound1_size">
+			<node name="attack_sounds" reader="UINT" />
+			<for name="attack_sounds">
 				<node name="attack_sound1" reader="UNICODE" />
 			</for>
-			<node name="defence_sound1_size" reader="UINT" />
-			<for name="defence_sound1_size">
+			<node name="defence_sounds" reader="UINT" />
+			<for name="defence_sounds">
 				<node name="defence_sound1" reader="UNICODE" />
 			</for>
-			<node name="damage_sound_size" reader="UINT" />
-			<for name="damage_sound_size">
+			<node name="damage_sounds" reader="UINT" />
+			<for name="damage_sounds">
 				<node name="damage_sound" reader="UNICODE" />
 			</for>
-			<node name="deco_effect_size" reader="UINT" />
-			<for name="deco_effect_size">
+			<node name="deco_effects" reader="UINT" />
+			<for name="deco_effects">
 				<node name="deco_effect" reader="UNICODE" />
 				<node name="deco_effect_scale" reader="FLOAT" />
 			</for>
-			<node name="unknown_1_size" reader="SHORT_SHORT" />
-			<for name="unknown_1_size">
+			<node name="unknown_1s" reader="SHORT_SHORT" />
+			<for name="unknown_1s">
 				<node name="unknown_1" reader="UINT" />
 			</for>
-			<node name="unknown_2_size" reader="SHORT_SHORT" />
-			<for name="unknown_2_size">
+			<node name="unknown_2s" reader="SHORT_SHORT" />
+			<for name="unknown_2s">
 				<node name="unknown_2" reader="UINT" />
 			</for>
 			<node name="attack_effect" reader="UNICODE" />
@@ -161,8 +193,8 @@
 			<node name="sound_random" reader="FLOAT" />
 			<node name="quest_be" reader="UINT" />
 			<node name="quest_step" reader="UINT" />
-			<node name="dialog_sound_size" reader="UINT" />
-			<for name="dialog_sound_size">
+			<node name="dialog_sounds" reader="UINT" />
+			<for name="dialog_sounds">
 				<node name="dialog_sound" reader="ASCF" />
 			</for>
 			<node name="unknown_3" reader="UINT" />

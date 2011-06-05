@@ -25,11 +25,11 @@ public class MainTest
 		ClientVersion version = ClientVersionHolder.getInstance().getVersion("CT3_Awakening");
 		ClientFile f = null;
 		for(ClientFile f2 : version.getClientFiles())
-			if(f2.getPattern().matcher("npcgrp.dat").find())
+			if(f2.getPattern().matcher("msconditiondata.dat").find())
 				f = f2;
 		if(f == null)
 			return;
-		ClientData data = f.parse(new File("D:\\MyTests\\l2encdec\\dec-npcgrp.dat"));
-		data.toXML("C:/npcgrp.xml");
+		ClientData data = f.parse(new File("D:\\MyTests\\l2encdec\\dec-msconditiondata.dat"));
+		data.toXML("C:/msconditiondata.xml");
 	}
 }

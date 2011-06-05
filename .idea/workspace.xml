@@ -15,27 +15,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="34f02874-8f83-47bc-a7bd-e97a02594d96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src-resource/com/jdevelopstation/l2ce/strings" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src-resource/com/jdevelopstation/l2ce" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src-resource" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/Main.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src-resource/com/jdevelopstation/l2ce/strings/Bundle_en.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src-resource/com/jdevelopstation/l2ce/strings/Bundle_ru.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src-resource/com/jdevelopstation/l2ce/strings/Bundle_uk.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/window/MainWindowListenerImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/window/MenuExitActionListenerImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/window/MenuOptionsActionListenerImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/utils/BundleUtils.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/lib/l2ce.jar" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/L2CE.iml" afterPath="$PROJECT_DIR$/L2CE.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/Main.java" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.form" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.java" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.form" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.java" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/window/MainWindow.java" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/window/MainWindow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/l2encdec/libgmp-10.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/l2encdec/libz-1.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/l2encdec/gg-bps.dll" afterPath="$PROJECT_DIR$/dist/l2encdec/gg-bps.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/l2encdec/l2encdec.exe" afterPath="$PROJECT_DIR$/dist/l2encdec/l2encdec.exe" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/l2encdec/loader.exe" afterPath="$PROJECT_DIR$/dist/l2encdec/loader.exe" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/l2encdec/loaderCT1++.exe" afterPath="$PROJECT_DIR$/dist/l2encdec/loaderCT1++.exe" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/l2encdec/patcher.exe" afterPath="$PROJECT_DIR$/dist/l2encdec/patcher.exe" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/version/CT3_Awakening.xml" afterPath="$PROJECT_DIR$/dist/version/CT3_Awakening.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src-test/com/jdevelopstation/l2ce/test/MainTest.java" afterPath="$PROJECT_DIR$/src-test/com/jdevelopstation/l2ce/test/MainTest.java" />
     </list>
     <ignored path="L2CE.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,19 +82,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/build.xml">
+      <file leaf-file-name="MainTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src-test/com/jdevelopstation/l2ce/test/MainTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="0" selection-start="2167" selection-end="2167" vertical-scroll-proportion="1.2266065">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://D:/jn/trunk/jn/build.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="4711" vertical-scroll-proportion="0.0">
+            <state line="35" column="27" selection-start="1108" selection-end="1108" vertical-scroll-proportion="0.51">
               <folding />
             </state>
           </provider>
@@ -126,8 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src-resource/com/jdevelopstation/l2ce/strings/Strings_ru.properties" />
-        <option value="$PROJECT_DIR$/src-resource/com/jdevelopstation/l2ce/strings/Strings_ua.properties" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/window/MenuExitActionListenerImpl.java" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/utils/BundleUtils.java" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/utils/bundle/BundleUtils.java" />
@@ -142,6 +119,8 @@
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/window/MenuOptionsActionListenerImpl.java" />
         <option value="$PROJECT_DIR$/build-resources.xml" />
         <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/src-test/com/jdevelopstation/l2ce/test/MainTest.java" />
+        <option value="$PROJECT_DIR$/dist/version/CT3_Awakening.xml" />
       </list>
     </option>
   </component>
@@ -193,8 +172,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -226,20 +204,6 @@
               <option name="myItemId" value="src-test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="L2CE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trunk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src-resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -253,7 +217,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="strings" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -305,11 +269,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
+              <option name="myItemId" value="l2ce" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="logging" />
+              <option name="myItemId" value="version" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -335,7 +299,67 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
+              <option name="myItemId" value="l2ce" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="version" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="L2CE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trunk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jdevelopstation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="l2ce" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="L2CE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trunk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jdevelopstation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -373,7 +397,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Favorites" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -615,27 +640,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="32" width="1936" height="1056" extended-state="7" />
-    <editor active="false" />
+    <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.67098165" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19829424" sideWeight="0.67098165" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24986653" sideWeight="0.67098165" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24986653" sideWeight="0.67098165" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.412082" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995194" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Notes" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22210358" sideWeight="0.67098165" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32995194" sideWeight="0.67098165" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.67098165" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -731,65 +756,14 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://E:/Program Files/jdk_6_23_x64/src.zip!/java/util/ResourceBundle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1925" column="33" selection-start="75921" selection-end="75921" vertical-scroll-proportion="2.9042017">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/window/MenuExitActionListenerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="39" selection-start="196" selection-end="222" vertical-scroll-proportion="0.17">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/utils/BundleUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="5" selection-start="583" selection-end="583" vertical-scroll-proportion="0.5477778">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="409" selection-end="409" vertical-scroll-proportion="0.05666667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="24" selection-start="1915" selection-end="2156" vertical-scroll-proportion="0.62333333">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://E:/Program Files/jdk_6_23_x64/src.zip!/javax/swing/JFileChooser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="258" column="29" selection-start="8642" selection-end="8642" vertical-scroll-proportion="-18.916666">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
+        <state line="258" column="29" selection-start="8642" selection-end="8642" vertical-scroll-proportion="-18.916666" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src-resource/com/jdevelopstation/l2ce/strings/Bundle_ru.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="31" selection-start="83" selection-end="83" vertical-scroll-proportion="0.038636364">
-          <folding />
-        </state>
+        <state line="2" column="31" selection-start="83" selection-end="83" vertical-scroll-proportion="0.038636364" />
       </provider>
       <provider editor-type-id="ResourceBundle">
         <state />
@@ -797,18 +771,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/window/MenuOptionsActionListenerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="23" selection-start="329" selection-end="329" vertical-scroll-proportion="0.26444444">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="14" column="23" selection-start="329" selection-end="329" vertical-scroll-proportion="0.26444444" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src-resource/com/jdevelopstation/l2ce/strings/Bundle_en.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="48" selection-end="77" vertical-scroll-proportion="0.038636364">
-          <folding />
-        </state>
+        <state line="2" column="0" selection-start="48" selection-end="77" vertical-scroll-proportion="0.038636364" />
       </provider>
       <provider editor-type-id="ResourceBundle">
         <state />
@@ -816,35 +784,65 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src-resource/com/jdevelopstation/l2ce/strings/Bundle_uk.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="10" selection-start="62" selection-end="62" vertical-scroll-proportion="0.038636364">
-          <folding />
-        </state>
+        <state line="2" column="10" selection-start="62" selection-end="62" vertical-scroll-proportion="0.038636364" />
       </provider>
       <provider editor-type-id="ResourceBundle">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="35" selection-start="1035" selection-end="1035" vertical-scroll-proportion="0.40248027">
-          <folding>
-            <element signature="method#$$$setupUI$$$#0;class#MainPane#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/jn/trunk/jn/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="4711" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="4711" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="2167" selection-end="2167" vertical-scroll-proportion="1.2266065">
-          <folding />
-        </state>
+        <state line="64" column="0" selection-start="2167" selection-end="2167" vertical-scroll-proportion="1.2088889" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/USAGE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.47333333" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/actions/FileLoadInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="13" selection-start="534" selection-end="534" vertical-scroll-proportion="0.15111111" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="64" selection-start="810" selection-end="810" vertical-scroll-proportion="0.26444444" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/version/CT3_Awakening.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="27" selection-start="1260" selection-end="1260" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/ClientVersion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="220" selection-end="220" vertical-scroll-proportion="0.15111111" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/ClientNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="17" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/ClientNodeContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="22" selection-start="174" selection-end="174" vertical-scroll-proportion="0.15111111" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src-test/com/jdevelopstation/l2ce/test/MainTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="27" selection-start="1108" selection-end="1108" vertical-scroll-proportion="0.51" />
       </provider>
     </entry>
   </component>
