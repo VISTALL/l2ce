@@ -33,4 +33,10 @@ public class ClientVersion
 	{
 		return _clientFiles;
 	}
+
+	@Override
+	public String toString()
+	{
+		return _name;
+	}
 }

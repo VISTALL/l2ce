@@ -15,9 +15,12 @@ import javax.swing.JScrollPane;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
+import com.jdevelopstation.commons.properties.listeners.PropertyListener;
+import com.jdevelopstation.l2ce.gui.listeners.DatPane_PropertyChangeListenerImpl;
 import com.jdevelopstation.l2ce.gui.pane.actions.FileLoadInfo;
 import com.jdevelopstation.l2ce.gui.pane.actions.ListRepaintTask;
 import com.jdevelopstation.l2ce.gui.renders.DatFileListRender;
+import com.jdevelopstation.l2ce.properties.GeneralProperties;
 
 /**
  * @author VISTALL
@@ -25,7 +28,6 @@ import com.jdevelopstation.l2ce.gui.renders.DatFileListRender;
  */
 public class DatPane extends JPanel
 {
-
 	private JList _fileList;
 	private JPanel _contentPane;
 	private JButton _loadButton;
@@ -37,44 +39,8 @@ public class DatPane extends JPanel
 	public DatPane()
 	{
 		$$$setupUI$$$();
-		/*for(String v : ClientVersionHolder.getInstance().getVersionMap().keySet())
-			_versionList.addItem(v);
 
-		_updateFiles.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				Object o = _versionList.getSelectedItem();
-				if(o == null)
-					return;
-				ClientVersion v = ClientVersionHolder.getInstance().getVersion((String) o);
-				File[] files = new File(Config.DIRECTORY).listFiles();
-
-				Set<FileLoadInfo> s = new TreeSet<FileLoadInfo>();
-				for(ClientFile cf : v.getClientFiles())
-					for(File f : files)
-						if(cf.getPattern().matcher(f.getName()).find())
-							s.add(new FileLoadInfo(cf, f));
-
-				_fileList.setListData(s.toArray(new FileLoadInfo[s.size()]));
-			}
-		});  */
-
-		/*	_selectDir.addActionListener(new ActionListener()
-				{
-					@Override
-					public void actionPerformed(ActionEvent e)
-					{
-						final JFileChooser chooser = new JFileChooser(Config.DIRECTORY);  //TODO [VISTALL] last folder
-						final int returnVal = chooser.showOpenDialog(MainWindow.getInstance());
-
-						if(returnVal == JFileChooser.APPROVE_OPTION)
-						{
-
-						}
-					}
-				});     */
+		PropertyListener.getInstance().addListener(GeneralProperties.class, new DatPane_PropertyChangeListenerImpl(this));
 		_loadButton.addActionListener(new ActionListener()
 		{
 			@Override
@@ -98,6 +64,11 @@ public class DatPane extends JPanel
 		_contentPane = this;
 		_fileList = new JList();
 		_fileList.setCellRenderer(new DatFileListRender());
+	}
+
+	public JList getFileList()
+	{
+		return _fileList;
 	}
 
 	/**
