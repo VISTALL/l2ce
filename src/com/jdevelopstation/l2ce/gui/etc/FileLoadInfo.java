@@ -1,8 +1,14 @@
-package com.jdevelopstation.l2ce.gui.pane.actions;
+package com.jdevelopstation.l2ce.gui.etc;
 
+import java.awt.EventQueue;
 import java.io.File;
 
+import javax.swing.JFileChooser;
+
 import com.jdevelopstation.l2ce.gui.pane.DatPane;
+import com.jdevelopstation.l2ce.gui.tasks.ListRepaintTask;
+import com.jdevelopstation.l2ce.gui.window.MainFrame;
+import com.jdevelopstation.l2ce.properties.GeneralProperties;
 import com.jdevelopstation.l2ce.utils.L2EncDec;
 import com.jdevelopstation.l2ce.utils.RunnableImpl;
 import com.jdevelopstation.l2ce.utils.ThreadPoolManager;
@@ -44,6 +50,18 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 				count = ((Number) node.getValue()).longValue();
 		}
 		return _file.getName() + " [" + count + "]";
+	}
+
+	public long getDataSize()
+	{
+		long count = -1;
+		if(_clientData != null)
+		{
+			ClientDataNode node = _clientData.getNodeByName("data");
+			if(node != null)
+				count = ((Number) node.getValue()).longValue();
+		}
+		return count;
 	}
 
 	@Override
@@ -89,8 +107,26 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 				{
 					setDisabled(false);
 
-					dat.repaintList();
+					EventQueue.invokeLater(new ListRepaintTask(dat.getFileList()));
 				}
+			}
+		});
+	}
+
+	public void export(final DatPane dat)
+	{
+		final JFileChooser chooser = new JFileChooser(GeneralProperties.WORKING_DIRECTORY);
+		chooser.setDialogType(JFileChooser.SAVE_DIALOG);
+		chooser.setApproveButtonText("Save");
+		chooser.setDialogTitle("Save");
+
+		EventQueue.invokeLater(new RunnableImpl()
+		{
+			@Override
+			protected void runImpl() throws Throwable
+			{
+				if(chooser.showOpenDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION)
+					_clientData.toXML(chooser.getSelectedFile().getAbsolutePath());
 			}
 		});
 	}

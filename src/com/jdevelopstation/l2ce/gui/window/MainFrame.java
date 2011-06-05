@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 import com.jdevelopstation.l2ce.gui.listeners.MainFrame_WindowListenerImpl;
 import com.jdevelopstation.l2ce.gui.pane.MainPane;
-import com.jdevelopstation.l2ce.gui.pane.actions.MemoryBarUpdateTask;
+import com.jdevelopstation.l2ce.gui.tasks.MemoryBarUpdateTask;
 import com.jdevelopstation.l2ce.utils.BundleUtils;
 import com.jdevelopstation.l2ce.utils.ThreadPoolManager;
 

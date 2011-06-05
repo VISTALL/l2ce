@@ -8,14 +8,14 @@ import javax.swing.JList;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-import com.jdevelopstation.l2ce.gui.pane.actions.FileLoadInfo;
+import com.jdevelopstation.l2ce.gui.etc.FileLoadInfo;
 import sun.swing.DefaultLookup;
 
 /**
  * @author VISTALL
  * @date 1:50/29.05.2011
  */
-public class DatFileListRender extends DefaultListCellRenderer
+public class DatPane_FileListCellRenderer extends DefaultListCellRenderer
 {
 	private static final Border SAFE_NO_FOCUS_BORDER = new EmptyBorder(1, 1, 1, 1);
 	private static final Border DEFAULT_NO_FOCUS_BORDER = new EmptyBorder(1, 1, 1, 1);

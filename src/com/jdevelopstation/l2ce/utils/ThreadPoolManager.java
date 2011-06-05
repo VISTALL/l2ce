@@ -13,16 +13,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadPoolManager
 {
-	private static ThreadPoolManager _instance;
-
+	private static ThreadPoolManager _instance = new ThreadPoolManager();
 	private ScheduledThreadPoolExecutor _pool;
 
 	public static ThreadPoolManager getInstance()
 	{
-		if (_instance == null)
-		{
-			_instance = new ThreadPoolManager();
-		}
 		return _instance;
 	}
 

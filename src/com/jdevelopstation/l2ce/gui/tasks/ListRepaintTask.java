@@ -1,4 +1,4 @@
-package com.jdevelopstation.l2ce.gui.pane.actions;
+package com.jdevelopstation.l2ce.gui.tasks;
 
 import javax.swing.JList;
 
@@ -20,6 +20,7 @@ public class ListRepaintTask extends RunnableImpl
 	@Override
 	public void runImpl()
 	{
+		_jList.getListSelectionListeners()[0].valueChanged(null);
 		_jList.setSelectedValue(_jList.getSelectedValue(), true);
 		_jList.invalidate();
 	}

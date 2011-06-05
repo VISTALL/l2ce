@@ -1,4 +1,4 @@
-package com.jdevelopstation.l2ce.gui.pane.actions;
+package com.jdevelopstation.l2ce.gui.tasks;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryUsage;
