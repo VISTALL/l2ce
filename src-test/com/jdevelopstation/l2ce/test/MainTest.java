@@ -5,7 +5,6 @@ import java.io.File;
 import com.jdevelopstation.commons.logging.Log4JHelper;
 import com.jdevelopstation.l2ce.data.xml.holder.ClientVersionHolder;
 import com.jdevelopstation.l2ce.data.xml.parser.ClientVersionParser;
-import com.jdevelopstation.l2ce.utils.ThreadPoolManager;
 import com.jdevelopstation.l2ce.version.ClientVersion;
 import com.jdevelopstation.l2ce.version.node.data.ClientData;
 import com.jdevelopstation.l2ce.version.node.file.ClientFile;
@@ -19,7 +18,6 @@ public class MainTest
 	public static void main(String... arg)
 	{
 		Log4JHelper.load();
-		ThreadPoolManager.getInstance();
 		ClientVersionParser.getInstance().load();
 
 		ClientVersion version = ClientVersionHolder.getInstance().getVersion("CT3_Awakening");
