@@ -1,5 +1,7 @@
 package com.jdevelopstation.l2ce.utils;
 
+import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
@@ -19,9 +21,15 @@ public class BundleUtils
 
 	public BundleUtils()
 	{
-		//Locale.setDefault(Locale.ENGLISH);
-
-		_bundle = ResourceBundle.getBundle("com/jdevelopstation/l2ce/strings/Bundle");
+		try
+		{
+			_bundle = ResourceBundle.getBundle("com/jdevelopstation/l2ce/strings/Bundle");
+		}
+		catch(MissingResourceException e)
+		{
+			Locale.setDefault(Locale.ENGLISH);
+			_bundle = ResourceBundle.getBundle("com/jdevelopstation/l2ce/strings/Bundle");
+		}
 	}
 
 	public String getBundle(String text, Object... ar)
