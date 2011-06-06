@@ -391,12 +391,13 @@
 			<node name="yaw" reader="FLOAT" />
 		</for>
 	</file>
-	<file pattern="mantleexception.dat"> <!-- not work -->
+	<file pattern="mantleexception.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="item_id" reader="UINT" />
 			<node name="textures_count" reader="INT" />
 			<for name="textures_count">
+				<node name="character_type" reader="UINT" />
 				<node name="texture" reader="ASCF" />
 			</for>
 		</for>
