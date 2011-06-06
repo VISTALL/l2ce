@@ -23,8 +23,11 @@
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="additionaleffect.dat">
-	</file>
-	<file pattern="additionaleffect.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="text" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="alterskilldata.dat">
 	</file>
@@ -33,30 +36,134 @@
 	<file pattern="armorgrp.dat">
 	</file>
 	<file pattern="castlename-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="nbr" reader="UINT" />
+			<node name="tag" reader="UINT" />
+			<node name="id" reader="UINT" />
+			<node name="castle_name" reader="ASCF" />
+			<node name="location" reader="ASCF" />
+			<node name="desc" reader="ASCF" />
+			<node name="unk_1" reader="ASCF" />
+			<node name="unk_2" reader="ASCF" />
+			<node name="unk_3" reader="ASCF" />
+			<node name="unk_4" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="charcreategrp.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="unknown" reader="UINT" />
+			<node name="x" reader="FLOAT" />
+			<node name="y" reader="FLOAT" />
+			<node name="z" reader="FLOAT" />
+			<node name="wear1" reader="UINT" />
+			<node name="wear2" reader="UINT" />
+			<node name="wear3" reader="UINT" />
+			<node name="wear4" reader="UINT" />
+			<node name="wear5" reader="UINT" />
+			<node name="wear6" reader="UINT" />
+		</for>
 	</file>
 	<file pattern="chargrp.dat">
 	</file>
 	<file pattern="classinfo-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="name" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="commandname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="nbr" reader="UINT" />
+			<node name="name" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="credit-[\w]+\.dat">
 	</file>
 	<file pattern="creditgrp-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="html" reader="ASCF" />
+			<node name="image" reader="ASCF" />
+			<node name="time" reader="UINT" />
+			<node name="align" reader="UINT" />
+		</for>
 	</file>
 	<file pattern="dualcasttypedata.dat">
 	</file>
 	<file pattern="dynamiccontentsname-[\w]+\.dat">
 	</file>
 	<file pattern="entereventgrp.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="UNK_0" reader="ASCF" />
+			<node name="skill_sound" reader="ASCF" />
+			<node name="sound_vol" reader="FLOAT" />
+			<node name="sound_rad" reader="FLOAT" />
+			<node name="isrise" reader="UINT" />
+			<node name="spawn_type" reader="UINT" />
+			<node name="effect_name" reader="UNICODE" />
+			<node name="anim_name" reader="UNICODE" />
+		</for>
 	</file>
 	<file pattern="etcitemgrp.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="tag" reader="UINT" />
+			<node name="id" reader="UINT" />
+			<node name="drop_type" reader="UINT" />
+			<node name="drop_anim_type" reader="UINT" />
+			<node name="drop_radius" reader="UINT" />
+			<node name="drop_height" reader="UINT" />
+			<node name="UNK_0" reader="UINT" />
+			<node name="drop_mesh" reader="UNICODE" />
+			<node name="drop_tex" reader="UNICODE" />
+			<node name="icon1" reader="UNICODE" />
+			<node name="icon2" reader="UNICODE" />
+			<node name="icon3" reader="UNICODE" />
+			<node name="icon4" reader="UNICODE" />
+			<node name="icon5" reader="UNICODE" />
+			<node name="durability" reader="UINT" />
+			<node name="weight" reader="UINT" />
+			<node name="material" reader="UINT" />
+			<node name="crystallizable" reader="UINT" />
+			<node name="UNK_1" reader="UINT" />
+			<!--  node name="mesh_tex_pair" reader="MTX" /-->
+			<node name="item_sound" reader="UNICODE" />
+			<node name="equip_sound" reader="UNICODE" />
+			<node name="stackable" reader="UINT" />
+			<node name="family" reader="UINT" />
+			<node name="grade" reader="UINT" />
+		</for>
 	</file>
 	<file pattern="eula-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="fin0" reader="ASCF" />
+			<node name="fin1" reader="ASCF" />
+			<node name="fin2" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="exceptionminimapdata.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="location_id" reader="UINT" />
+			<node name="location_name" reader="ASCF" />
+			<node name="max_x" reader="INT" />
+			<node name="min_x" reader="INT" />
+			<node name="max_y" reader="INT" />
+			<node name="min_y" reader="INT" />
+			<node name="max_z" reader="INT" />
+			<node name="min_z" reader="INT" />
+			<node name="seen_x" reader="INT" />
+			<node name="seen_y" reader="INT" />
+		</for>
 	</file>
 	<file pattern="flashconfig.dat">
 	</file>
@@ -70,16 +177,150 @@
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="gametip-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="int1" reader="UINT" />
+			<node name="int2" reader="UINT" />
+			<node name="enable" reader="UINT" />
+			<node name="tip" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="goodsicon.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="item_id" reader="UINT" />
+			<node name="icon" reader="UNICODE" />
+		</for>
 	</file>
 	<file pattern="hairaccessorylocgrp.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="name" reader="UNICODE" />
+			<node name="floats_1_1" reader="FLOAT" />
+			<node name="floats_1_2" reader="FLOAT" />
+			<node name="floats_1_3" reader="FLOAT" />
+			<node name="ints_1_1" reader="INT" />
+			<node name="ints_1_2" reader="INT" />
+			<node name="ints_1_3" reader="INT" />
+			<node name="floats_2_1" reader="FLOAT" />
+			<node name="floats_2_2" reader="FLOAT" />
+			<node name="floats_2_3" reader="FLOAT" />
+			<node name="ints_2_1" reader="INT" />
+			<node name="ints_2_2" reader="INT" />
+			<node name="ints_2_3" reader="INT" />
+			<node name="floats_3_1" reader="FLOAT" />
+			<node name="floats_3_2" reader="FLOAT" />
+			<node name="floats_3_3" reader="FLOAT" />
+			<node name="ints_3_1" reader="INT" />
+			<node name="ints_3_2" reader="INT" />
+			<node name="ints_3_3" reader="INT" />
+			<node name="floats_4_1" reader="FLOAT" />
+			<node name="floats_4_2" reader="FLOAT" />
+			<node name="floats_4_3" reader="FLOAT" />
+			<node name="ints_4_1" reader="INT" />
+			<node name="ints_4_2" reader="INT" />
+			<node name="ints_4_3" reader="INT" />
+			<node name="floats_5_1" reader="FLOAT" />
+			<node name="floats_5_2" reader="FLOAT" />
+			<node name="floats_5_3" reader="FLOAT" />
+			<node name="ints_5_1" reader="INT" />
+			<node name="ints_5_2" reader="INT" />
+			<node name="ints_5_3" reader="INT" />
+			<node name="floats_6_1" reader="FLOAT" />
+			<node name="floats_6_2" reader="FLOAT" />
+			<node name="floats_6_3" reader="FLOAT" />
+			<node name="ints_6_1" reader="INT" />
+			<node name="ints_6_2" reader="INT" />
+			<node name="ints_6_3" reader="INT" />
+			<node name="floats_7_1" reader="FLOAT" />
+			<node name="floats_7_2" reader="FLOAT" />
+			<node name="floats_7_3" reader="FLOAT" />
+			<node name="ints_7_1" reader="INT" />
+			<node name="ints_7_2" reader="INT" />
+			<node name="ints_7_3" reader="INT" />
+			<node name="floats_8_1" reader="FLOAT" />
+			<node name="floats_8_2" reader="FLOAT" />
+			<node name="floats_8_3" reader="FLOAT" />
+			<node name="ints_8_1" reader="INT" />
+			<node name="ints_8_2" reader="INT" />
+			<node name="ints_8_3" reader="INT" />
+			<node name="floats_9_1" reader="FLOAT" />
+			<node name="floats_9_2" reader="FLOAT" />
+			<node name="floats_9_3" reader="FLOAT" />
+			<node name="ints_9_1" reader="INT" />
+			<node name="ints_9_2" reader="INT" />
+			<node name="ints_9_3" reader="INT" />
+			<node name="floats_A_1" reader="FLOAT" />
+			<node name="floats_A_2" reader="FLOAT" />
+			<node name="floats_A_3" reader="FLOAT" />
+			<node name="ints_A_1" reader="INT" />
+			<node name="ints_A_2" reader="INT" />
+			<node name="ints_A_3" reader="INT" />
+			<node name="floats_B_1" reader="FLOAT" />
+			<node name="floats_B_2" reader="FLOAT" />
+			<node name="floats_B_3" reader="FLOAT" />
+			<node name="ints_B_1" reader="INT" />
+			<node name="ints_B_2" reader="INT" />
+			<node name="ints_B_3" reader="INT" />
+			<node name="floats_C_1" reader="FLOAT" />
+			<node name="floats_C_2" reader="FLOAT" />
+			<node name="floats_C_3" reader="FLOAT" />
+			<node name="ints_C_1" reader="INT" />
+			<node name="ints_C_2" reader="INT" />
+			<node name="ints_C_3" reader="INT" />
+			<node name="floats_D_1" reader="FLOAT" />
+			<node name="floats_D_2" reader="FLOAT" />
+			<node name="floats_D_3" reader="FLOAT" />
+			<node name="ints_D_1" reader="INT" />
+			<node name="ints_D_2" reader="INT" />
+			<node name="ints_D_3" reader="INT" />
+			<node name="floats_E_1" reader="FLOAT" />
+			<node name="floats_E_2" reader="FLOAT" />
+			<node name="floats_E_3" reader="FLOAT" />
+			<node name="ints_E_1" reader="INT" />
+			<node name="ints_E_2" reader="INT" />
+			<node name="ints_E_3" reader="INT" />
+			<node name="floats_F_1" reader="FLOAT" />
+			<node name="floats_F_2" reader="FLOAT" />
+			<node name="floats_F_3" reader="FLOAT" />
+			<node name="ints_F_1" reader="INT" />
+			<node name="ints_F_2" reader="INT" />
+			<node name="ints_F_3" reader="INT" />
+		</for>
 	</file>
 	<file pattern="hennagrp-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="dye_id" reader="UINT" />
+			<node name="name" reader="ASCF" />
+			<node name="icon" reader="ASCF" />
+			<node name="symbol_add_name" reader="ASCF" />
+			<node name="symbol_add_desc" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="huntingzone-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="hunting_type" reader="UINT" />
+			<node name="level" reader="UINT" />
+			<node name="UNK_1" reader="UINT" />
+			<node name="loc_x" reader="FLOAT" />
+			<node name="loc_y" reader="FLOAT" />
+			<node name="loc_z" reader="FLOAT" />
+			<node name="UNK_2" reader="ASCF" />
+			<node name="affiliated_area_id" reader="UINT" />
+			<node name="name" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="instantzonedata-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="name" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="itemname-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -142,10 +383,34 @@
 		</for>
 	</file>
 	<file pattern="logongrp.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="x" reader="FLOAT" />
+			<node name="y" reader="FLOAT" />
+			<node name="z" reader="FLOAT" />
+			<node name="yaw" reader="FLOAT" />
+		</for>
 	</file>
-	<file pattern="mantleexception.dat">
+	<file pattern="mantleexception.dat"> <!-- not work -->
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="item_id" reader="UINT" />
+			<node name="textures_count" reader="INT" />
+			<for name="textures_count">
+				<node name="texture" reader="ASCF" />
+			</for>
+		</for>
 	</file>
 	<file pattern="mobskillanimgrp.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="npc_id" reader="UINT" />
+			<node name="skill_id" reader="UINT" />
+			<node name="seq_name" reader="UNICODE" />
+			<node name="skill_name" reader="ASCF" />
+			<node name="npc_name" reader="ASCF" />
+			<node name="npc_class" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="msconditiondata.dat">
 		<node name="data" reader="UINT"/>
@@ -246,18 +511,68 @@
 		</for>
 	</file>
 	<file pattern="npcname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="name" reader="ASCF" />
+			<node name="description" reader="ASCF" />
+			<node name="rgb" reader="UINT" />
+		</for>
 	</file>
 	<file pattern="npcstring-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="text" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="obscene-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="text" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="optiondata_client-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="level" reader="UINT" />
+			<node name="var_of_level" reader="UINT" />
+			<node name="effect1_desc" reader="ASCF" />
+			<node name="effect2_desc" reader="ASCF" />
+			<node name="effect3_desc" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="pawnanimdata.dat">
 	</file>
 	<file pattern="posteffectdata.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="effect_id" reader="UINT" />
+			<node name="effect_name" reader="UNICODE" />
+			<node name="effect_sort" reader="UINT" />
+			<node name="effect_play_type" reader="UINT" />
+			<node name="play_time" reader="FLOAT" />
+			<node name="effect_fix" reader="UINT" />
+			<node name="effect_cor1_factor1" reader="FLOAT" />
+			<node name="effect_cor1_factor2" reader="FLOAT" />
+			<node name="effect_cor1_factor3" reader="FLOAT" />
+			<node name="effect_cor2_factor1" reader="FLOAT" />
+			<node name="effect_cor2_factor2" reader="FLOAT" />
+			<node name="effect_cor2_factor3" reader="FLOAT" />
+			<node name="effect_reservefactor1" reader="FLOAT" />
+			<node name="effect_reservefactor2" reader="FLOAT" />
+		</for>
 	</file>
 	<file pattern="productname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="name" reader="UNICODE" />
+			<node name="str" reader="ASCF" />
+			<node name="icon" reader="UNICODE" />
+		</for>
 	</file>
 	<file pattern="questmarkconditiondata.dat">
 		<node name="data" reader="UINT"/>
@@ -281,16 +596,60 @@
 	<file pattern="questname-[\w]+\.dat">
 	</file>
 	<file pattern="raiddata-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="npc_id" reader="UINT" />
+			<node name="npc_level" reader="UINT" />
+			<node name="affiliated_area_id" reader="UINT" />
+			<node name="loc_x" reader="FLOAT" />
+			<node name="loc_y" reader="FLOAT" />
+			<node name="loc_z" reader="FLOAT" />
+			<node name="raid_desc" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="Recipe-c.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="name" reader="ASCF" />
+			<node name="id_mk" reader="UINT" />
+			<node name="id_recipe" reader="UINT" />
+			<node name="level" reader="UINT" />
+			<node name="id_item" reader="UINT" />
+			<node name="count" reader="UINT" />
+			<node name="mp_cost" reader="UINT" />
+			<node name="success_rate" reader="UINT" />
+			<!-- node name="materials" reader="MAT2" /-->
+		</for>
 	</file>
 	<file pattern="ridedata.dat">
+	<!-- Crazy types  -->
 	</file>
 	<file pattern="sceneplayerdata.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="name" reader="UNICODE" />
+			<node name="lenght" reader="FLOAT" />
+		</for>
 	</file>
 	<file pattern="servername-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="server_id" reader="UINT" />
+			<node name="tag" reader="UINT" />
+			<node name="server_name" reader="ASCF" />
+			<node name="server_desc" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="shortcutalias.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="name" reader="ASCF" />
+			<node name="val1" reader="UINT" />
+			<node name="val2" reader="UINT" />
+		</for>
 	</file>
 	<file pattern="shuttledata.dat">
 	</file>
@@ -311,12 +670,38 @@
 	<file pattern="skillsoundgrp.dat">
 	</file>
 	<file pattern="skillsoundsource.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="skill_id" reader="UINT" />
+			<node name="unk_0" reader="UINT" />
+			<node name="unk_2" reader="UINT" />
+			<node name="unk_3" reader="UINT" />
+			<node name="unk_4" reader="UINT" />
+			<node name="unk_5" reader="UINT" />
+			<node name="unk_6" reader="UINT" />
+			<node name="unk_7" reader="UINT" />
+			<node name="unk_8" reader="UINT" />
+			<node name="unk_9" reader="UINT" />
+		</for>
 	</file>
 	<file pattern="staticobject-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="name" reader="UNICODE" />
+		</for>
+
 	</file>
 	<file pattern="statisticname-[\w]+\.dat">
 	</file>
 	<file pattern="symbolname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="filename" reader="ASCF" />
+			<node name="alias" reader="ASCF" />
+			<node name="UNK_0" reader="UINT" />
+		</for>
 	</file>
 	<file pattern="sysstring-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -327,8 +712,39 @@
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="systemmsg-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="UNK_0" reader="UINT" />
+			<node name="message" reader="ASCF" />
+			<node name="group" reader="UINT" />
+			<node name="rgb" reader="UINT" />
+			<node name="item_sound" reader="ASCF" />
+			<node name="sys_msg_ref" reader="ASCF" />
+			<node name="UNK_1_1" reader="UINT" />
+			<node name="UNK_1_2" reader="UINT" />
+			<node name="UNK_1_3" reader="UINT" />
+			<node name="UNK_1_4" reader="UINT" />
+			<node name="UNK_1_5" reader="UINT" />
+			<node name="sub_msg" reader="ASCF" />
+			<node name="type" reader="ASCF" />
+		</for>
+
 	</file>
 	<file pattern="transformdata.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="unk" reader="UINT" />
+			<node name="npc_id" reader="UINT" />
+			<node name="weapon_id" reader="UINT" />
+			<node name="transform_effect_a" reader="UNICODE" />
+			<node name="transform_effect_b" reader="UNICODE" />
+			<node name="character_scale" reader="UINT" />
+			<node name="character_offset_x" reader="UINT" />
+			<node name="character_offset_y" reader="UINT" />
+			<node name="transform_data_end" reader="UINT" />
+		</for>
 	</file>
 	<file pattern="usmmoviedata.dat">
 		<node name="data" reader="UINT"/>
@@ -347,15 +763,48 @@
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="variationeffectgrp-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="int1" reader="UINT" />
+			<node name="int2" reader="UINT" />
+			<node name="int3" reader="UINT" />
+			<node name="int4" reader="UINT" />
+			<node name="int5" reader="UINT" />
+			<node name="effect" reader="UNICODE" />
+			<node name="attribute" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="vehiclepartsgrp.dat">
 	</file>
 	<file pattern="warningnotice-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="text" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="weaponenchanteffectdata.dat">
 	</file>
 	<file pattern="weapongrp.dat">
 	</file>
 	<file pattern="zonename-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="nbr" reader="UINT" />
+			<node name="zone_color_id" reader="UINT" />
+			<node name="x_world_grid" reader="UINT" />
+			<node name="y_world_grid" reader="UINT" />
+			<node name="top_z" reader="FLOAT" />
+			<node name="bottom_z" reader="FLOAT" />
+			<node name="zone_name" reader="ASCF" />
+			<node name="coords1" reader="INT" />
+			<node name="coords2" reader="INT" />
+			<node name="coords3" reader="INT" />
+			<node name="coords4" reader="INT" />
+			<node name="coords5" reader="INT" />
+			<node name="coords6" reader="INT" />
+			<node name="UNK_1" reader="FLOAT" />
+			<node name="map" reader="ASCF" />
+			<node name="UNK_2" reader="UINT" />
+		</for>
 	</file>
 </version>
