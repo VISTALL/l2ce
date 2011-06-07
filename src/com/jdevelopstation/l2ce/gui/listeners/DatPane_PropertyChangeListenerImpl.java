@@ -31,6 +31,7 @@ public class DatPane_PropertyChangeListenerImpl implements PropertyChangeListene
 	public void propertyChanged(PropertyEvent e)
 	{
 		_datPane.getFileList().setListData(ArrayUtils.EMPTY_OBJECT_ARRAY);
+		_datPane.getArgBox().setSelectedItem(GeneralProperties.DAT_ARGUMENT);
 
 		ClientVersion v = ClientVersionHolder.getInstance().getCurrentVersion();
 		if(v == null)

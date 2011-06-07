@@ -5,6 +5,7 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 
+import com.jdevelopstation.l2ce.data.xml.holder.ClientVersionHolder;
 import com.jdevelopstation.l2ce.gui.pane.DatPane;
 import com.jdevelopstation.l2ce.gui.tasks.ListRepaintTask;
 import com.jdevelopstation.l2ce.gui.window.MainFrame;
@@ -12,6 +13,7 @@ import com.jdevelopstation.l2ce.properties.GeneralProperties;
 import com.jdevelopstation.l2ce.utils.L2EncDec;
 import com.jdevelopstation.l2ce.utils.RunnableImpl;
 import com.jdevelopstation.l2ce.utils.ThreadPoolManager;
+import com.jdevelopstation.l2ce.version.ClientVersion;
 import com.jdevelopstation.l2ce.version.node.data.ClientData;
 import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
 import com.jdevelopstation.l2ce.version.node.file.ClientFile;
@@ -32,11 +34,6 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 	{
 		_clientFile = c;
 		_file = file;
-	}
-
-	public void setClientData(ClientData clientData)
-	{
-		_clientData = clientData;
 	}
 
 	@Override
@@ -85,7 +82,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 		return _clientData;
 	}
 
-	public void load(final DatPane dat)
+	public void load(final String arg, final DatPane dat)
 	{
 		if(isDisabled())
 			return;
@@ -99,7 +96,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 			{
 				try
 				{
-					final File f = L2EncDec.decode(_file, "-s");
+					final File f = L2EncDec.decode(_file, arg);
 					if(f != null)
 						_clientData = _clientFile.parse(f);
 				}
@@ -117,8 +114,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 	{
 		final JFileChooser chooser = new JFileChooser(GeneralProperties.WORKING_DIRECTORY);
 		chooser.setDialogType(JFileChooser.SAVE_DIALOG);
-		chooser.setApproveButtonText("Save");
-		chooser.setDialogTitle("Save");
+		chooser.setDialogTitle("Save to file");
 
 		EventQueue.invokeLater(new RunnableImpl()
 		{
@@ -129,6 +125,38 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 					_clientData.toXML(chooser.getSelectedFile().getAbsolutePath());
 			}
 		});
+	}
+
+	public void importFromXML(final DatPane datPane)
+	{
+		final ClientVersion v = ClientVersionHolder.getInstance().getCurrentVersion();
+		if(v == null)
+			return;
+
+		final JFileChooser chooser = new JFileChooser(GeneralProperties.WORKING_DIRECTORY);
+		chooser.setDialogType(JFileChooser.OPEN_DIALOG);
+		chooser.setDialogTitle("Import from file");
+
+		EventQueue.invokeLater(new RunnableImpl()
+		{
+			@Override
+			protected void runImpl() throws Throwable
+			{
+				if(chooser.showOpenDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION)
+				{
+					_clientData = new ClientData();
+					_clientData.fromXML(v, chooser.getSelectedFile().getAbsolutePath());
+
+					EventQueue.invokeLater(new ListRepaintTask(datPane.getFileList()));
+				}
+			}
+		});
+	}
+
+	public void clear(final DatPane datPane)
+	{
+		_clientData = null;
+		EventQueue.invokeLater(new ListRepaintTask(datPane.getFileList()));
 	}
 
 	public boolean isDisabled()

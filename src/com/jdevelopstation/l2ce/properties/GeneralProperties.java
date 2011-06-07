@@ -15,4 +15,7 @@ public class GeneralProperties
 
 	@Property(value = "current_version")
 	public static String CURRENT_VERSION;
+
+	@Property(value = "dat_argument", defValue = "-s")
+	public static String DAT_ARGUMENT;
 }
