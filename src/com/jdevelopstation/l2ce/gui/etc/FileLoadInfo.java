@@ -12,6 +12,7 @@ import com.jdevelopstation.l2ce.gui.pane.DatPane;
 import com.jdevelopstation.l2ce.gui.tasks.ListRepaintTask;
 import com.jdevelopstation.l2ce.gui.window.MainFrame;
 import com.jdevelopstation.l2ce.properties.GeneralProperties;
+import com.jdevelopstation.l2ce.utils.BundleUtils;
 import com.jdevelopstation.l2ce.utils.L2EncDec;
 import com.jdevelopstation.l2ce.utils.RunnableImpl;
 import com.jdevelopstation.l2ce.utils.ThreadPoolManager;
@@ -26,9 +27,9 @@ import com.jdevelopstation.l2ce.version.node.file.ClientFile;
 */
 public class FileLoadInfo implements Comparable<FileLoadInfo>
 {
-	private static final FileFilter XML_EXPORT = new ExtensionFileFilter("XML Export", new String[] { "XML" });
-	private static final FileFilter CSV_EXPORT = new ExtensionFileFilter("CSV Export", new String[] { "CSV" });
-	private static final FileFilter TSV_EXPORT = new ExtensionFileFilter("TSV Export", new String[] { "TSV" });
+	private static final FileFilter XML_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.XMLFilter.Text"), new String[] { "xml" });
+	private static final FileFilter CSV_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.CVSFilter.Text"), new String[] { "csv" });
+	private static final FileFilter TSV_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.TVSFilter.Text"), new String[] { "tsv" });
 
 	private final ClientFile _clientFile;
 	private final File _file;
@@ -127,12 +128,11 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 				File f = getSelectedFile();
 				//if file not accepted, missing extension
 				if (!getFileFilter().accept(f))
-				{
 					f = new File(f.getAbsolutePath()+"."+((ExtensionFileFilter)getFileFilter()).getFirstExtension());
-				}
+
 				if (f.exists())
 				{
-					int result = JOptionPane.showConfirmDialog(this, "The file exists, overwrite?", "Existing file", JOptionPane.YES_NO_CANCEL_OPTION);
+					int result = JOptionPane.showConfirmDialog(this, BundleUtils.getInstance().getBundle("DatPane.ExportButton.DialogExists.Message"), BundleUtils.getInstance().getBundle("DatPane.ExportButton.DialogExists.Title"), JOptionPane.YES_NO_CANCEL_OPTION);
 					switch (result)
 					{
 						case JOptionPane.YES_OPTION:
@@ -149,13 +149,13 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 			}
 		};
 		chooser.setDialogType(JFileChooser.SAVE_DIALOG);
-		chooser.setDialogTitle("Save to file");
+		chooser.setDialogTitle(BundleUtils.getInstance().getBundle("DatPane.ExportButton.Dialog.Title"));
 		chooser.setAcceptAllFileFilterUsed(false);
 		chooser.setSelectedFile(new File(_file.getName().replace(".dat", "")));
-		chooser.addChoosableFileFilter(XML_EXPORT);
-		chooser.addChoosableFileFilter(CSV_EXPORT);
-		chooser.addChoosableFileFilter(TSV_EXPORT);
-		chooser.setFileFilter(XML_EXPORT);
+		chooser.addChoosableFileFilter(XML_FILTER);
+		chooser.addChoosableFileFilter(CSV_FILTER);
+		chooser.addChoosableFileFilter(TSV_FILTER);
+		chooser.setFileFilter(XML_FILTER);
 		EventQueue.invokeLater(new RunnableImpl()
 		{
 			@Override
@@ -173,14 +173,14 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 					if (!chooser.getFileFilter().accept(f))
 						saveFile += "."+((ExtensionFileFilter) chooser.getFileFilter()).getFirstExtension();
 
-					if (chooser.getFileFilter() == XML_EXPORT)
+					if (chooser.getFileFilter() == XML_FILTER)
 						_clientData.toXML(saveFile);
-					else if (chooser.getFileFilter() == CSV_EXPORT)
+					else if (chooser.getFileFilter() == CSV_FILTER)
 					{
 						//TODO: csv save
 						JOptionPane.showMessageDialog(MainFrame.getInstance(), "CSV not supported yet");
 					}
-					else if (chooser.getFileFilter() == TSV_EXPORT)
+					else if (chooser.getFileFilter() == TSV_FILTER)
 					{
 						//TODO: tsv save
 						JOptionPane.showMessageDialog(MainFrame.getInstance(), "TSV not supported yet");
@@ -198,7 +198,10 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 
 		final JFileChooser chooser = new JFileChooser(GeneralProperties.LAST_IMPORT_DIRECTORY);
 		chooser.setDialogType(JFileChooser.OPEN_DIALOG);
-		chooser.setDialogTitle("Import from file");
+		chooser.addChoosableFileFilter(XML_FILTER);
+		chooser.addChoosableFileFilter(CSV_FILTER);
+		chooser.addChoosableFileFilter(TSV_FILTER);
+		chooser.setDialogTitle(BundleUtils.getInstance().getBundle("DatPane.ImportButton.Dialog.Title"));
 
 		EventQueue.invokeLater(new RunnableImpl()
 		{
