@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.io.File;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
 
 import com.jdevelopstation.l2ce.data.xml.holder.ClientVersionHolder;
 import com.jdevelopstation.l2ce.gui.pane.DatPane;
@@ -24,6 +26,9 @@ import com.jdevelopstation.l2ce.version.node.file.ClientFile;
 */
 public class FileLoadInfo implements Comparable<FileLoadInfo>
 {
+	private static final FileFilter XML_EXPORT = new ExtensionFileFilter("XML Export", new String[] { "XML" });
+	private static final FileFilter CSV_EXPORT = new ExtensionFileFilter("CSV Export", new String[] { "CSV" });
+	
 	private final ClientFile _clientFile;
 	private final File _file;
 	private ClientData _clientData;
@@ -112,17 +117,66 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 
 	public void export(final DatPane dat)
 	{
-		final JFileChooser chooser = new JFileChooser(GeneralProperties.WORKING_DIRECTORY);
+		@SuppressWarnings("serial")
+		final JFileChooser chooser = new JFileChooser(GeneralProperties.WORKING_DIRECTORY) //TODO: last save directory must be stored to config
+		{
+			public void approveSelection()
+			{
+				File f = getSelectedFile();
+				//if file not accepted, missing extension
+				if (!getFileFilter().accept(f))
+				{
+					f = new File(f.getAbsolutePath()+"."+((ExtensionFileFilter)getFileFilter()).getFirstExtension());
+				}
+				if (f.exists())
+				{
+					int result = JOptionPane.showConfirmDialog(this, "The file exists, overwrite?", "Existing file", JOptionPane.YES_NO_CANCEL_OPTION);
+					switch (result)
+					{
+						case JOptionPane.YES_OPTION:
+							super.approveSelection();
+							return;
+						case JOptionPane.NO_OPTION:
+							return;
+						case JOptionPane.CANCEL_OPTION:
+							cancelSelection();
+							return;
+					}
+				}
+				super.approveSelection();
+			}
+		};
 		chooser.setDialogType(JFileChooser.SAVE_DIALOG);
 		chooser.setDialogTitle("Save to file");
-
+		chooser.setAcceptAllFileFilterUsed(false);
+		chooser.setSelectedFile(new File(_file.getName().replace(".dat", "")));
+		chooser.addChoosableFileFilter(XML_EXPORT);
+		chooser.addChoosableFileFilter(CSV_EXPORT);
+		chooser.setFileFilter(XML_EXPORT);
 		EventQueue.invokeLater(new RunnableImpl()
 		{
 			@Override
 			protected void runImpl() throws Throwable
 			{
-				if(chooser.showOpenDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION)
-					_clientData.toXML(chooser.getSelectedFile().getAbsolutePath());
+				if(chooser.showSaveDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION)
+				{
+					File f = chooser.getSelectedFile();
+					String saveFile = f.getAbsolutePath();
+					//if file not accepted, missing extension
+					if (!chooser.getFileFilter().accept(f))
+					{
+						saveFile += "."+((ExtensionFileFilter) chooser.getFileFilter()).getFirstExtension();
+					}
+					if (chooser.getFileFilter() == XML_EXPORT)
+					{
+						_clientData.toXML(saveFile);
+					}
+					else if (chooser.getFileFilter() == CSV_EXPORT)
+					{
+						//TODO: csv save
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "CSV not supported yet");
+					}
+				}
 			}
 		});
 	}
