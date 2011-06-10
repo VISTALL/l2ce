@@ -50,7 +50,7 @@
 			<node name="unk_4" reader="ASCF" />
 		</for>
 	</file>
-	<file pattern="charcreategrp.dat">
+	<file pattern="charcreategrp.dat"> <!-- not work -->
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="unknown" reader="UINT" />
@@ -112,7 +112,7 @@
 			<node name="anim_name" reader="UNICODE" />
 		</for>
 	</file>
-	<file pattern="etcitemgrp.dat">
+	<file pattern="etcitemgrp.dat"> <!-- not work - need MXT -->
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="tag" reader="UINT" />
@@ -142,7 +142,7 @@
 			<node name="grade" reader="UINT" />
 		</for>
 	</file>
-	<file pattern="eula-[\w]+\.dat">
+	<file pattern="eula-[\w]+\.dat"> <!-- not work -->
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="fin0" reader="ASCF" />
@@ -382,7 +382,7 @@
 			<node name="property_params" reader="INT" />
 		</for>
 	</file>
-	<file pattern="logongrp.dat">
+	<file pattern="logongrp.dat"> <!-- not work -->
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="x" reader="FLOAT" />
@@ -624,7 +624,17 @@
 		</for>
 	</file>
 	<file pattern="ridedata.dat">
-	<!-- Crazy types  -->
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="npc_id" reader="UINT" />
+			<node name="npc_level" reader="UINT" />
+			<node name="affiliated_area_id" reader="UINT" />
+			<node name="loc_x" reader="FLOAT" />
+			<node name="loc_y" reader="FLOAT" />
+			<node name="loc_z" reader="FLOAT" />
+			<node name="raid_desc" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="sceneplayerdata.dat">
 		<node name="data" reader="UINT"/>
@@ -654,7 +664,32 @@
 	</file>
 	<file pattern="shuttledata.dat">
 	</file>
-	<file pattern="skillgrp.dat">
+	<file pattern="skillgrp.dat"> <!-- not work -->
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="skill_id" reader="UINT" />
+			<node name="skill_level" reader="UINT" />
+			<node name="UNK_0" reader="UINT" />
+			<node name="oper_type" reader="UINT" />
+			<node name="mp_consume" reader="UINT" />
+			<node name="cast_range" reader="INT" />
+			<node name="cast_style" reader="UINT" />
+			<node name="hit_time" reader="FLOAT" />
+			<node name="is_magic" reader="INT" />
+			<node name="ani_char" reader="UNICODE" />
+			<node name="desc" reader="UNICODE" />
+			<node name="icon_name" reader="UNICODE" />
+			<node name="extra_eff" reader="UNICODE" />
+			<node name="is_ench" reader="UINT" />
+			<node name="ench_skill_id" reader="UINT" />
+			<node name="UNK_1" reader="UINT" />
+			<node name="enchant_type" reader="ASCF" />
+			<node name="hp_consume" reader="UINT" />
+			<node name="UNK_2" reader="INT" />
+			<node name="UNK_3" reader="INT" />
+			<node name="UNK_4" reader="INT" />
+			<node name="enchant_type2" reader="ASCF" />
+		</for>
 	</file>
 	<file pattern="skillname-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -777,7 +812,7 @@
 	</file>
 	<file pattern="vehiclepartsgrp.dat">
 	</file>
-	<file pattern="warningnotice-[\w]+\.dat">
+	<file pattern="warningnotice-[\w]+\.dat"> <!-- not work -->
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="text" reader="ASCF" />
