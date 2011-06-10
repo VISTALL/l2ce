@@ -13,6 +13,12 @@ public class GeneralProperties
 	@Property(value = "working_directory", defValue = ".")
 	public static String WORKING_DIRECTORY;
 
+	@Property(value = "last_export_directory", defValue = ".")
+	public static String LAST_EXPORT_DIRECTORY;
+
+	@Property(value = "last_import_directory", defValue = ".")
+	public static String LAST_IMPORT_DIRECTORY;
+
 	@Property(value = "current_version")
 	public static String CURRENT_VERSION;
 

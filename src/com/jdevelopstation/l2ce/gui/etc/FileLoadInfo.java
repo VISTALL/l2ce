@@ -28,7 +28,8 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 {
 	private static final FileFilter XML_EXPORT = new ExtensionFileFilter("XML Export", new String[] { "XML" });
 	private static final FileFilter CSV_EXPORT = new ExtensionFileFilter("CSV Export", new String[] { "CSV" });
-	
+	private static final FileFilter TSV_EXPORT = new ExtensionFileFilter("TSV Export", new String[] { "TSV" });
+
 	private final ClientFile _clientFile;
 	private final File _file;
 	private ClientData _clientData;
@@ -118,8 +119,9 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 	public void export(final DatPane dat)
 	{
 		@SuppressWarnings("serial")
-		final JFileChooser chooser = new JFileChooser(GeneralProperties.WORKING_DIRECTORY) //TODO: last save directory must be stored to config
+		final JFileChooser chooser = new JFileChooser(GeneralProperties.LAST_EXPORT_DIRECTORY)
 		{
+			@Override
 			public void approveSelection()
 			{
 				File f = getSelectedFile();
@@ -152,6 +154,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 		chooser.setSelectedFile(new File(_file.getName().replace(".dat", "")));
 		chooser.addChoosableFileFilter(XML_EXPORT);
 		chooser.addChoosableFileFilter(CSV_EXPORT);
+		chooser.addChoosableFileFilter(TSV_EXPORT);
 		chooser.setFileFilter(XML_EXPORT);
 		EventQueue.invokeLater(new RunnableImpl()
 		{
@@ -161,20 +164,26 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 				if(chooser.showSaveDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION)
 				{
 					File f = chooser.getSelectedFile();
+
+					GeneralProperties.LAST_EXPORT_DIRECTORY = f.getParent();
+
 					String saveFile = f.getAbsolutePath();
+
 					//if file not accepted, missing extension
 					if (!chooser.getFileFilter().accept(f))
-					{
 						saveFile += "."+((ExtensionFileFilter) chooser.getFileFilter()).getFirstExtension();
-					}
+
 					if (chooser.getFileFilter() == XML_EXPORT)
-					{
 						_clientData.toXML(saveFile);
-					}
 					else if (chooser.getFileFilter() == CSV_EXPORT)
 					{
 						//TODO: csv save
 						JOptionPane.showMessageDialog(MainFrame.getInstance(), "CSV not supported yet");
+					}
+					else if (chooser.getFileFilter() == CSV_EXPORT)
+					{
+						//TODO: tsv save
+						JOptionPane.showMessageDialog(MainFrame.getInstance(), "TSV not supported yet");
 					}
 				}
 			}
@@ -187,7 +196,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 		if(v == null)
 			return;
 
-		final JFileChooser chooser = new JFileChooser(GeneralProperties.WORKING_DIRECTORY);
+		final JFileChooser chooser = new JFileChooser(GeneralProperties.LAST_IMPORT_DIRECTORY);
 		chooser.setDialogType(JFileChooser.OPEN_DIALOG);
 		chooser.setDialogTitle("Import from file");
 
@@ -198,8 +207,12 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 			{
 				if(chooser.showOpenDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION)
 				{
+					File f = chooser.getSelectedFile();
+
+					GeneralProperties.LAST_IMPORT_DIRECTORY = f.getParent();
+
 					_clientData = new ClientData();
-					_clientData.fromXML(v, chooser.getSelectedFile().getAbsolutePath());
+					_clientData.fromXML(v, f.getAbsolutePath());
 
 					EventQueue.invokeLater(new ListRepaintTask(datPane.getFileList()));
 				}
