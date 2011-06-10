@@ -180,7 +180,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 						//TODO: csv save
 						JOptionPane.showMessageDialog(MainFrame.getInstance(), "CSV not supported yet");
 					}
-					else if (chooser.getFileFilter() == CSV_EXPORT)
+					else if (chooser.getFileFilter() == TSV_EXPORT)
 					{
 						//TODO: tsv save
 						JOptionPane.showMessageDialog(MainFrame.getInstance(), "TSV not supported yet");
