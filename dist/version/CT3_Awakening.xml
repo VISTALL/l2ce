@@ -32,6 +32,14 @@
 	<file pattern="alterskilldata.dat">
 	</file>
 	<file pattern="animationcombo.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="name" reader="UNICODE" />
+			<node name="anim0" reader="ASCF" />
+			<node name="anim1" reader="ASCF" />
+			<node name="anim2" reader="ASCF" />
+			<node name="loop" reader="INT" />
+		</for>
 	</file>
 	<file pattern="armorgrp.dat">
 	</file>
