@@ -19,6 +19,7 @@ import com.jdevelopstation.l2ce.utils.ThreadPoolManager;
 import com.jdevelopstation.l2ce.version.ClientVersion;
 import com.jdevelopstation.l2ce.version.node.data.ClientData;
 import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
+import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataForNodeImpl;
 import com.jdevelopstation.l2ce.version.node.file.ClientFile;
 
 /**
@@ -49,9 +50,9 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 		long count = 0;
 		if(_clientData != null)
 		{
-			ClientDataNode node = _clientData.getNodeByName("data");
-			if(node != null)
-				count = ((Number) node.getValue()).longValue();
+			for(ClientDataNode node : _clientData.getNodes())
+				if(node instanceof ClientDataForNodeImpl && ((ClientDataForNodeImpl) node).getForName().equals("data"))
+					count = ((ClientDataForNodeImpl) node).getNodes().size();
 		}
 		return _file.getName() + " [" + count + "]";
 	}
@@ -61,9 +62,9 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 		long count = -1;
 		if(_clientData != null)
 		{
-			ClientDataNode node = _clientData.getNodeByName("data");
-			if(node != null)
-				count = ((Number) node.getValue()).longValue();
+			for(ClientDataNode node : _clientData.getNodes())
+				if(node instanceof ClientDataForNodeImpl && ((ClientDataForNodeImpl) node).getForName().equals("data"))
+					count = ((ClientDataForNodeImpl) node).getNodes().size();
 		}
 		return count;
 	}

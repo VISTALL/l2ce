@@ -36,8 +36,8 @@ public class DatPane_FileListListSelectionListenerImpl implements ListSelectionL
 			_datPane.getLoadButton().setEnabled(true);
 			_datPane.getImportButton().setEnabled(true);
 
-			_datPane.getClearButton().setEnabled(f.getDataSize() > 0);
-			_datPane.getExportButton().setEnabled(f.getDataSize() > 0);
+			_datPane.getClearButton().setEnabled(f.getDataSize() != -1);
+			_datPane.getExportButton().setEnabled(f.getDataSize() != -1);
 
 			_datPane.getSaveButton().setEnabled(f.getDataSize() != -1);
 		}

@@ -108,11 +108,18 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 					forDataNode.add(blockNode);
 				}
 
-				ClientDataNode node = container.getNodeByName(forDataNode.getForName());
+				if(forDataNode.getForNode().getFixed() > 0)
+				{
+					//
+				}
+				else
+				{
+					ClientDataNode node = container.getNodeByName(forDataNode.getForName());
 
-				Long val = (Long)node.getValue();
-				if(val == Long.MIN_VALUE)
-					node.setValue(index);
+					Long val = (Long)node.getValue();
+					if(val == Long.MIN_VALUE)
+						node.setValue(index);
+				}
 			}
 		}
 	}
@@ -132,16 +139,22 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 				ClientFileForNodeImpl fileForNode = (ClientFileForNodeImpl) node;
 
 				// создаем цыкл с этим названия НОДе
-				ClientDataForNodeImpl forNode = new ClientDataForNodeImpl(fileForNode.getForName());
+				ClientDataForNodeImpl forNode = new ClientDataForNodeImpl(fileForNode);
 
-				// ищем размер
-				ClientDataNode forIndex = container.getNodeByName(fileForNode.getForName());
-				forNode.setSizeNode(forIndex);
+				if(fileForNode.getFixed() > 0)
+				{
 
-				// ставим дефаулт значения
-				forIndex.setValue(Long.MIN_VALUE);
-				forIndex.setHidden(true);
+				}
+				else
+				{
+					// ищем размер
+					ClientDataNode forIndex = container.getNodeByName(fileForNode.getForName());
+					forNode.setSizeNode(forIndex);
 
+					// ставим дефаулт значения
+					forIndex.setValue(Long.MIN_VALUE);
+					forIndex.setHidden(true);
+				}
 				container.add(forNode);
 			}
 		}
@@ -152,6 +165,8 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 		File f = new File(out);
 		if(f.exists())
 			f.delete();
+
+		//TODO [VISTALL]
 	}
 
 	public void toXML(String out)

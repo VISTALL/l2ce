@@ -104,7 +104,8 @@ public class ClientVersionParser extends AbstractDirParser<ClientVersionHolder>
 			else if(nodeElement.getName().equalsIgnoreCase("for"))
 			{
 				String name = nodeElement.attributeValue("name");
-				ClientFileForNodeImpl forNode = new ClientFileForNodeImpl(name);
+				String fixed = nodeElement.attributeValue("fixed");
+				ClientFileForNodeImpl forNode = new ClientFileForNodeImpl(name, fixed == null ? 0 : Integer.parseInt(fixed));
 				con.add(forNode);
 
 				parseNodes(forNode, nodeElement);

@@ -3,6 +3,7 @@ package com.jdevelopstation.l2ce.version.node.data.impl;
 import org.dom4j.Element;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
 import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
+import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileForNodeImpl;
 
 /**
  * @author VISTALL
@@ -10,13 +11,13 @@ import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
  */
 public class ClientDataForNodeImpl extends ClientNodeContainer<ClientDataNode> implements ClientDataNode
 {
-	private final String _forName;
+	private final ClientFileForNodeImpl _forNode;
 
 	private ClientDataNode _sizeNode;
 
-	public ClientDataForNodeImpl(String forName)
+	public ClientDataForNodeImpl(ClientFileForNodeImpl f)
 	{
-		_forName = forName;
+		_forNode = f;
 	}
 
 	@Override
@@ -59,7 +60,7 @@ public class ClientDataForNodeImpl extends ClientNodeContainer<ClientDataNode> i
 	@Override
 	public String toString()
 	{
-		return getClass().getSimpleName() + ": " + _forName;
+		return getClass().getSimpleName() + ": " + _forNode.getForName() + ": fixed: " + _forNode.getFixed();
 	}
 
 	public ClientDataNode getSizeNode()
@@ -74,6 +75,11 @@ public class ClientDataForNodeImpl extends ClientNodeContainer<ClientDataNode> i
 
 	public String getForName()
 	{
-		return _forName;
+		return _forNode.getForName();
+	}
+
+	public ClientFileForNodeImpl getForNode()
+	{
+		return _forNode;
 	}
 }

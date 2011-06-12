@@ -58,19 +58,17 @@
 			<node name="unk_4" reader="ASCF" />
 		</for>
 	</file>
-	<file pattern="charcreategrp.dat"> <!-- not work -->
-		<node name="data" reader="UINT"/>
-		<for name="data">
-			<node name="unknown" reader="UINT" />
-			<node name="x" reader="FLOAT" />
-			<node name="y" reader="FLOAT" />
-			<node name="z" reader="FLOAT" />
-			<node name="wear1" reader="UINT" />
-			<node name="wear2" reader="UINT" />
-			<node name="wear3" reader="UINT" />
-			<node name="wear4" reader="UINT" />
-			<node name="wear5" reader="UINT" />
-			<node name="wear6" reader="UINT" />
+	<file pattern="charcreategrp.dat">
+		<for name="data" fixed="20">
+			<node name="unknown_0" reader="FLOAT" />
+			<node name="unknown_1" reader="FLOAT" />
+			<node name="unknown_2" reader="FLOAT" />
+			<node name="chest" reader="UINT" />
+			<node name="legs" reader="UINT" />
+			<node name="gloves" reader="UINT" />
+			<node name="feet" reader="UINT" />
+			<node name="rhand" reader="UINT" />
+			<node name="lhand" reader="UINT" />
 		</for>
 	</file>
 	<file pattern="chargrp.dat">

@@ -15,10 +15,12 @@ import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataForNodeImpl;
 public class ClientFileForNodeImpl extends ClientNodeContainer<ClientFileNode> implements ClientFileNode
 {
 	private final String _forName;
+	private final int _fixed;
 
-	public ClientFileForNodeImpl(String name)
+	public ClientFileForNodeImpl(String name, int fixed)
 	{
 		_forName = name;
+		_fixed = fixed;
 	}
 
 	@Override
@@ -36,14 +38,20 @@ public class ClientFileForNodeImpl extends ClientNodeContainer<ClientFileNode> i
 	@Override
 	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff)
 	{
-		ClientDataNode node = parent.getNodeByName(_forName);
-		if(node == null || !(node.getValue() instanceof Number))
-			return;
+		long val;
+		if(_fixed > 0)
+			val = _fixed;
+		else
+		{
+			ClientDataNode node = parent.getNodeByName(_forName);
+			if(node == null || !(node.getValue() instanceof Number))
+				return;
 
-		node.setHidden(true);
-		long val = ((Number) node.getValue()).longValue();
+			node.setHidden(true);
+			val = ((Number) node.getValue()).longValue();
+		}
 
-		ClientDataForNodeImpl forNode = new ClientDataForNodeImpl(_forName);
+		ClientDataForNodeImpl forNode = new ClientDataForNodeImpl(this);
 		parent.add(forNode);
 
 		for(long i = 0; i < val; i++)
@@ -59,5 +67,10 @@ public class ClientFileForNodeImpl extends ClientNodeContainer<ClientFileNode> i
 	public String getForName()
 	{
 		return _forName;
+	}
+
+	public int getFixed()
+	{
+		return _fixed;
 	}
 }
