@@ -675,32 +675,46 @@
 	</file>
 	<file pattern="shuttledata.dat">
 	</file>
-	<file pattern="skillgrp.dat"> <!-- not work -->
+	<file pattern="skillgrp.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="skill_id" reader="UINT" />
 			<node name="skill_level" reader="UINT" />
-			<node name="UNK_0" reader="UINT" />
+			<node name="unknown_0" reader="UINT" />
+			<node name="unknown_1" reader="UINT" />
 			<node name="oper_type" reader="UINT" />
 			<node name="mp_consume" reader="UINT" />
 			<node name="cast_range" reader="INT" />
 			<node name="cast_style" reader="UINT" />
 			<node name="hit_time" reader="FLOAT" />
-			<node name="is_magic" reader="INT" />
-			<node name="ani_char" reader="UNICODE" />
-			<node name="desc" reader="UNICODE" />
-			<node name="icon_name" reader="UNICODE" />
-			<node name="extra_eff" reader="UNICODE" />
-			<node name="is_ench" reader="UINT" />
-			<node name="ench_skill_id" reader="UINT" />
-			<node name="UNK_1" reader="UINT" />
-			<node name="enchant_type" reader="ASCF" />
+			<node name="cool_time" reader="FLOAT" />
+			<node name="reuse_delay" reader="FLOAT" />
+
+			<node name="unknown_2" reader="INT" />
+			<node name="unknown_3" reader="INT" />
+			<node name="unknown_4" reader="INT" />
+			<node name="unknown_5" reader="INT" />
+			<node name="unknown_6" reader="INT" />
+
+			<node name="animation" reader="UNICODE" />
+			<node name="description" reader="UNICODE" />
+			<node name="icon" reader="UNICODE" />
+			<node name="icon_panel" reader="UNICODE" />
+
+			<node name="skill_visual_effect" reader="UINT" />
+			<node name="debuff" reader="UINT" />
+			<node name="enchanted" reader="UINT" />
+			<node name="enchant_skill_level" reader="UINT" />
+
+			<node name="enchant_icon" reader="ASCF" />
+
 			<node name="hp_consume" reader="UINT" />
-			<node name="UNK_2" reader="INT" />
-			<node name="UNK_3" reader="INT" />
-			<node name="UNK_4" reader="INT" />
-			<node name="enchant_type2" reader="ASCF" />
+			<node name="rumble_self" reader="INT" />
+			<node name="rumble_target" reader="INT" />
+			<node name="GaugeTime" reader="INT" />
+			<node name="AdditionalTag" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="skillname-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -737,7 +751,6 @@
 			<node name="id" reader="UINT" />
 			<node name="name" reader="UNICODE" />
 		</for>
-
 	</file>
 	<file pattern="statisticname-[\w]+\.dat">
 	</file>
@@ -776,7 +789,6 @@
 			<node name="sub_msg" reader="ASCF" />
 			<node name="type" reader="ASCF" />
 		</for>
-
 	</file>
 	<file pattern="transformdata.dat">
 		<node name="data" reader="UINT"/>
