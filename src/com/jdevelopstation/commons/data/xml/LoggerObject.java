@@ -12,31 +12,31 @@ public abstract class LoggerObject
 
 	public void error(String st, Exception e)
 	{
-		_log.error(getClass().getSimpleName() + ": " + st, e);
+		_log.error(st, e);
 	}
 
 	public void error(String st)
 	{
-		_log.error(getClass().getSimpleName() + ": " + st);
+		_log.error(st);
 	}
 
 	public void warn(String st, Exception e)
 	{
-		_log.warn(getClass().getSimpleName() + ": " + st, e);
+		_log.warn(st, e);
 	}
 
 	public void warn(String st)
 	{
-		_log.warn(getClass().getSimpleName() + ": " + st);
+		_log.warn(st);
 	}
 
 	public void info(String st, Exception e)
 	{
-		_log.info(getClass().getSimpleName() + ": " + st, e);
+		_log.info(st, e);
 	}
 
 	public void info(String st)
 	{
-		_log.info(getClass().getSimpleName() + ": " + st);
+		_log.info(st);
 	}
 }

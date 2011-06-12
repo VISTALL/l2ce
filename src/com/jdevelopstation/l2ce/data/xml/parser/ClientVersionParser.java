@@ -55,7 +55,6 @@ public class ClientVersionParser extends AbstractDirParser<ClientVersionHolder>
 		{
 			String pattern = fileElement.attributeValue("pattern");
 			ClientFile file = new ClientFile(pattern);
-			v.addFile(file);
 
 			parseNodes(file, fileElement);
 
@@ -66,6 +65,8 @@ public class ClientVersionParser extends AbstractDirParser<ClientVersionHolder>
 					info("File - pattern: " + pattern + " is invalid.");
 					continue Loop;
 				}
+
+			v.addFile(file);
 		}
 
 		getHolder().addVersion(v);
@@ -75,15 +76,17 @@ public class ClientVersionParser extends AbstractDirParser<ClientVersionHolder>
 	{
 		if(node instanceof ClientFileForNodeImpl)
 		{
-			String forName = ((ClientFileForNodeImpl) node).getForName();
+			ClientFileForNodeImpl forNode = (ClientFileForNodeImpl)node;
+			if(forNode.getFixed() > 0)
+				return true;
 
-			ClientFileNode forSizeNode = container.getNodeByName(forName);
+			ClientFileNode forSizeNode = container.getNodeByName(forNode.getForName());
 			if(forSizeNode == null)
 				return false;
 			else
 			{
-				for(ClientFileNode sub : ((ClientNodeContainer<ClientFileNode>)node).getNodes())
-					if(!validate((ClientNodeContainer<ClientFileNode>)node, sub))
+				for(ClientFileNode sub : forNode.getNodes())
+					if(!validate(forNode, sub))
 						return false;
 			}
 		}

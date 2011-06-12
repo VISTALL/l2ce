@@ -28,8 +28,6 @@ public class Log4JHelper
 
 		Logger logger = LogManager.getLogManager().getLogger("");
 		for (Handler h : logger.getHandlers())
-		{
 			logger.removeHandler(h);
-		}
 	}
 }
