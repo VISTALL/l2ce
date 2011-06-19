@@ -1,5 +1,7 @@
 package com.jdevelopstation.l2ce.version.node.data.impl;
 
+import java.nio.ByteBuffer;
+
 import org.dom4j.Element;
 import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
 import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
@@ -40,6 +42,11 @@ public class ClientDataNodeImpl implements ClientDataNode
 
  		Element e = element.addElement(getName());
 		e.setText(String.valueOf(getValue()));
+	}
+
+	public void write(ByteBuffer buffer)
+	{
+		_fileNode.getReaderType().write(_value, buffer);
 	}
 
 	@Override

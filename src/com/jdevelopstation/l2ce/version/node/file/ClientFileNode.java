@@ -5,6 +5,7 @@ import java.nio.ByteBuffer;
 import com.jdevelopstation.l2ce.version.node.ClientNode;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
 import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
+import com.jdevelopstation.l2ce.version.node.file.reader.ReadWriteType;
 
 /**
  * @author VISTALL
@@ -15,6 +16,8 @@ public interface ClientFileNode extends ClientNode
 	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff);
 
 	public String getName();
+
+	ReadWriteType getReaderType();
 
 	String getValue();
 }

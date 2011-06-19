@@ -51,11 +51,13 @@ public class ClientFileNodeImpl implements ClientFileNode
 		return _name;
 	}
 
+	@Override
 	public ReadWriteType getReaderType()
 	{
 		return _partType;
 	}
 
+	@Override
 	public String getValue()
 	{
 		return _value;

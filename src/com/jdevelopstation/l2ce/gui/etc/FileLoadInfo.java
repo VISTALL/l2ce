@@ -2,11 +2,14 @@ package com.jdevelopstation.l2ce.gui.etc;
 
 import java.awt.EventQueue;
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
+import org.apache.commons.io.FileUtils;
 import com.jdevelopstation.l2ce.data.xml.holder.ClientVersionHolder;
 import com.jdevelopstation.l2ce.gui.pane.DatPane;
 import com.jdevelopstation.l2ce.gui.tasks.ListRepaintTask;
@@ -15,7 +18,6 @@ import com.jdevelopstation.l2ce.properties.GeneralProperties;
 import com.jdevelopstation.l2ce.utils.BundleUtils;
 import com.jdevelopstation.l2ce.utils.L2EncDec;
 import com.jdevelopstation.l2ce.utils.RunnableImpl;
-import com.jdevelopstation.l2ce.utils.ThreadPoolManager;
 import com.jdevelopstation.l2ce.version.ClientVersion;
 import com.jdevelopstation.l2ce.version.node.data.ClientData;
 import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
@@ -28,6 +30,7 @@ import com.jdevelopstation.l2ce.version.node.file.ClientFile;
 */
 public class FileLoadInfo implements Comparable<FileLoadInfo>
 {
+	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH_mm_ss_dd_MM_yyyy");
 	private static final FileFilter XML_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.XMLFilter.Text"), new String[] { "xml" });
 	private static final FileFilter CSV_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.CVSFilter.Text"), new String[] { "csv" });
 	private static final FileFilter TSV_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.TVSFilter.Text"), new String[] { "tsv" });
@@ -97,7 +100,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 
 		setDisabled(true);
 
-		ThreadPoolManager.getInstance().execute(new RunnableImpl()
+		EventQueue.invokeLater((new RunnableImpl()
 		{
 			@Override
 			protected void runImpl() throws Throwable
@@ -115,7 +118,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 					EventQueue.invokeLater(new ListRepaintTask(dat.getFileList()));
 				}
 			}
-		});
+		}));
 	}
 
 	public void export(final DatPane dat)
@@ -191,7 +194,60 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 		});
 	}
 
-	public void importFromXML(final DatPane datPane)
+	public void save(final DatPane dat)
+	{
+		if(GeneralProperties.SAVE_WITHOUT_DIALOG)
+			save0(_file);
+		else
+		{
+			//TODO [VISTALL] save dialog
+		}
+
+	}
+
+	private void save0(final File desc)
+	{
+		if(isDisabled() || _clientData == null)
+			return;
+
+		setDisabled(true);
+		EventQueue.invokeLater(new RunnableImpl()
+		{
+			@Override
+			protected void runImpl() throws Throwable
+			{
+				try
+				{
+					if(GeneralProperties.MAKE_BACKUP_ON_SAVE)
+					{
+						if(desc.exists())
+						{
+							String backFile = desc.getAbsolutePath().replace(".dat", "-" + DATE_FORMAT.format(System.currentTimeMillis()) + ".bak");
+							try
+							{
+
+								FileUtils.copyFile(desc, new File(backFile));
+							}
+							catch(IOException e)
+							{
+								e.printStackTrace();
+							}
+
+							desc.delete();
+						}
+					}
+
+					_clientData.toDat(desc);
+				}
+				finally
+				{
+					setDisabled(false);
+				}
+			}
+		});
+	}
+
+	public void import0(final DatPane datPane)
 	{
 		final ClientVersion v = ClientVersionHolder.getInstance().getCurrentVersion();
 		if(v == null)

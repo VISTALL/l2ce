@@ -10,11 +10,11 @@ import com.jdevelopstation.l2ce.gui.pane.DatPane;
  * @author VISTALL
  * @date 2:00/06.06.2011
  */
-public class DatPane_ImportButtonActionListenerImpl implements ActionListener
+public class DatPane_SaveButtonActionListenerImpl implements ActionListener
 {
 	private DatPane _datPane;
 
-	public DatPane_ImportButtonActionListenerImpl(DatPane datPane)
+	public DatPane_SaveButtonActionListenerImpl(DatPane datPane)
 	{
 		_datPane = datPane;
 	}
@@ -25,6 +25,6 @@ public class DatPane_ImportButtonActionListenerImpl implements ActionListener
 		FileLoadInfo c = (FileLoadInfo) _datPane.getFileList().getSelectedValue();
 		if(c == null)
 			return;
-		c.import0(_datPane);
+		c.save(_datPane);
 	}
 }

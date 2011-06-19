@@ -24,4 +24,10 @@ public class GeneralProperties
 
 	@Property(value = "dat_argument", defValue = "-s")
 	public static String DAT_ARGUMENT;
+
+	@Property(value = "make_backup_on_save", defValue = "true")
+	public static boolean MAKE_BACKUP_ON_SAVE;
+
+	@Property(value = "save_without_dialog", defValue = "true")
+	public static boolean SAVE_WITHOUT_DIALOG;
 }

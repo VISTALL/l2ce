@@ -3,6 +3,8 @@ package com.jdevelopstation.l2ce.version.node.data;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.Iterator;
 
 import org.dom4j.Document;
@@ -12,12 +14,12 @@ import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 import com.jdevelopstation.l2ce.version.ClientVersion;
-import com.jdevelopstation.l2ce.version.node.file.ClientFile;
-import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataBlockNodeImpl;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataForNodeImpl;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataNodeImpl;
+import com.jdevelopstation.l2ce.version.node.file.ClientFile;
+import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
 import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileForNodeImpl;
 import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileNodeImpl;
 
@@ -96,14 +98,14 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 			{
 				long index = 0;
 
-				ClientDataForNodeImpl forDataNode = (ClientDataForNodeImpl)dataNode;
-				for(Iterator<Element> iterator = xmlElement.elementIterator(forDataNode.getForName()); iterator.hasNext(); index ++)
+				ClientDataForNodeImpl forDataNode = (ClientDataForNodeImpl) dataNode;
+				for(Iterator<Element> iterator = xmlElement.elementIterator(forDataNode.getForName()); iterator.hasNext(); index++)
 				{
 					Element e = iterator.next();
 
-					ClientDataBlockNodeImpl blockNode = new ClientDataBlockNodeImpl((ClientFileForNodeImpl)fileNode, index);
+					ClientDataBlockNodeImpl blockNode = new ClientDataBlockNodeImpl((ClientFileForNodeImpl) fileNode, index);
 
-					read(blockNode, (ClientFileForNodeImpl)fileNode, e);
+					read(blockNode, (ClientFileForNodeImpl) fileNode, e);
 
 					forDataNode.add(blockNode);
 				}
@@ -116,7 +118,7 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 				{
 					ClientDataNode node = container.getNodeByName(forDataNode.getForName());
 
-					Long val = (Long)node.getValue();
+					Long val = (Long) node.getValue();
 					if(val == Long.MIN_VALUE)
 						node.setValue(index);
 				}
@@ -160,13 +162,46 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 		}
 	}
 
-	public void toDat(String out)
+	public void toDat(File out)
 	{
-		File f = new File(out);
-		if(f.exists())
-			f.delete();
+		ByteBuffer byteBuffer = ByteBuffer.allocate(0xFFFFFF);
+		byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
 
-		//TODO [VISTALL]
+		for(ClientDataNode node : this)
+			write(node, byteBuffer);
+
+		int position = byteBuffer.position();
+		byteBuffer.position(0);
+
+		byte[] data = new byte[position];
+		byteBuffer.get(data);
+
+		try
+		{
+			FileOutputStream steam = new FileOutputStream(out);
+			steam.write(data);
+			steam.close();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	private void write(ClientDataNode node, ByteBuffer buffer)
+	{
+		if(node instanceof ClientDataNodeImpl)
+		{
+			ClientDataNodeImpl data = (ClientDataNodeImpl) node;
+
+			data.write(buffer);
+		}
+		else if(node instanceof ClientNodeContainer)
+		{
+			ClientNodeContainer<ClientDataNode> container = (ClientNodeContainer) node;
+			for(ClientDataNode n : container)
+				write(n, buffer);
+		}
 	}
 
 	public void toXML(String out)

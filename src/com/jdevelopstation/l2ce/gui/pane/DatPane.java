@@ -23,6 +23,7 @@ import com.jdevelopstation.l2ce.gui.listeners.DatPane_FileListListSelectionListe
 import com.jdevelopstation.l2ce.gui.listeners.DatPane_ImportButtonActionListenerImpl;
 import com.jdevelopstation.l2ce.gui.listeners.DatPane_LoadButtonActionListenerImpl;
 import com.jdevelopstation.l2ce.gui.listeners.DatPane_PropertyChangeListenerImpl;
+import com.jdevelopstation.l2ce.gui.listeners.DatPane_SaveButtonActionListenerImpl;
 import com.jdevelopstation.l2ce.gui.renders.DatPane_FileListCellRenderer;
 import com.jdevelopstation.l2ce.properties.GeneralProperties;
 import com.jdevelopstation.l2ce.utils.BundleUtils;
@@ -59,6 +60,7 @@ public class DatPane extends JPanel
 		_clearButton.addActionListener(new DatPane_ClearButtonActionListenerImpl(this));
 		_exportButton.addActionListener(new DatPane_ExportButtonActionListenerImpl(this));
 		_importButton.addActionListener(new DatPane_ImportButtonActionListenerImpl(this));
+		_saveButton.addActionListener(new DatPane_SaveButtonActionListenerImpl(this));
 
 		_arg.setModel(new DefaultComboBoxModel(new String[]{
 				"-s",

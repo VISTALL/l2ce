@@ -7,6 +7,7 @@ import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataBlockNodeImpl;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataForNodeImpl;
+import com.jdevelopstation.l2ce.version.node.file.reader.ReadWriteType;
 
 /**
  * @author VISTALL
@@ -25,6 +26,12 @@ public class ClientFileForNodeImpl extends ClientNodeContainer<ClientFileNode> i
 
 	@Override
 	public String getName()
+	{
+		return null;
+	}
+
+	@Override
+	public ReadWriteType getReaderType()
 	{
 		return null;
 	}
