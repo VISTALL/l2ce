@@ -54,6 +54,37 @@ public class ASCF implements ReadWriteType<String>
 	@Override
 	public void write(Object val, ByteBuffer buff)
 	{
-
+		if (val instanceof String)
+		{
+			String value = (String)val;
+			int length = value.length();
+			
+			if (length == 0)
+				buff.put((byte) 0); //empty
+			else if (length < 192)
+				buff.put((byte) length);
+			else if (length < Short.MAX_VALUE)
+				buff.putShort((short) length);
+			else 
+			{
+				buff.putShort((short) length);
+				buff.put((byte) 0); //?? unknown
+			}
+				
+			if (length >= 128)
+			{
+				for (char part : value.toCharArray())
+					buff.putChar(part);
+				
+				buff.put((byte) 0);
+			}
+			else
+			{
+				for (byte part : value.getBytes())
+					buff.put(part);
+			}
+			
+			buff.put((byte) 0); //term
+		}
 	}
 }
