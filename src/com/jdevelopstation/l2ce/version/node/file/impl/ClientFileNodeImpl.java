@@ -36,11 +36,8 @@ public class ClientFileNodeImpl implements ClientFileNode
 	@Override
 	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff)
 	{
-		if(_value != null)
-			return;
-
 		ClientDataNodeImpl node = new ClientDataNodeImpl(this);
-		node.setValue(_partType.read(buff));
+		node.setValue(_value != null ? _value : _partType.read(buff));
 
 		parent.add(node);
 	}

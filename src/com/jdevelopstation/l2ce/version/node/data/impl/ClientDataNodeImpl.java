@@ -39,6 +39,8 @@ public class ClientDataNodeImpl implements ClientDataNode
 	{
 		if(isHidden())
 			return;
+		if(_fileNode.getValue() != null)
+			return;
 
  		Element e = element.addElement(getName());
 		e.setText(String.valueOf(getValue()));

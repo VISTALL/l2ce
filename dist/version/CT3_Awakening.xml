@@ -387,6 +387,7 @@
 			<node name="m_void" reader="FLOAT" />
 			<node name="property_params" reader="INT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="logongrp.dat"> <!-- not work -->
 		<node name="data" reader="UINT"/>
