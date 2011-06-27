@@ -119,6 +119,8 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 					setDisabled(false);
 
 					EventQueue.invokeLater(new ListRepaintTask(dat.getFileList()));
+
+					JOptionPane.showMessageDialog(dat, "Done");
 				}
 			}
 		}));
@@ -192,6 +194,8 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 						//TODO: tsv save
 						JOptionPane.showMessageDialog(MainFrame.getInstance(), "TSV not supported yet");
 					}
+
+					JOptionPane.showMessageDialog(dat, "Done");
 				}
 			}
 		});
@@ -249,6 +253,8 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 					_clientData.toDat(temp);
 
 					L2EncDec.encode(temp, desc, "-h", 413);
+
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Done");
 				}
 				finally
 				{
@@ -284,6 +290,8 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 
 					_clientData = new ClientData();
 					_clientData.fromXML(v, f.getAbsolutePath());
+
+					JOptionPane.showMessageDialog(datPane, "Done");
 
 					EventQueue.invokeLater(new ListRepaintTask(datPane.getFileList()));
 				}
@@ -322,6 +330,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 	public void clear(final DatPane datPane)
 	{
 		_clientData = null;
+		JOptionPane.showMessageDialog(datPane, "Done");
 		EventQueue.invokeLater(new ListRepaintTask(datPane.getFileList()));
 	}
 

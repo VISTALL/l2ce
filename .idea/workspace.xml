@@ -15,8 +15,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="34f02874-8f83-47bc-a7bd-e97a02594d96" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/OptionPane.java" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/OptionPane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/file/reader/ASCF.java" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/file/reader/ASCF.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/etc/FileLoadInfo.java" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/etc/FileLoadInfo.java" />
     </list>
     <ignored path="L2CE.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -92,28 +91,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ASCF.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/file/reader/ASCF.java">
+      <file leaf-file-name="FileLoadInfo.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/etc/FileLoadInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="109" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.23">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatPane.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="13" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OptionPane_SelectDirActionListenerImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/OptionPane_SelectDirActionListenerImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="30" selection-start="1117" selection-end="1117" vertical-scroll-proportion="0.0">
+            <state line="122" column="53" selection-start="3667" selection-end="3667" vertical-scroll-proportion="0.77339345">
               <folding />
             </state>
           </provider>
@@ -141,7 +122,6 @@
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/data/impl/ClientDataNodeImpl.java" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/file/ClientFileNodeModifier.java" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/data/xml/parser/ClientVersionParser.java" />
-        <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/etc/FileLoadInfo.java" />
         <option value="$PROJECT_DIR$/dist/version/CT3_Awakening.xml" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/utils/L2EncDec.java" />
         <option value="$USER_HOME$/Desktop/npcname-e.xml" />
@@ -149,6 +129,7 @@
         <option value="$PROJECT_DIR$/src-test/com/jdevelopstation/l2ce/test/Test.java" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/OptionPane.java" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/file/reader/ASCF.java" />
+        <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/etc/FileLoadInfo.java" />
       </list>
     </option>
   </component>
@@ -443,6 +424,40 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="DatPane" />
               <option name="myItemType" value="com.intellij.uiDesigner.projectView.FormNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="L2CE" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trunk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jdevelopstation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="l2ce" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="etc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -867,11 +882,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/commons/data/xml/AbstractDirParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="76" selection-start="356" selection-end="356" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/data/ClientData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="50" column="36" selection-start="1458" selection-end="1458" vertical-scroll-proportion="0.30057803" />
@@ -941,7 +951,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/OptionPane_SelectDirActionListenerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="30" selection-start="1117" selection-end="1117" vertical-scroll-proportion="0.0">
+        <state line="36" column="30" selection-start="1117" selection-end="1117" vertical-scroll-proportion="0.4911111">
           <folding />
         </state>
       </provider>
@@ -953,16 +963,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/file/reader/ASCF.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="13" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.0">
+        <state line="60" column="109" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/file/reader/ASCF.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="109" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.23">
+        <state line="35" column="13" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.15111111">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/etc/FileLoadInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="53" selection-start="3667" selection-end="3667" vertical-scroll-proportion="0.77339345">
           <folding />
         </state>
       </provider>
