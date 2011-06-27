@@ -57,7 +57,7 @@ public class ASCF implements ReadWriteType<String>
 		if(val instanceof String)
 		{
 			String value = (String) val;
-			int length = value.length();
+			int length = value.length() + 1;
 
 			if(!value.isEmpty())
 			{
@@ -66,11 +66,8 @@ public class ASCF implements ReadWriteType<String>
 				boolean unicode = false;
 
 				for(char c : value.toCharArray())
-					if(Character.isUnicodeIdentifierPart(c))
-					{
+					if(c > 255 && c != 1081)
 						unicode = true;
-						break;
-					}
 
 				if(length >= 64)
 				{

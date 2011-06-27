@@ -96,6 +96,7 @@ public class OptionPane extends JPanel
 	public void setTempDir(String tempDir)
 	{
 		_tempDir = tempDir;
+		_workingDir.setText(tempDir);
 	}
 
 	/**
