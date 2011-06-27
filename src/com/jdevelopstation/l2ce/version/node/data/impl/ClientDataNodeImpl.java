@@ -74,4 +74,9 @@ public class ClientDataNodeImpl implements ClientDataNode
 	{
 		_value = value;
 	}
+
+	public ClientFileNode getFileNode()
+	{
+		return _fileNode;
+	}
 }

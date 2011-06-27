@@ -10,6 +10,7 @@ import com.jdevelopstation.l2ce.version.ClientVersion;
 import com.jdevelopstation.l2ce.version.node.file.ClientFile;
 import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
+import com.jdevelopstation.l2ce.version.node.file.ClientFileNodeModifier;
 import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileForNodeImpl;
 import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileNodeImpl;
 
@@ -102,7 +103,16 @@ public class ClientVersionParser extends AbstractDirParser<ClientVersionHolder>
 				String name = nodeElement.attributeValue("name");
 				String reader = nodeElement.attributeValue("reader");
 				String value = nodeElement.attributeValue("value");
-				con.add(new ClientFileNodeImpl(name, value, reader));
+
+				ClientFileNodeModifier modifier = null;
+				Element modifierElement = nodeElement.element("modifier");
+				if(modifierElement != null)
+				{
+					modifier = new ClientFileNodeModifier(modifierElement.attributeValue("pattern"));
+					for(Element sub : modifierElement.elements())
+						modifier.getNodeList().add(sub.attributeValue("name"));
+				}
+				con.add(new ClientFileNodeImpl(name, value, reader, modifier));
 			}
 			else if(nodeElement.getName().equalsIgnoreCase("for"))
 			{

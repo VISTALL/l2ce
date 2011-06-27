@@ -332,7 +332,12 @@
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="item_id" reader="UINT" />
-			<node name="name" reader="UNICODE" />
+			<node name="name" reader="UNICODE">
+				<modifier pattern="%s(id:%d)">
+					<node name="name" />
+					<node name="item_id" />
+				</modifier>
+			</node>
 			<node name="additionalname" reader="UNICODE" />
 			<node name="popup" reader="ASCF" />
 			<node name="description" reader="INT" />
@@ -522,10 +527,16 @@
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="id" reader="UINT" />
-			<node name="name" reader="ASCF" />
+			<node name="name" reader="ASCF">
+				<modifier pattern="%s(id:%d)">
+					<node name="name" />
+					<node name="id" />
+				</modifier>
+			</node>
 			<node name="description" reader="ASCF" />
 			<node name="rgb" reader="UINT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="npcstring-[\w]+\.dat">
 		<node name="data" reader="UINT"/>

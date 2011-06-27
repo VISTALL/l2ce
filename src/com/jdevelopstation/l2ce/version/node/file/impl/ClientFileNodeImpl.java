@@ -2,10 +2,11 @@ package com.jdevelopstation.l2ce.version.node.file.impl;
 
 import java.nio.ByteBuffer;
 
-import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
-import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
+import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataNodeImpl;
+import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
+import com.jdevelopstation.l2ce.version.node.file.ClientFileNodeModifier;
 import com.jdevelopstation.l2ce.version.node.file.reader.ReadWriteType;
 
 /**
@@ -17,11 +18,13 @@ public class ClientFileNodeImpl implements ClientFileNode
 	private ReadWriteType<?> _partType;
 	private String _name;
 	private String _value;
+	private ClientFileNodeModifier _modifier;
 
-	public ClientFileNodeImpl(String name, String value, String reader)
+	public ClientFileNodeImpl(String name, String value, String reader, ClientFileNodeModifier modifier)
 	{
 		_name = name;
 		_value = value;
+		_modifier = modifier;
 		try
 		{
 			Class<?> clazz = Class.forName("com.jdevelopstation.l2ce.version.node.file.reader." + reader);
@@ -58,5 +61,10 @@ public class ClientFileNodeImpl implements ClientFileNode
 	public String getValue()
 	{
 		return _value;
+	}
+
+	public ClientFileNodeModifier getModifier()
+	{
+		return _modifier;
 	}
 }

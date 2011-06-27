@@ -1,7 +1,6 @@
 package com.jdevelopstation.l2ce.utils;
 
 import java.io.File;
-import java.io.InputStream;
 
 import org.apache.commons.io.FileUtils;
 
@@ -15,16 +14,20 @@ public class L2EncDec
 	{
 		try
 		{
+
 			File d = new File(System.getProperty("java.io.tmpdir"));
+			File out = new File(d, "dec-" + f.getName());
+			if(out.exists())
+				out.delete();
 
 			ProcessBuilder p = new ProcessBuilder("l2encdec\\l2encdec.exe", code, f.getAbsolutePath());
 			p.directory(d);
-			
-			System.out.println("Command: l2encdec\\l2encdec.exe"+" "+ code+" "+ f.getAbsolutePath());
+
+			//System.out.println("Command: l2encdec\\l2encdec.exe"+" "+ code+" "+ f.getAbsolutePath());
 			Process process = p.start();
 
-			int retVal = process.waitFor();
-			System.out.print("Output: ");
+			//int retVal = process.waitFor();
+			/*System.out.print("Output: ");
 			while (process.getInputStream().available() > 0)
 			{
 				byte[] a = new byte[process.getInputStream().available()];
@@ -33,11 +36,13 @@ public class L2EncDec
 				text = text.replace("\n\r\n\r", "\n\r");
 				text = text.replace("\r\n\r\n", "\r\n");
 				System.out.print(text);
-			}
+			}   */
 			
-			System.out.println("Ret val: "+retVal);
-			if(retVal == 0)
-				return new File(d, "dec-" + f.getName());
+		//	System.out.println("Ret val: "+retVal);
+		//	if(retVal == 0)
+
+			Thread.sleep(1000L);
+			return out.exists() ? out : null;
 			
 			/*Process process = Runtime.getRuntime().exec("l2encdec\\l2encdec.exe "+ code+" "+ f.getAbsolutePath());
 			process.waitFor();
@@ -57,21 +62,23 @@ public class L2EncDec
 		try
 		{
 			File d = new File(System.getProperty("java.io.tmpdir"));
+			File temp = new File(d, "enc-" + in.getName());
+			if(temp.exists())
+				temp.delete();
 
 			ProcessBuilder p = new ProcessBuilder("l2encdec\\l2encdec.exe", code, String.valueOf(encoding), in.getAbsolutePath());
 			p.directory(d);
 
 			Process process = p.start();
 
-			int retVal = process.waitFor();
-			if(retVal == 0)
-				FileUtils.copyFile(new File(d, "enc-" + in.getName()), out);
+			//int retVal = process.waitFor();
+			//if(retVal == 0)
 
-			InputStream st = process.getInputStream();
-			byte[] bytes = new byte[st.available()];
-			st.read(bytes);
+			Thread.sleep(5000L);
+			if(!temp.exists())
+				return;
 
-			System.out.println(new String(bytes));
+			FileUtils.copyFile(temp, out);
 		}
 		catch(Exception e)
 		{

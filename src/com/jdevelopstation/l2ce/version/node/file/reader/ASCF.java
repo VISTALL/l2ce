@@ -13,7 +13,7 @@ public class ASCF implements ReadWriteType<String>
 	@Override
 	public String read(ByteBuffer buff)
 	{
-	 	int size = buff.get() & 0xFF;
+		int size = buff.get() & 0xFF;
 		if(size == 0)
 			return StringUtils.EMPTY;
 
@@ -34,7 +34,7 @@ public class ASCF implements ReadWriteType<String>
 			StringBuilder b = new StringBuilder();
 
 			char d = 0;
-			while ((d = buff.getChar()) != 0)
+			while((d = buff.getChar()) != 0)
 				b.append(d);
 
 			return b.toString();
@@ -44,8 +44,8 @@ public class ASCF implements ReadWriteType<String>
 			StringBuilder b = new StringBuilder();
 
 			byte d = 0;
-			while ((d = buff.get()) != 0)
-				b.append((char)d);
+			while((d = buff.get()) != 0)
+				b.append((char) d);
 
 			return b.toString();
 		}
@@ -54,36 +54,54 @@ public class ASCF implements ReadWriteType<String>
 	@Override
 	public void write(Object val, ByteBuffer buff)
 	{
-		if (val instanceof String)
+		if(val instanceof String)
 		{
-			String value = (String)val;
+			String value = (String) val;
 			int length = value.length();
-			
-			if (length == 0)
-				buff.put((byte) 0); //empty
-			else if (length < 192)
-				buff.put((byte) length);
-			else if (length < Short.MAX_VALUE)
-				buff.putShort((short) length);
-			else 
+
+			if(!value.isEmpty())
 			{
-				buff.putShort((short) length);
-				buff.put((byte) 0); //?? unknown
+				char[] chars = value.toCharArray();
+
+				boolean unicode = false;
+
+				for(char c : value.toCharArray())
+					if(Character.isUnicodeIdentifierPart(c))
+					{
+						unicode = true;
+						break;
+					}
+
+				if(length >= 64)
+				{
+					if(unicode)
+						buff.put((byte) (length + 128));
+					else
+						buff.put((byte) length);
+					buff.put((byte)(length >> 8));
+				}
+				else
+				{
+					// set highest bit cause to indicate it is Unicode
+					if(unicode)
+						length += 128;
+
+					buff.put((byte) length);
+				}
+
+				if(unicode)
+				{
+					for(char c : chars)
+						buff.putChar(c);
+					buff.put((byte) 0x00);
+				}
+				else
+				{
+					for(char c : chars)
+						buff.put((byte)c);
+				}
 			}
-				
-			if (length >= 128)
-			{
-				for (char part : value.toCharArray())
-					buff.putChar(part);
-				
-				buff.put((byte) 0);
-			}
-			else
-			{
-				for (byte part : value.getBytes())
-					buff.put(part);
-			}
-			
+
 			buff.put((byte) 0); //term
 		}
 	}

@@ -19,10 +19,13 @@ import com.jdevelopstation.l2ce.utils.BundleUtils;
 import com.jdevelopstation.l2ce.utils.L2EncDec;
 import com.jdevelopstation.l2ce.utils.RunnableImpl;
 import com.jdevelopstation.l2ce.version.ClientVersion;
+import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
 import com.jdevelopstation.l2ce.version.node.data.ClientData;
 import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataForNodeImpl;
+import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataNodeImpl;
 import com.jdevelopstation.l2ce.version.node.file.ClientFile;
+import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileNodeImpl;
 
 /**
 * @author VISTALL
@@ -237,7 +240,15 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 						}
 					}
 
-					_clientData.toDat(desc);
+					File d = new File(System.getProperty("java.io.tmpdir"));
+					File temp = new File(d, "l2ce-" + System.currentTimeMillis() + ".tmp");
+
+					System.out.println("desc " + desc.getAbsolutePath());
+					System.out.println("temp " + temp.getAbsolutePath());
+
+					_clientData.toDat(temp);
+
+					L2EncDec.encode(temp, desc, "-h", 413);
 				}
 				finally
 				{
@@ -278,6 +289,34 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 				}
 			}
 		});
+	}
+
+	public void modify(final DatPane datPane)
+	{
+		if(_clientData == null || isDisabled())
+			return;
+
+		modify0(_clientData);
+
+		JOptionPane.showMessageDialog(datPane, "Done");
+	}
+
+	@SuppressWarnings("unchecked")
+	private void modify0(ClientNodeContainer<ClientDataNode> container)
+	{
+		for(ClientDataNode node : container)
+		{
+			if(node instanceof ClientDataNodeImpl)
+			{
+				ClientDataNodeImpl dataNode = (ClientDataNodeImpl)node;
+				ClientFileNodeImpl fileNode = (ClientFileNodeImpl)dataNode.getFileNode();
+
+				if(fileNode.getModifier() != null)
+					fileNode.getModifier().modify(dataNode, container);
+			}
+			else if(node instanceof ClientNodeContainer)
+				modify0((ClientNodeContainer<ClientDataNode>)node);
+		}
 	}
 
 	public void clear(final DatPane datPane)
