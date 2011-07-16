@@ -686,6 +686,22 @@
 		</for>
 	</file>
 	<file pattern="shuttledata.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="type_id" reader="INT" />
+			<node name="shuttle_yaw" reader="INT" />
+			<node name="shuttle_mesh" reader="ASCF" />
+			<node name="door_mesh" reader="INT" />
+			<for name="door_mesh">
+				<node name="mesh" reader="ASCF" />
+				<node name="yaw" reader="INT" />
+			</for>
+			<node name="blocking_mesh" reader="ASCF" />
+			<node name="wall_mesh" reader="INT" />
+			<for name="wall_mesh">
+				<node name="mesh" reader="ASCF" />
+			</for>
+		</for>
 	</file>
 	<file pattern="skillgrp.dat">
 		<node name="data" reader="UINT"/>
