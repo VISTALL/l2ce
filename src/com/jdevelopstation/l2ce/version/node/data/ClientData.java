@@ -188,6 +188,7 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private void write(ClientDataNode node, ByteBuffer buffer)
 	{
 		if(node instanceof ClientDataNodeImpl)

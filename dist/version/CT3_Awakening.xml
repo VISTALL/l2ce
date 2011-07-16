@@ -101,6 +101,13 @@
 		</for>
 	</file>
 	<file pattern="dualcasttypedata.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="type" reader="ASCF" />
+			<node name="left_anim_combo" reader="UNICODE" />
+			<node name="right_anim_combo" reader="UNICODE" />
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="dynamiccontentsname-[\w]+\.dat">
 	</file>
@@ -666,6 +673,7 @@
 			<node name="name" reader="UNICODE" />
 			<node name="lenght" reader="FLOAT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="servername-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -675,6 +683,7 @@
 			<node name="server_name" reader="ASCF" />
 			<node name="server_desc" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="shortcutalias.dat">
 		<node name="data" reader="UINT"/>
@@ -684,6 +693,7 @@
 			<node name="val1" reader="UINT" />
 			<node name="val2" reader="UINT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="shuttledata.dat">
 		<node name="data" reader="UINT"/>
@@ -702,6 +712,7 @@
 				<node name="mesh" reader="ASCF" />
 			</for>
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="skillgrp.dat">
 		<node name="data" reader="UINT"/>
