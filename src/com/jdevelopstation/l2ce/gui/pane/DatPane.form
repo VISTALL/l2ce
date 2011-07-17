@@ -17,7 +17,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="f8cb" class="javax.swing.JList" binding="_fileList" custom-create="true">
+          <component id="d7565" class="javax.swing.JList" binding="_fileList" custom-create="true">
             <constraints/>
             <properties/>
           </component>

@@ -1,6 +1,7 @@
 package com.jdevelopstation.l2ce.gui.listeners;
 
 import java.io.File;
+import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -20,6 +21,15 @@ import com.jdevelopstation.l2ce.version.node.file.ClientFile;
  */
 public class DatPane_PropertyChangeListenerImpl implements PropertyChangeListener
 {
+	private static class FileListComparator implements Comparator<FileLoadInfo>
+	{
+		@Override
+		public int compare(FileLoadInfo o1, FileLoadInfo o2)
+		{
+			return o1.getFile().getName().compareToIgnoreCase(o2.getFile().getName());
+		}
+	}
+
 	private DatPane _datPane;
 
 	public DatPane_PropertyChangeListenerImpl(DatPane datPane)
@@ -40,10 +50,10 @@ public class DatPane_PropertyChangeListenerImpl implements PropertyChangeListene
 		if(!dir.exists())
 			return;
 
-		Set<FileLoadInfo> s = new TreeSet<FileLoadInfo>();
+		Set<FileLoadInfo> s = new TreeSet<FileLoadInfo>(new FileListComparator());
 		for(ClientFile cf : v.getClientFiles())
 		for(File f : dir.listFiles())
-			if(cf.getPattern().matcher(f.getName()).find())
+			if(cf.getPattern().matcher(f.getName().toLowerCase()).find())
 				s.add(new FileLoadInfo(cf, f));
 
 		_datPane.getFileList().setListData(s.toArray(new FileLoadInfo[s.size()]));

@@ -706,7 +706,7 @@
 			<node name="raid_desc" reader="ASCF" />
 		</for>
 	</file>
-	<file pattern="Recipe-c.dat">
+	<file pattern="recipe-c.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="name" reader="ASCF" />

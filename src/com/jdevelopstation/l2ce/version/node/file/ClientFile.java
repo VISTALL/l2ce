@@ -21,7 +21,7 @@ public class ClientFile extends ClientNodeContainer<ClientFileNode> implements C
 
 	public ClientFile(String pattern)
 	{
-		_pattern = Pattern.compile(pattern);
+		_pattern = Pattern.compile(pattern.toLowerCase());
 	}
 
 	public ClientData parse(File f)
