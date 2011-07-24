@@ -15,11 +15,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="34f02874-8f83-47bc-a7bd-e97a02594d96" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/L2CE.iml" afterPath="$PROJECT_DIR$/L2CE.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/IniIntPane.form" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/IniIntPane.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/version/CT3_Awakening.xml" afterPath="$PROJECT_DIR$/dist/version/CT3_Awakening.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/DatPane_PropertyChangeListenerImpl.java" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/DatPane_PropertyChangeListenerImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.form" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/file/ClientFile.java" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/file/ClientFile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.form" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.java" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.java" />
     </list>
     <ignored path="L2CE.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,8 +85,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="exception_breakpoints_groupByClasses" value="true" />
+      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -95,31 +95,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DatPane.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.java">
+      <file leaf-file-name="CT3_Awakening.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dist/version/CT3_Awakening.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="0" selection-start="3222" selection-end="3222" vertical-scroll-proportion="0.09582864">
-              <folding>
-                <element signature="method#$$$setupUI$$$#0;class#DatPane#0" expanded="true" />
-                <element signature="method#$$$setupUI$$$#0;class#DatPane#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatPane_PropertyChangeListenerImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/DatPane_PropertyChangeListenerImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="21" selection-start="1744" selection-end="1744" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatPane_FileListCellRenderer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/renders/DatPane_FileListCellRenderer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="13" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
+            <state line="987" column="66" selection-start="35533" selection-end="35533" vertical-scroll-proportion="18.178764">
               <folding />
             </state>
           </provider>
@@ -139,10 +118,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/data/impl/ClientDataNodeImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/file/ClientFileNodeModifier.java" />
-        <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/data/xml/parser/ClientVersionParser.java" />
-        <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/utils/L2EncDec.java" />
         <option value="$USER_HOME$/Desktop/npcname-e.xml" />
         <option value="$PROJECT_DIR$/src-test/com/jdevelopstation/l2ce/test/Test.java" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/OptionPane.java" />
@@ -153,8 +128,12 @@
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.java" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/DatPane_PropertyChangeListenerImpl.java" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/file/ClientFile.java" />
-        <option value="$PROJECT_DIR$/dist/version/CT3_Awakening.xml" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.form" />
+        <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.java" />
+        <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/IniIntPane.java" />
+        <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/IniIntPane.form" />
+        <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.form" />
+        <option value="$PROJECT_DIR$/dist/version/CT3_Awakening.xml" />
       </list>
     </option>
   </component>
@@ -206,8 +185,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -410,7 +387,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Favorites" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -429,9 +408,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -680,24 +659,24 @@
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20202559" sideWeight="0.7022654" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2015625" sideWeight="0.7028451" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1945629" sideWeight="0.7022654" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19427083" sideWeight="0.7028451" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24986653" sideWeight="0.67098165" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41100323" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995194" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Notes" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24666311" sideWeight="0.3257821" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21516284" sideWeight="0.7022654" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21510416" sideWeight="0.7028451" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29773462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2971549" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -793,94 +772,71 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://E:/Program Files/jdk_6_23_x64/src.zip!/javax/swing/SortOrder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="4" selection-start="785" selection-end="785" vertical-scroll-proportion="0.5707071">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/Program Files/jdk_6_23_x64/src.zip!/javax/swing/JList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="249" column="13" selection-start="10566" selection-end="10566" vertical-scroll-proportion="-6.24">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/dist/lib/swingx-1.6.jar!/org/jdesktop/swingx/renderer/DefaultListRenderer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="30" selection-start="1161" selection-end="1161" vertical-scroll-proportion="0.38857144">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/Program Files/jdk_6_23_x64/src.zip!/javax/swing/ListCellRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="46" selection-start="1661" selection-end="1661" vertical-scroll-proportion="0.017777778">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/dist/lib/swingx-1.6.jar!/org/jdesktop/swingx/sort/ListSortController.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="162" selection-end="162" vertical-scroll-proportion="0.09714286">
-          <folding />
-        </state>
+        <state line="5" column="13" selection-start="162" selection-end="162" vertical-scroll-proportion="0.09714286" />
       </provider>
     </entry>
     <entry file="jar://E:/Program Files/jdk_6_23_x64/src.zip!/javax/swing/DefaultRowSorter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="22" selection-start="4355" selection-end="4355" vertical-scroll-proportion="-4.291111">
-          <folding />
-        </state>
+        <state line="94" column="22" selection-start="4355" selection-end="4355" vertical-scroll-proportion="-4.291111" />
       </provider>
     </entry>
     <entry file="jar://E:/Program Files/jdk_6_23_x64/src.zip!/javax/swing/RowSorter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="0" selection-start="3516" selection-end="3516" vertical-scroll-proportion="0.34">
-          <folding />
-        </state>
+        <state line="77" column="0" selection-start="3516" selection-end="3516" vertical-scroll-proportion="0.34" />
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/dist/lib/swingx-1.6.jar!/org/jdesktop/swingx/JXList.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="43" selection-start="3567" selection-end="3567" vertical-scroll-proportion="0.34285715">
-          <folding />
-        </state>
+        <state line="70" column="43" selection-start="3567" selection-end="3567" vertical-scroll-proportion="0.34285715" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/etc/FileLoadInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="67" selection-start="3611" selection-end="3611" vertical-scroll-proportion="0.56820744">
-          <folding />
-        </state>
+        <state line="120" column="67" selection-start="3611" selection-end="3611" vertical-scroll-proportion="0.56820744" />
       </provider>
     </entry>
     <entry file="jar://E:/Program Files/jdk_6_23_x64/src.zip!/java/util/TreeSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="29" selection-start="5453" selection-end="5463" vertical-scroll-proportion="0.48444444">
-          <folding />
-        </state>
+        <state line="122" column="29" selection-start="5453" selection-end="5463" vertical-scroll-proportion="0.48444444" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/file/ClientFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="56" selection-start="657" selection-end="657" vertical-scroll-proportion="0.26444444">
-          <folding />
-        </state>
+        <state line="23" column="56" selection-start="657" selection-end="657" vertical-scroll-proportion="0.26444444" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/version/CT3_Awakening.xml">
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/renders/DatPane_FileListCellRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="693" column="61" selection-start="24562" selection-end="24576" vertical-scroll-proportion="0.067777775">
-          <folding />
-        </state>
+        <state line="17" column="13" selection-start="394" selection-end="394" vertical-scroll-proportion="0.018418202" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/listeners/DatPane_PropertyChangeListenerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="21" selection-start="1744" selection-end="1744" vertical-scroll-proportion="0.0">
+        <state line="55" column="21" selection-start="1744" selection-end="1744" vertical-scroll-proportion="0.77356446" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="85" selection-start="5496" selection-end="5496" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="4" selection-start="1905" selection-end="1924" vertical-scroll-proportion="0.569378">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/IniIntPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="21" selection-start="759" selection-end="772" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -889,20 +845,20 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/renders/DatPane_FileListCellRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="13" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/IniIntPane.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.java">
+    <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/version/CT3_Awakening.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="0" selection-start="3222" selection-end="3222" vertical-scroll-proportion="0.09582864">
-          <folding>
-            <element signature="method#$$$setupUI$$$#0;class#DatPane#0" expanded="true" />
-            <element signature="method#$$$setupUI$$$#0;class#DatPane#0" expanded="true" />
-          </folding>
+        <state line="987" column="66" selection-start="35533" selection-end="35533" vertical-scroll-proportion="18.178764">
+          <folding />
         </state>
       </provider>
     </entry>

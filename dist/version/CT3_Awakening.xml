@@ -28,6 +28,7 @@
 			<node name="id" reader="UINT" />
 			<node name="text" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="alterskilldata.dat">
 	</file>
@@ -40,6 +41,7 @@
 			<node name="anim2" reader="ASCF" />
 			<node name="loop" reader="INT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="armorgrp.dat">
 	</file>
@@ -57,6 +59,7 @@
 			<node name="unk_3" reader="ASCF" />
 			<node name="unk_4" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="charcreategrp.dat">
 		<for name="data" fixed="20">
@@ -70,6 +73,7 @@
 			<node name="rhand" reader="UINT" />
 			<node name="lhand" reader="UINT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="chargrp.dat">
 	</file>
@@ -79,6 +83,7 @@
 			<node name="id" reader="UINT" />
 			<node name="name" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="commandname-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -87,6 +92,7 @@
 			<node name="nbr" reader="UINT" />
 			<node name="name" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="credit-[\w]+\.dat">
 	</file>
@@ -99,6 +105,7 @@
 			<node name="time" reader="UINT" />
 			<node name="align" reader="UINT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="dualcasttypedata.dat">
 		<node name="data" reader="UINT"/>
@@ -124,6 +131,7 @@
 			<node name="effect_name" reader="UNICODE" />
 			<node name="anim_name" reader="UNICODE" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="etcitemgrp.dat"> <!-- not work - need MXT -->
 		<node name="data" reader="UINT"/>
@@ -154,6 +162,7 @@
 			<node name="family" reader="UINT" />
 			<node name="grade" reader="UINT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="eula-[\w]+\.dat"> <!-- not work -->
 		<node name="data" reader="UINT"/>
@@ -162,6 +171,7 @@
 			<node name="fin1" reader="ASCF" />
 			<node name="fin2" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="exceptionminimapdata.dat">
 		<node name="data" reader="UINT"/>
@@ -177,6 +187,7 @@
 			<node name="seen_x" reader="INT" />
 			<node name="seen_y" reader="INT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="flashconfig.dat">
 	</file>
@@ -198,6 +209,7 @@
 			<node name="enable" reader="UINT" />
 			<node name="tip" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="goodsicon.dat">
 		<node name="data" reader="UINT"/>
@@ -205,6 +217,7 @@
 			<node name="item_id" reader="UINT" />
 			<node name="icon" reader="UNICODE" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="hairaccessorylocgrp.dat">
 		<node name="data" reader="UINT"/>
@@ -301,6 +314,7 @@
 			<node name="ints_F_2" reader="INT" />
 			<node name="ints_F_3" reader="INT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="hennagrp-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -312,6 +326,7 @@
 			<node name="symbol_add_name" reader="ASCF" />
 			<node name="symbol_add_desc" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="huntingzone-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -327,6 +342,7 @@
 			<node name="affiliated_area_id" reader="UINT" />
 			<node name="name" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="instantzonedata-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -334,6 +350,7 @@
 			<node name="id" reader="UINT" />
 			<node name="name" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="itemname-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -409,17 +426,19 @@
 			<node name="z" reader="FLOAT" />
 			<node name="yaw" reader="FLOAT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="mantleexception.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="item_id" reader="UINT" />
-			<node name="textures_count" reader="INT" />
-			<for name="textures_count">
+			<node name="textures" reader="INT" />
+			<for name="textures">
 				<node name="character_type" reader="UINT" />
 				<node name="texture" reader="ASCF" />
 			</for>
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="mobskillanimgrp.dat">
 		<node name="data" reader="UINT"/>
@@ -431,6 +450,7 @@
 			<node name="npc_name" reader="ASCF" />
 			<node name="npc_class" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="msconditiondata.dat">
 		<node name="data" reader="UINT"/>
@@ -529,6 +549,7 @@
 			<node name="unknown_6" reader="UINT" />
 			<node name="icon" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="npcname-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -558,6 +579,7 @@
 			<node name="id" reader="UINT" />
 			<node name="text" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="optiondata_client-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -569,6 +591,7 @@
 			<node name="effect2_desc" reader="ASCF" />
 			<node name="effect3_desc" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="pawnanimdata.dat">
 	</file>
@@ -590,6 +613,7 @@
 			<node name="effect_reservefactor1" reader="FLOAT" />
 			<node name="effect_reservefactor2" reader="FLOAT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="productname-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -599,6 +623,7 @@
 			<node name="str" reader="ASCF" />
 			<node name="icon" reader="UNICODE" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="questmarkconditiondata.dat">
 		<node name="data" reader="UINT"/>
@@ -705,6 +730,7 @@
 			<node name="loc_z" reader="FLOAT" />
 			<node name="raid_desc" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="recipe-c.dat">
 		<node name="data" reader="UINT"/>
@@ -724,6 +750,7 @@
 				<node name="item_count" reader="UINT" />
 			</for>
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="ridedata.dat">
 		<node name="data" reader="UINT"/>
@@ -737,6 +764,7 @@
 			<node name="loc_z" reader="FLOAT" />
 			<node name="raid_desc" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="sceneplayerdata.dat">
 		<node name="data" reader="UINT"/>
@@ -855,6 +883,7 @@
 			<node name="unk_8" reader="UINT" />
 			<node name="unk_9" reader="UINT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="staticobject-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -862,6 +891,7 @@
 			<node name="id" reader="UINT" />
 			<node name="name" reader="UNICODE" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="statisticname-[\w]+\.dat">
 	</file>
@@ -873,6 +903,7 @@
 			<node name="alias" reader="ASCF" />
 			<node name="UNK_0" reader="UINT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="sysstring-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
@@ -900,6 +931,7 @@
 			<node name="sub_msg" reader="ASCF" />
 			<node name="type" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="transformdata.dat">
 		<node name="data" reader="UINT"/>
@@ -915,6 +947,7 @@
 			<node name="character_offset_y" reader="UINT" />
 			<node name="transform_data_end" reader="UINT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="usmmoviedata.dat">
 		<node name="data" reader="UINT"/>
@@ -943,6 +976,7 @@
 			<node name="effect" reader="UNICODE" />
 			<node name="attribute" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="vehiclepartsgrp.dat">
 	</file>
@@ -951,6 +985,7 @@
 		<for name="data">
 			<node name="text" reader="ASCF" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="weaponenchanteffectdata.dat">
 	</file>
@@ -976,5 +1011,6 @@
 			<node name="map" reader="ASCF" />
 			<node name="UNK_2" reader="UINT" />
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 </version>
