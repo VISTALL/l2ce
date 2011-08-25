@@ -82,7 +82,13 @@
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="id" reader="UINT" />
-			<node name="name" reader="ASCF" />
+			<node name="str" reader="UINT" />
+			<node name="dex" reader="UINT" />
+			<node name="con" reader="UINT" />
+			<node name="int" reader="UINT" />
+			<node name="wit" reader="UINT" />
+			<node name="men" reader="UINT" />
+			<node name="description" reader="ASCF" />
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
