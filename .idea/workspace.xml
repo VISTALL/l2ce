@@ -15,11 +15,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="34f02874-8f83-47bc-a7bd-e97a02594d96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/IniIntPane.form" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/IniIntPane.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/version/CT2_Freya.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dist/version/CT2_HighFive.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/version/CT3_Awakening.xml" afterPath="$PROJECT_DIR$/dist/version/CT3_Awakening.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.form" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.java" afterPath="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.java" />
     </list>
     <ignored path="L2CE.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,40 +69,10 @@
       </breakpoint>
     </breakpoint_any>
     <breakpoint_rules />
-    <ui_properties>
-      <property name="line_breakpoints_groupByMethods" value="false" />
-      <property name="line_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_flattenPackages" value="true" />
-      <property name="method_breakpoints_flattenPackages" value="true" />
-      <property name="field_breakpoints_flattenPackages" value="true" />
-      <property name="exception_breakpoints_groupByMethods" value="false" />
-      <property name="line_breakpoints_groupByClasses" value="true" />
-      <property name="method_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_groupByMethods" value="false" />
-      <property name="line_breakpoints_flattenPackages" value="true" />
-      <property name="field_breakpoints_groupByClasses" value="true" />
-      <property name="method_breakpoints_groupByClasses" value="true" />
-      <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_groupByClasses" value="true" />
-      <property name="field_breakpoints_viewId" value="TABLE" />
-      <property name="method_breakpoints_groupByMethods" value="false" />
-    </ui_properties>
+    <ui_properties />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="L2CE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="CT3_Awakening.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dist/version/CT3_Awakening.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="987" column="66" selection-start="35533" selection-end="35533" vertical-scroll-proportion="18.178764">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -118,8 +86,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$USER_HOME$/Desktop/npcname-e.xml" />
-        <option value="$PROJECT_DIR$/src-test/com/jdevelopstation/l2ce/test/Test.java" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/OptionPane.java" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/version/node/file/reader/ASCF.java" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/etc/FileLoadInfo.java" />
@@ -133,6 +99,8 @@
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/IniIntPane.java" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/IniIntPane.form" />
         <option value="$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.form" />
+        <option value="$PROJECT_DIR$/dist/version/CT2_Freya.xml" />
+        <option value="$PROJECT_DIR$/dist/version/CT2_HighFive.xml" />
         <option value="$PROJECT_DIR$/dist/version/CT3_Awakening.xml" />
       </list>
     </option>
@@ -314,44 +282,6 @@
               <option name="myItemId" value="jdevelopstation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="l2ce" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pane" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DatPane" />
-              <option name="myItemType" value="com.intellij.uiDesigner.projectView.FormNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="L2CE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trunk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jdevelopstation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -387,13 +317,13 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Favorites" />
       <pane id="PackagesPane" />
+      <pane id="Favorites" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
@@ -408,9 +338,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -419,6 +349,7 @@
       <recent name="com.jdevelopstation.l2ce.version.file.node.reader" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\L2CE\trunk\dist\version" />
       <recent name="D:\L2CE\trunk" />
       <recent name="D:\L2CE\trunk\src-resource\com\jdevelopstation\l2ce\strings" />
     </key>
@@ -657,27 +588,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2015625" sideWeight="0.7028451" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Notes" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19427083" sideWeight="0.7028451" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24986653" sideWeight="0.67098165" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41100323" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24947916" sideWeight="0.6712329" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24666311" sideWeight="0.3257821" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41095892" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2971549" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995194" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Notes" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24666311" sideWeight="0.3257821" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21510416" sideWeight="0.7028451" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2971549" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2015625" sideWeight="0.7028451" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19427083" sideWeight="0.7028451" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -772,16 +703,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/dist/lib/swingx-1.6.jar!/org/jdesktop/swingx/sort/ListSortController.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="162" selection-end="162" vertical-scroll-proportion="0.09714286" />
-      </provider>
-    </entry>
-    <entry file="jar://E:/Program Files/jdk_6_23_x64/src.zip!/javax/swing/DefaultRowSorter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="22" selection-start="4355" selection-end="4355" vertical-scroll-proportion="-4.291111" />
-      </provider>
-    </entry>
     <entry file="jar://E:/Program Files/jdk_6_23_x64/src.zip!/javax/swing/RowSorter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="77" column="0" selection-start="3516" selection-end="3516" vertical-scroll-proportion="0.34" />
@@ -819,25 +740,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/MainPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="85" selection-start="5496" selection-end="5496" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="117" column="85" selection-start="5496" selection-end="5496" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="4" selection-start="1905" selection-end="1924" vertical-scroll-proportion="0.569378">
-          <folding />
-        </state>
+        <state line="48" column="4" selection-start="1905" selection-end="1924" vertical-scroll-proportion="0.569378" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/IniIntPane.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="21" selection-start="759" selection-end="772" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="38" column="21" selection-start="759" selection-end="772" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jdevelopstation/l2ce/gui/pane/DatPane.form">
@@ -855,11 +768,19 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dist/version/CT2_Freya.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="22" selection-start="0" selection-end="1161" vertical-scroll-proportion="0.56792873" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/version/CT2_HighFive.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="61" selection-start="872" selection-end="872" vertical-scroll-proportion="0.38678223" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dist/version/CT3_Awakening.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="987" column="66" selection-start="35533" selection-end="35533" vertical-scroll-proportion="18.178764">
-          <folding />
-        </state>
+        <state line="3" column="37" selection-start="232" selection-end="232" vertical-scroll-proportion="0.055254605" />
       </provider>
     </entry>
   </component>
@@ -902,7 +823,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.6</last-edited>
+          <last-edited>1.6 u27</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -919,6 +840,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

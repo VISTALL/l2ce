@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<version name="CT2_HighFive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="version.xsd">
+	<file pattern="sysstring-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="name" reader="ASCF" />
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
+	</file>
+	<file pattern="systemmsg-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT" />
+			<node name="UNK_0" reader="UINT" />
+			<node name="message" reader="ASCF" />
+			<node name="group" reader="UINT" />
+			<node name="rgb" reader="UINT" />
+			<node name="item_sound" reader="ASCF" />
+			<node name="sys_msg_ref" reader="ASCF" />
+			<node name="UNK_1_1" reader="UINT" />
+			<node name="UNK_1_2" reader="UINT" />
+			<node name="UNK_1_3" reader="UINT" />
+			<node name="UNK_1_4" reader="UINT" />
+			<node name="UNK_1_5" reader="UINT" />
+			<node name="sub_msg" reader="ASCF" />
+			<node name="type" reader="ASCF" />
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
+	</file>
+</version>

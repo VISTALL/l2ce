@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <version name="CT3_Awakening" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="version.xsd">
 	<file pattern="24hzschema.dat">
+		<node name="xml" reader="ASCF" />
 	</file>
 	<file pattern="actionname-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
