@@ -22,10 +22,13 @@ public class DatPane_LoadButtonActionListenerImpl implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		FileLoadInfo c = (FileLoadInfo) _datPane.getFileList().getSelectedValue();
-		if(c == null)
-			return;
-
-		c.load((String)_datPane.getArgBox().getSelectedItem(), _datPane);
+		Object[] files = _datPane.getFileList().getSelectedValues();
+		
+		int i = 1;
+		for (Object obj : files)
+		{
+			FileLoadInfo c = (FileLoadInfo) obj;
+			c.load((String)_datPane.getArgBox().getSelectedItem(), _datPane, i++ != files.length);
+		}
 	}
 }

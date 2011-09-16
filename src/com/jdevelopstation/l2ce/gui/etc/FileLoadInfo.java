@@ -96,7 +96,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 		return _clientData;
 	}
 
-	public void load(final String arg, final DatPane dat)
+	public void load(final String arg, final DatPane dat, final boolean silent)
 	{
 		if(isDisabled())
 			return;
@@ -119,8 +119,9 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 					setDisabled(false);
 
 					EventQueue.invokeLater(new ListRepaintTask(dat.getFileList()));
-
-					JOptionPane.showMessageDialog(dat, "Done");
+					
+					if (!silent)
+						JOptionPane.showMessageDialog(dat, "Done");
 				}
 			}
 		}));
