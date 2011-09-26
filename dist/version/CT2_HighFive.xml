@@ -8,6 +8,46 @@
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
+	<file pattern="itemname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="item_id" reader="UINT" />
+			<node name="name" reader="UNICODE">
+				<modifier pattern="%s(id:%d)">
+					<node name="name" />
+					<node name="item_id" />
+				</modifier>
+			</node>
+			<node name="additionalname" reader="UNICODE" />
+			<node name="popup" reader="ASCF" />
+			<node name="description" reader="INT" />
+			<node name="supercnt0" reader="UINT" />
+			<node name="set_ids" reader="UINT" />
+			<for name="set_ids">
+				<node name="set_id" reader="UNICODE" />
+			</for>
+			<node name="set_bonus_desc" reader="ASCF" />
+			<node name="supercnt1" reader="UINT" />
+			<node name="set_extra_ids" reader="UINT" />
+			<for name="set_extra_ids">
+				<node name="set_extra_id" reader="UNICODE" />
+			</for>
+			<node name="set_extra_desc" reader="ASCF" />
+			<node name="UNK1_1" reader="ASCF" />
+			<node name="UNK1_2" reader="ASCF" />
+			<node name="UNK1_3" reader="ASCF" />
+			<node name="UNK1_4" reader="ASCF" />
+			<node name="UNK1_5" reader="ASCF" />
+			<node name="UNK1_6" reader="ASCF" />
+			<node name="UNK1_7" reader="ASCF" />
+			<node name="UNK1_8" reader="ASCF" />
+			<node name="UNK1_9" reader="ASCF" />
+			<node name="set_enchant_count" reader="UINT" />
+			<node name="set_enchant_effect" reader="ASCF" />
+			<node name="color" reader="UINT" />
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
+	</file>
 	<file pattern="systemmsg-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">

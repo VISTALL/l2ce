@@ -818,6 +818,12 @@
 			<for name="wall_mesh">
 				<node name="mesh" reader="ASCF" />
 			</for>
+			<node name="ShuttleSound" reader="ASCF" />
+			<node name="ShuttleStartSound" reader="ASCF" />
+			<node name="ShuttleStopSound" reader="ASCF" />
+			<node name="ShuttleSoundVol" reader="UINT" />
+			<node name="ShuttleSoundVolWhenStop" reader="UINT" />
+			<node name="ShuttleSoundRadii" reader="UINT" />
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
@@ -841,6 +847,7 @@
 			<node name="unknown_4" reader="INT" />
 			<node name="unknown_5" reader="INT" />
 			<node name="unknown_6" reader="INT" />
+			<node name="unknown_7" reader="INT" />
 
 			<node name="animation" reader="UNICODE" />
 			<node name="description" reader="UNICODE" />
