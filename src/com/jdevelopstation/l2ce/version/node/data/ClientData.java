@@ -8,6 +8,7 @@ import java.nio.ByteOrder;
 import java.util.Iterator;
 
 import org.dom4j.Document;
+import org.dom4j.DocumentException;
 import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
@@ -70,9 +71,9 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 
 			read(this, clientFile, rootElement);
 		}
-		catch(Exception e)
+		catch(DocumentException e)
 		{
-			e.printStackTrace();
+			log.error(e);
 		}
 	}
 
@@ -184,7 +185,7 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 		}
 		catch(IOException e)
 		{
-			e.printStackTrace();
+			log.error(e);
 		}
 	}
 
@@ -231,7 +232,7 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 		}
 		catch(IOException e)
 		{
-			e.printStackTrace();
+			log.error(e);
 		}
 	}
 

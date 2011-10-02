@@ -44,7 +44,7 @@ public class ClientFile extends ClientNodeContainer<ClientFileNode> implements C
 		}
 		catch(IOException e)
 		{
-			e.printStackTrace();
+			log.error(e);
 			return null;
 		}
 	}

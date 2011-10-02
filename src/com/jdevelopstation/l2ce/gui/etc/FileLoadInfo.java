@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
+
 import com.jdevelopstation.l2ce.data.xml.holder.ClientVersionHolder;
 import com.jdevelopstation.l2ce.gui.pane.DatPane;
 import com.jdevelopstation.l2ce.gui.tasks.ListRepaintTask;
@@ -33,6 +35,7 @@ import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileNodeImpl;
 */
 public class FileLoadInfo implements Comparable<FileLoadInfo>
 {
+	private static final Logger log = Logger.getLogger(FileLoadInfo.class);
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH_mm_ss_dd_MM_yyyy");
 	private static final FileFilter XML_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.XMLFilter.Text"), new String[] { "xml" });
 	private static final FileFilter CSV_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.CVSFilter.Text"), new String[] { "csv" });
@@ -238,7 +241,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 							}
 							catch(IOException e)
 							{
-								e.printStackTrace();
+								log.error(e);
 							}
 
 							desc.delete();

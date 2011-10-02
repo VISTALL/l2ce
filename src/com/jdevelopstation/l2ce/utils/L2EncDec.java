@@ -1,8 +1,10 @@
 package com.jdevelopstation.l2ce.utils;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 
 /**
  * @author VISTALL
@@ -10,6 +12,8 @@ import org.apache.commons.io.FileUtils;
  */
 public class L2EncDec
 {
+	private static final Logger log = Logger.getLogger(L2EncDec.class);
+	
 	public static File decode(File f, String code)
 	{
 		try
@@ -50,9 +54,13 @@ public class L2EncDec
 			if(retVal == 0)
 				return new File("dec-" + f.getName());*/
 		}
-		catch(Exception e)
+		catch(IOException e)
 		{
-			e.printStackTrace();
+			log.error(e);
+		}
+		catch (InterruptedException e)
+		{
+			throw new RuntimeException(e);
 		}
 		return null;
 	}
@@ -80,9 +88,13 @@ public class L2EncDec
 
 			FileUtils.copyFile(temp, out);
 		}
-		catch(Exception e)
+		catch(IOException e)
 		{
-			e.printStackTrace();
+			log.error(e);
+		}
+		catch (InterruptedException e)
+		{
+			throw new RuntimeException(e);
 		}
 	}
 }

@@ -112,7 +112,7 @@ public class PropertyInOut
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			_log.error(e);
 		}
 	}
 
