@@ -1,0 +1,1 @@
+start javaw -cp lib/*; com.jdevelopstation.l2ce.Main

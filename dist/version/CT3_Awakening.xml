@@ -140,7 +140,8 @@
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
-	<file pattern="etcitemgrp.dat"> <!-- not work - need MXT -->
+	<file pattern="etcitemgrp.dat">
+		<!--Done by VISTALL, some part from Path Editor-->
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="tag" reader="UINT" />
@@ -150,24 +151,58 @@
 			<node name="drop_radius" reader="UINT" />
 			<node name="drop_height" reader="UINT" />
 			<node name="UNK_0" reader="UINT" />
-			<node name="drop_mesh" reader="UNICODE" />
-			<node name="drop_tex" reader="UNICODE" />
+
+			<node name="drop_mesh1" reader="UNICODE" />
+			<node name="drop_mesh2" reader="UNICODE" />
+			<node name="drop_mesh3" reader="UNICODE" />
+
+			<node name="drop_tex1" reader="UNICODE" />
+			<node name="drop_tex2" reader="UNICODE" />
+			<node name="drop_tex3" reader="UNICODE" />
+			<node name="drop_extratex1" reader="UNICODE" />
+
+			<node name="newdata1" reader="INT" />
+			<node name="newdata2" reader="INT" />
+			<node name="newdata3" reader="INT" />
+			<node name="newdata4" reader="INT" />
+			<node name="newdata5" reader="INT" />
+			<node name="newdata6" reader="INT" />
+			<node name="newdata7" reader="INT" />
+			<node name="newdata8" reader="INT" />
+
 			<node name="icon1" reader="UNICODE" />
 			<node name="icon2" reader="UNICODE" />
 			<node name="icon3" reader="UNICODE" />
 			<node name="icon4" reader="UNICODE" />
 			<node name="icon5" reader="UNICODE" />
-			<node name="durability" reader="UINT" />
-			<node name="weight" reader="UINT" />
-			<node name="material" reader="UINT" />
-			<node name="crystallizable" reader="UINT" />
-			<node name="UNK_1" reader="UINT" />
-			<!--  node name="mesh_tex_pair" reader="MTX" /-->
+
+			<node name="durability" reader="INT" />
+			<node name="weight" reader="INT" />
+			<node name="material" reader="INT" />
+			<node name="crystallizable" reader="INT" />
+			<node name="UNK_1" reader="INT" />
+			<node name="related_quests" reader="INT" />
+			<for name="related_quests">
+				<node name="quest_id" reader="INT" />
+			</for>
+			<node name="UNK_2" reader="INT" />
+			<node name="UNK_3" reader="INT" />
+			<node name="UNK_4" reader="INT" />
+			<node name="fort" reader="UNICODE" />
+			<node name="mesh_text1" reader="INT" />
+			<for name="mesh_text1">
+				<node name="texture" reader="UNICODE" />
+			</for>
+			<node name="mesh_text2" reader="INT" />
+			<for name="mesh_text2">
+				<node name="texture" reader="UNICODE" />
+			</for>
+
 			<node name="item_sound" reader="UNICODE" />
 			<node name="equip_sound" reader="UNICODE" />
-			<node name="stackable" reader="UINT" />
-			<node name="family" reader="UINT" />
-			<node name="grade" reader="UINT" />
+			<node name="stackable" reader="INT" />
+			<node name="family" reader="INT" />
+			<node name="grade" reader="INT" />
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
@@ -908,6 +943,22 @@
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="statisticname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="INT" />
+			<node name="PId" reader="INT" />
+			<node name="PId2" reader="INT" />
+			<node name="ParentId" reader="INT" />
+			<node name="Name" reader="ASCF" />
+			<node name="Extra" reader="ASCF" />
+			<node name="Unk1" reader="INT" />
+			<node name="Unk2" reader="INT" />
+			<node name="Sons" reader="INT" />
+			<for name="Sons">
+				<node name="Son" reader="INT" />
+			</for>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
 	<file pattern="symbolname-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
