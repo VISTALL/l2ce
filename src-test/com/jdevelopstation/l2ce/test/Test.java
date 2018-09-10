@@ -13,117 +13,103 @@ public class Test
 {
 	public static void main(String... arg) throws Exception
 	{
-		InputStream stream = new FileInputStream("W:\\MyTests\\l2encdec\\dec-etcitemgrp.dat");
+		InputStream stream = new FileInputStream("W:\\_github.com\\VISTALL\\l2ce\\dist\\dec-msconditiondata.dat");
 		byte[] data = new byte[stream.available()];
 		stream.read(data);
 		ByteBuffer buf = ByteBuffer.wrap(data);
 		buf.order(ByteOrder.LITTLE_ENDIAN);
-/**
-200AC8DA   PUSH Engine.205C63F8                      UNICODE "item_begin"
-200AC94F   PUSH Engine.205C6410                      UNICODE "object_id"
-200AC9C2   PUSH Engine.205C7BC4                      UNICODE "object_name"
-200ACA35   PUSH Engine.205C7BDC                      UNICODE "drop_type"
-200ACAA8   PUSH Engine.205C7BF0                      UNICODE "drop_anim_type"
-200ACB1B   PUSH Engine.205C7C10                      UNICODE "drop_radius"
-200ACB8E   PUSH Engine.205C7C28                      UNICODE "drop_height"
-200ACC01   PUSH Engine.205C7C40                      UNICODE "drop_mesh"
-200ACC79   PUSH Engine.205C7C54                      UNICODE "drop_texture"
-200ACCF5   PUSH Engine.205C7C70                      UNICODE "droptexnum"
-200ACD71   PUSH Engine.205C7C88                      UNICODE "icon"
-200ACDED   PUSH Engine.205C7C94                      UNICODE "icon_panel"
-200ACE69   PUSH Engine.205C7CAC                      UNICODE "mesh"
-200ACEE5   PUSH Engine.205C7CB8                      UNICODE "texture"
-200ACF61   PUSH Engine.205C7CC8                      UNICODE "crystallizable"
-200ACFDD   PUSH Engine.205C7CE8                      UNICODE "etcitem_type"
-200AD059   PUSH Engine.205C7D04                      UNICODE "weight"
-200AD0D5   PUSH Engine.205C7D14                      UNICODE "consume_type"
-200AD151   PUSH Engine.205C7D30                      UNICODE "material_type"
-200AD1CD   PUSH Engine.205C7D4C                      UNICODE "crystal_type"
-200AD249   PUSH Engine.205C7D68                      UNICODE "durability"
-200AD2C5   PUSH Engine.205C7D80                      UNICODE "drop_sound"
-200AD341   PUSH Engine.205C7D98                      UNICODE "equip_sound"
-200AD3BD   PUSH Engine.205C7DB0                      UNICODE "related_quest_id"
-200AD439   PUSH Engine.205C7DD4                      UNICODE "is_attribution"
-200AD4B5   PUSH Engine.205C6570                      UNICODE "item_end"
-*/
+
+		int k = 0;
 		int val = buf.getInt();
 		System.out.println("SIZE: " + val);
 		for(int i = 0; i < val; i++)
 		{
-			System.out.print("tag: " + buf.getInt());
-			int itemId = buf.getInt();
-			System.out.print(" item_id: " + itemId);
-			System.out.print(" drop_type: " + buf.getInt());
-			System.out.print(" drop_anim_type: " + buf.getInt());
-			System.out.print(" drop_radius: " + buf.getInt());
-			System.out.print(" drop_height: " + buf.getInt());
-			System.out.print(" UNK_0: " + buf.getInt());
 
-			System.out.print(" drop_mesh1: " + ReadUnicode(buf));
-			System.out.print(" drop_mesh2: " + ReadUnicode(buf));
-			System.out.print(" drop_mesh3: " + ReadUnicode(buf));
+			//			201AEACD   PUSH Engine.20826EFC                      UNICODE "skill_id"
+			//			201AEB58   PUSH Engine.20826F10                      UNICODE "level"
+			//			201AEBDA   PUSH Engine.20826F5C                      UNICODE "sub_level"
+			//			201AEC65   PUSH Engine.20827C78                      UNICODE "equiptype"
+			//			201AECF0   PUSH Engine.20827CB8                      UNICODE "attackitemtype"
+			//			201AED7B   PUSH Engine.20827D1C                      UNICODE "stattype"
+			//			201AEDFD   PUSH Engine.20827D6C                      UNICODE "statpercentage"
+			//			201AEE8D   PUSH Engine.20827DC4                      UNICODE "up"
+			//			201AEF18   PUSH Engine.20827E04                      UNICODE "hpconsume"
+			//			201AEFA3   PUSH Engine.20827E5C                      UNICODE "mpconsume1"
+			//			201AF02E   PUSH Engine.20827EB0                      UNICODE "mpconsume2"
+			//			201AF0B9   PUSH Engine.20827EEC                      UNICODE "itemid"
+			//			201AF14D   PUSH Engine.20827F20                      UNICODE "itemnum"
+			//			201AF1E1   PUSH Engine.20827F74                      UNICODE "casterpriorskilllist"
+			//			201AF275   PUSH Engine.20827FC8                      UNICODE "casterpriorskilllevels"
+			//			201AF309   PUSH Engine.2082804C                      UNICODE "targetpriorskilllist"
+			//			201AF39D   PUSH Engine.208280D0                      UNICODE "targetpriorskilllevels"
+			//			201AF431   PUSH Engine.20828150                      UNICODE "ultimateconsumegauge"
+			//			201AF4C5   PUSH Engine.208276D8                      UNICODE "skill_end"
 
-			System.out.print(" drop_tex1: " + ReadUnicode(buf));
-			System.out.print(" drop_tex2: " + ReadUnicode(buf));
-			System.out.print(" drop_tex3: " + ReadUnicode(buf));
-			System.out.print(" drop_extratex1: " + ReadUnicode(buf));
+			//skill_begin	skill_name = [s_triple_slash11]	/* [트리플 슬래시] */	skill_id = 1	level = 1	operate_type = A1	magic_level = 38	self_effect = {}	effect = {{i_p_attack;517;0;1}}	operate_cond = {{equip_weapon;{dual}}}	is_magic = 0	mp_consume2 = 42	cast_range = 40	effective_range = 400	skill_hit_time = 1.733	skill_cool_time = 0.167	skill_hit_cancel_time = 0.5	reuse_delay = 3	attribute = {attr_none;0}	trait = {trait_none}	effect_point = -213	target_type = enemy	affect_scope = single	affect_limit = {0;0}	next_action = attack	ride_state = {@ride_none}	multi_class = 0	skill_end
+			int skillId = buf.getInt();
+			System.out.print("skillid " + skillId);
+			if(skillId <= 0)
+			{
+				System.out.println(" error");
+				break;
+			}
+			System.out.print(" level " + buf.get());
+			System.out.print(" sub " + buf.getShort());
+			System.out.print(" equip " + buf.get());
 
-			System.out.print(" newdata1: " + buf.getInt());
-			System.out.print(" newdata2: " + buf.getInt());
-			System.out.print(" newdata3: " + buf.getInt());
-			System.out.print(" newdata4: " + buf.getInt());
-			System.out.print(" newdata5: " + buf.getInt());
-			System.out.print(" newdata6: " + buf.getInt());
-			System.out.print(" newdata7: " + buf.getInt());
-			System.out.print(" newdata8: " + buf.getInt());
+			int atkitemtypesize = buf.get();
+			System.out.print(" atkitemtypesize " + atkitemtypesize);
+			for(int j = 0; j < atkitemtypesize; j++)
+			{
+				System.out.print("  > attackitemtype " + buf.get());
+			}
 
-			System.out.print(" icon1: " + ReadUnicode(buf));
-			System.out.print(" icon2: " + ReadUnicode(buf));
-			System.out.print(" icon3: " + ReadUnicode(buf));
-			System.out.print(" icon4: " + ReadUnicode(buf));
-			System.out.print(" icon5: " + ReadUnicode(buf));
+			System.out.print(" stat type " + buf.get());
+			System.out.print(" stat percent " + buf.get());
 
-			System.out.print(" durability: " + buf.getInt());
-			System.out.print(" weight: " + buf.getInt());
-			System.out.print(" material: " + buf.getInt());
-			System.out.print(" crystallizable: " + buf.getInt());
-			System.out.print(" UNK_1: " + buf.getInt());
-			int questSize = buf.getInt();
-			for(int a = 0; a < questSize; a++)
-				System.out.print(" related_quest_id: " + buf.getInt());
+			System.out.print(" up " + buf.get());
+			System.out.print(" hp " + buf.getShort());
+			System.out.print(" mp1 " + buf.getShort());
+			System.out.print(" mp2 " + buf.getShort());
+			System.out.print(" item-id " + buf.getInt());
+			System.out.print(" item-num " + buf.get());
 
-			System.out.print(" UNK_2: " + buf.getInt());
-			System.out.print(" UNK_3: " + buf.getInt());
-			System.out.print(" UNK_4: " + buf.getInt());
-			System.out.print(" fort: " + ReadUnicode(buf));
+			System.out.print(" ultimateconsumegauge " + buf.get());
+			byte casterBufIds = buf.get();
+			System.out.print(" caster-bufs " + casterBufIds);
+			for(int j = 0; j < casterBufIds; j++)
+			{
+				System.out.print(" > caster-id  " + buf.getInt());
+				System.out.print(" > caster-level  " + buf.getShort());
+				System.out.print(" > caster-sublevel  " + buf.getShort());
+			}
+
+			byte targetBufs = buf.get();
+
+			System.out.print(" target-bufs " + targetBufs);
+			for(int j = 0; j < targetBufs; j++)
+			{
+				System.out.print(" > target-id  " + buf.getInt());
+				System.out.print(" > target-level  " + buf.getShort());
+				System.out.print(" > target-sublevel  " + buf.getShort());
+			}
+
+			System.out.println("--- " + k);
 
 
-			/*if(itemId == 9593)
+			/*if(k == 18950)
 			{
 				System.out.println(printData(buf, 100));
+
+
 				break;
-			}  */
-			int meshTextures1 = buf.getInt();
+			} */
 
-			for(int a = 0; a < meshTextures1; a++)
-				System.out.print(" mex_tex: " + ReadUnicode(buf));
+			k++;
 
-			int meshTextures2 = buf.getInt();
-			for(int a = 0; a < meshTextures2; a++)
-				System.out.print(" mex_tex: " + ReadUnicode(buf));
-
-			System.out.print(" item_sound: " + ReadUnicode(buf));
-			System.out.print(" equip_sound: " + ReadUnicode(buf));
-			System.out.print(" stackable: " + buf.getInt());
-			System.out.print(" family: " + buf.getInt());
-			System.out.print(" grade: " + buf.getInt());
-			System.out.println();
-
-			//System.out.println(printData(buf, 100));
-			//break;
 		}
 
-		System.out.println("last: "+ buf.remaining());
+		System.out.println("last: " + buf.remaining());
 	}
 
 	public static int ReadByteCount(ByteBuffer f)
@@ -146,7 +132,9 @@ public class Test
 		StringBuilder stringBuilder = new StringBuilder();
 
 		for(int i = 0; i < real; i++)
+		{
 			stringBuilder.append(b.getChar());
+		}
 
 		return stringBuilder.toString();
 	}
@@ -155,7 +143,9 @@ public class Test
 	{
 		int size = buff.get() & 0xFF;
 		if(size == 0)
+		{
 			return "";
+		}
 
 		if(size >= 192)
 		{
@@ -164,20 +154,26 @@ public class Test
 		}
 
 		if(size >= Short.MAX_VALUE)
+		{
 			buff.position(buff.position() + 1);
+		}
 
 
 		if(size >= 128)
 		{
 			if(buff.getChar(buff.position()) == 0)
+			{
 				return "";
+			}
 
 			StringBuilder b = new StringBuilder();
 
 			//size = buff.get() & 0xFF;
 			char d = 0;
 			while((d = buff.getChar()) != 0)
+			{
 				b.append(d);
+			}
 
 			return b.toString();
 		}
@@ -188,7 +184,9 @@ public class Test
 			//size = buff.get() & 0xFF;
 			byte d = 0;
 			while((d = buff.get()) != 0)
+			{
 				b.append((char) d);
+			}
 
 			return b.toString();
 		}
