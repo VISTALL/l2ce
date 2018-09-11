@@ -1,3 +1,5 @@
-.consulo/workspace.xml
 /out/
+target/
 /dist/__/
+log.txt
+properties.xml
