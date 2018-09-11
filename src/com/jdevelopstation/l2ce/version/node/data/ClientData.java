@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Iterator;
+import java.util.Locale;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -60,7 +61,7 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 
 			ClientFile clientFile = null;
 			for(ClientFile file : version.getClientFiles())
-				if(file.getPattern().matcher(_file).find())
+				if(file.getPattern().matcher(_file.toLowerCase(Locale.US)).find())
 				{
 					clientFile = file;
 					break;

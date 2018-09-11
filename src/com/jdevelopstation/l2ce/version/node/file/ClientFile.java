@@ -38,7 +38,9 @@ public class ClientFile extends ClientNodeContainer<ClientFileNode> implements C
 
 			ClientData clientData = new ClientData(f.getName());
 			for(ClientFileNode node : getNodes())
-				node.parse(clientData, buf);
+			{
+				node.parse(clientData, buf, -1);
+			}
 
 			return clientData;
 		}

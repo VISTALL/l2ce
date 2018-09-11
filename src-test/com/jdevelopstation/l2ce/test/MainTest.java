@@ -20,14 +20,15 @@ public class MainTest
 		Log4JHelper.load();
 		ClientVersionParser.getInstance().load();
 
-		ClientVersion version = ClientVersionHolder.getInstance().getVersion("CT3_Awakening");
+		ClientVersion version = ClientVersionHolder.getInstance().getVersion("GoD_Salvation");
 		ClientFile f = null;
 		for(ClientFile f2 : version.getClientFiles())
 			if(f2.getPattern().matcher("msconditiondata.dat").find())
 				f = f2;
 		if(f == null)
 			return;
-		ClientData data = f.parse(new File("D:\\MyTests\\l2encdec\\dec-msconditiondata.dat"));
+
+		ClientData data = f.parse(new File("W:\\_github.com\\VISTALL\\l2ce\\dist\\dec-msconditiondata.dat"));
 		data.toXML("C:/msconditiondata.xml");
 	}
 }

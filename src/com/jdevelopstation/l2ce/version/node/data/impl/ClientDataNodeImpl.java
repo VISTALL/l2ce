@@ -1,6 +1,9 @@
 package com.jdevelopstation.l2ce.version.node.data.impl;
 
 import java.nio.ByteBuffer;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.dom4j.Element;
 import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
@@ -18,9 +21,20 @@ public class ClientDataNodeImpl implements ClientDataNode
 
 	private final ClientFileNode _fileNode;
 
+	private Map<String, String> myAttributes = Collections.emptyMap();
+
 	public ClientDataNodeImpl(ClientFileNode node)
 	{
 		_fileNode = node;
+	}
+
+	public void setAttribute(String key, String value)
+	{
+		if(myAttributes.isEmpty())
+		{
+			myAttributes = new LinkedHashMap<>();
+		}
+		myAttributes.put(key, value);
 	}
 
 	@Override
@@ -38,12 +52,30 @@ public class ClientDataNodeImpl implements ClientDataNode
 	public void toXML(Element element)
 	{
 		if(isHidden())
+		{
 			return;
+		}
 		if(_fileNode.getValue() != null)
+		{
 			return;
+		}
 
- 		Element e = element.addElement(getName());
-		e.setText(String.valueOf(getValue()));
+		Element e = element.addElement(getName());
+		Object temp = getValue();
+		String value = String.valueOf(temp);
+		for(Map.Entry<String, String> entry : myAttributes.entrySet())
+		{
+			e.addAttribute(entry.getKey(), entry.getValue());
+		}
+
+		if(_fileNode.isHex())
+		{
+			if(temp instanceof Long)
+			{
+				value = "0x" + Long.toHexString((Long) temp).toUpperCase();
+			}
+		}
+		e.setText(value);
 	}
 
 	public void write(ByteBuffer buffer)

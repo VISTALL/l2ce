@@ -18,8 +18,13 @@ public class UINT implements ReadWriteType<Long>
 	public void write(Object val, ByteBuffer buff)
 	{
 		if(val instanceof Number)
+		{
 			buff.putInt(((Number) val).intValue());
+		}
 		else if(val instanceof String)
-			buff.putInt((int)Long.parseLong((String)val));
+		{
+			Long l = Long.decode((String) val);
+			buff.putInt(l.intValue());
+		}
 	}
 }

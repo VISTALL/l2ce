@@ -1,9 +1,6 @@
 package com.jdevelopstation.commons.logging;
 
 import java.net.URL;
-import java.util.logging.Handler;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
 
 import org.apache.log4j.xml.DOMConfigurator;
 
@@ -25,9 +22,5 @@ public class Log4JHelper
 			e.printStackTrace();
 			return;
 		}
-
-		Logger logger = LogManager.getLogManager().getLogger("");
-		for (Handler h : logger.getHandlers())
-			logger.removeHandler(h);
 	}
 }

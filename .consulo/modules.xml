@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <component name="ModuleManager">
+    <modules>
+      <module name="l2ce" dirurl="file://$PROJECT_DIR$" current-layer="Default">
+        <module-layer name="Default">
+          <extension id="java" sdk-name="jb1.8" bytecode-version="1.8" />
+          <content url="file://$MODULE_DIR$">
+            <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/.consulo" />
+            <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src" />
+            <content-folder type="PRODUCTION_RESOURCE" url="file://$MODULE_DIR$/src-resource" />
+            <content-folder type="TEST" url="file://$MODULE_DIR$/src-test" />
+          </content>
+          <orderEntry type="module-extension-sdk" extension-id="java" />
+          <orderEntry type="sourceFolder" />
+          <orderEntry type="module-library">
+            <library>
+              <binaries>
+                <root url="file://$MODULE_DIR$/dist/lib" />
+              </binaries>
+              <jarDirectory url="file://$MODULE_DIR$/dist/lib" recursive="false" />
+            </library>
+          </orderEntry>
+        </module-layer>
+      </module>
+    </modules>
+  </component>
+</project>

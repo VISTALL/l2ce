@@ -10,11 +10,11 @@ import org.apache.log4j.Logger;
  * @author VISTALL
  * @date 1:24/26.05.2011
  */
-public class L2EncDec
+public class L2EncDec implements L2CryptSupport
 {
 	private static final Logger log = Logger.getLogger(L2EncDec.class);
-	
-	public static File decode(File f, String code)
+
+	public File decode(File f, String code)
 	{
 		try
 		{
@@ -41,13 +41,13 @@ public class L2EncDec
 				text = text.replace("\r\n\r\n", "\r\n");
 				System.out.print(text);
 			}   */
-			
+
 		//	System.out.println("Ret val: "+retVal);
 		//	if(retVal == 0)
 
 			Thread.sleep(1000L);
 			return out.exists() ? out : null;
-			
+
 			/*Process process = Runtime.getRuntime().exec("l2encdec\\l2encdec.exe "+ code+" "+ f.getAbsolutePath());
 			process.waitFor();
 			int retVal = process.waitFor();
@@ -65,7 +65,7 @@ public class L2EncDec
 		return null;
 	}
 
-	public static void encode(File in, File out, String code, int encoding)
+	public void encode(File in, File out, String code, int encoding)
 	{
 		try
 		{
@@ -79,7 +79,7 @@ public class L2EncDec
 
 			Process process = p.start();
 
-			//int retVal = process.waitFor();
+		int retVal = process.waitFor();
 			//if(retVal == 0)
 
 			Thread.sleep(5000L);

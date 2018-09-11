@@ -20,7 +20,6 @@ public class OptionDialog extends JDialog
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setSize(550, 350);
-		setResizable(false);
 		setLocationRelativeTo(owner);
 		setTitle(BundleUtils.getInstance().getBundle("OptionDialog.Title"));
 	}

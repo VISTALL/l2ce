@@ -909,10 +909,18 @@
 		<for name="data">
 			<node name="id" reader="UINT" />
 			<node name="level" reader="UINT" />
+			<node name="sub_level" reader="UINT" />
+
 			<node name="name" reader="ASCF" />
-			<node name="description" reader="ASCF" />
-			<node name="enchant_power" reader="ASCF" />
-			<node name="enchant_description" reader="ASCF" />
+
+			<node name="desc" reader="ASCF" />
+			<node name="desc_param" reader="ASCF" />
+
+			<node name="ench_name" reader="ASCF" />
+			<node name="ench_name_param" reader="ASCF" />
+
+			<node name="ench_desc" reader="ASCF" />
+			<node name="ench_desc_param" reader="ASCF" />
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>

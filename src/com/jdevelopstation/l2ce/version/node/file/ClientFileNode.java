@@ -13,11 +13,13 @@ import com.jdevelopstation.l2ce.version.node.file.reader.ReadWriteType;
  */
 public interface ClientFileNode extends ClientNode
 {
-	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff);
+	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff, long index);
 
 	public String getName();
 
 	ReadWriteType getReaderType();
 
 	String getValue();
+
+	boolean isHex();
 }

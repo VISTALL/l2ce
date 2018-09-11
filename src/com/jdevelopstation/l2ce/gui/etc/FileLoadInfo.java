@@ -11,14 +11,13 @@ import javax.swing.filechooser.FileFilter;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-
 import com.jdevelopstation.l2ce.data.xml.holder.ClientVersionHolder;
 import com.jdevelopstation.l2ce.gui.pane.DatPane;
 import com.jdevelopstation.l2ce.gui.tasks.ListRepaintTask;
 import com.jdevelopstation.l2ce.gui.window.MainFrame;
 import com.jdevelopstation.l2ce.properties.GeneralProperties;
 import com.jdevelopstation.l2ce.utils.BundleUtils;
-import com.jdevelopstation.l2ce.utils.L2EncDec;
+import com.jdevelopstation.l2ce.utils.L2CryptSupport;
 import com.jdevelopstation.l2ce.utils.RunnableImpl;
 import com.jdevelopstation.l2ce.version.ClientVersion;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
@@ -113,7 +112,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 			{
 				try
 				{
-					final File f = L2EncDec.decode(_file, arg);
+					final File f = L2CryptSupport.getInstance().decode(_file, arg);
 					if(f != null)
 						_clientData = _clientFile.parse(f);
 				}
@@ -256,7 +255,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 
 					_clientData.toDat(temp);
 
-					L2EncDec.encode(temp, desc, "-h", 413);
+					L2CryptSupport.getInstance().encode(temp, desc, "-h", 413);
 
 					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Done");
 				}

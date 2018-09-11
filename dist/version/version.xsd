@@ -27,9 +27,11 @@
 			<xs:element type="nodeType" name="node" maxOccurs="unbounded"/>
 			<xs:element type="forType" name="for" maxOccurs="unbounded"/>
 			<xs:element type="modifierType" name="modifier" maxOccurs="1"/>
+			<xs:element type="attributeType" name="attribute" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute type="xs:string" name="name" use="required"/>
 		<xs:attribute type="xs:string" name="reader" use="required"/>
+		<xs:attribute type="xs:boolean" name="hex" use="optional"/>
 		<xs:attribute type="xs:string" name="value" use="optional"/>
 	</xs:complexType>
 	<xs:complexType name="modifierType" mixed="true">
@@ -37,6 +39,10 @@
 			<xs:element type="optionType" name="node" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute type="xs:string" name="pattern" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="attributeType" mixed="true">
+		<xs:attribute type="xs:string" name="name" use="required"/>
+		<xs:attribute type="xs:string" name="expression" use="required"/>
 	</xs:complexType>
 	<xs:complexType name="optionType" mixed="true">
 		<xs:attribute type="xs:string" name="name" use="required"/>

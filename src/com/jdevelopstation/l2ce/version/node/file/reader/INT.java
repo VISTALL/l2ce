@@ -18,8 +18,12 @@ public class INT implements ReadWriteType<Integer>
 	public void write(Object val, ByteBuffer buff)
 	{
 		if(val instanceof Number)
+		{
 			buff.putInt(((Number) val).intValue());
+		}
 		else if(val instanceof String)
-			buff.putInt(Integer.parseInt((String) val));
+		{
+			buff.putInt(Integer.decode((String) val));
+		}
 	}
 }

@@ -5,11 +5,11 @@ import java.awt.Component;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
+import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import com.jdevelopstation.l2ce.gui.etc.FileLoadInfo;
-import sun.swing.DefaultLookup;
 
 /**
  * @author VISTALL
@@ -54,11 +54,11 @@ public class DatPane_FileListCellRenderer extends DefaultListCellRenderer
 		{
 			if(isSelected)
 			{
-				border = DefaultLookup.getBorder(this, ui, "List.focusSelectedCellHighlightBorder");
+				border = UIManager.getDefaults().getBorder("List.focusSelectedCellHighlightBorder");
 			}
 			if(border == null)
 			{
-				border = DefaultLookup.getBorder(this, ui, "List.focusCellHighlightBorder");
+				border = UIManager.getDefaults().getBorder("List.focusCellHighlightBorder");
 			}
 		}
 		else
@@ -72,7 +72,7 @@ public class DatPane_FileListCellRenderer extends DefaultListCellRenderer
 
 	private Border getNoFocusBorder()
 	{
-		Border border = DefaultLookup.getBorder(this, ui, "List.cellNoFocusBorder");
+		Border border = UIManager.getDefaults().getBorder("List.cellNoFocusBorder");
 		if(System.getSecurityManager() != null)
 		{
 			if(border != null)

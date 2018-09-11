@@ -11,14 +11,42 @@ public class SHORT_SHORT implements ReadWriteType<Integer>
 	@Override
 	public Integer read(ByteBuffer f)
 	{
-		int tmp = f.get() & 0xFF;
-		int len = tmp & 0x3F;
-		if((tmp & 0x40) > 0)
+		int output = 0;
+		boolean signed = false;
+		for(int i = 0; i < 5; i++)
 		{
-			tmp = f.get() & 0xFF;
-			len += tmp << 6;
+			int x = f.get() & 0xFF;
+
+			if(i == 0)
+			{
+				if((x & 0x80) > 0)
+				{
+					signed = true;
+				}
+				output |= x & 0x3F;
+				if((x & 0x40) == 0)
+				{
+					break;
+				}
+			}
+			else if(i == 4)
+			{
+				output |= (x & 0x1F) << 27;
+			}
+			else
+			{
+				output |= (x & 0x7F) << 6 + (i - 1) * 7;
+				if((x & 0x80) == 0)
+				{
+					break;
+				}
+			}
 		}
-		return len;
+		if(signed)
+		{
+			output *= -1;
+		}
+		return output;
 	}
 
 	@Override
@@ -26,20 +54,51 @@ public class SHORT_SHORT implements ReadWriteType<Integer>
 	{
 		long longVal = 0;
 		if(val instanceof Number)
+		{
 			longVal = ((Number) val).longValue();
+		}
 		else if(val instanceof String)
-			longVal = Long.parseLong((String) val);
+		{
+			longVal = Long.decode((String) val);
+		}
 
-		if(longVal > 0x3F)
+		byte[] b = compactIntToByteArray((int) longVal);
+		buff.put(b);
+	}
+
+	private static byte[] compactIntToByteArray(int v)
+	{
+		boolean negative = v < 0;
+		v = Math.abs(v);
+		int[] bytes = {
+				v & 0x3F,
+				v >> 6 & 0x7F,
+				v >> 13 & 0x7F,
+				v >> 20 & 0x7F,
+				v >> 27 & 0x7F
+		};
+		if(negative)
 		{
-			long LByte = longVal & 0x3F;
-			long HByte = longVal >> 6;
-			buff.put((byte) (LByte | 0x40));
-			buff.put((byte) HByte);
+			bytes[0] |= 0x80;
 		}
-		else
+		int size = 5;
+		for(int i = 4; i > 0; i--)
 		{
-			buff.put((byte) longVal);
+			if(bytes[i] != 0)
+			{
+				break;
+			}
+			size--;
 		}
+		byte[] res = new byte[size];
+		for(int i = 0; i < size; i++)
+		{
+			if(i != size - 1)
+			{
+				bytes[i] |= (i == 0 ? 64 : 128);
+			}
+			res[i] = ((byte) bytes[i]);
+		}
+		return res;
 	}
 }

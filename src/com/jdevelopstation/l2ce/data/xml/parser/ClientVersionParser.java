@@ -1,15 +1,18 @@
 package com.jdevelopstation.l2ce.data.xml.parser;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Element;
 import com.jdevelopstation.commons.data.xml.AbstractDirParser;
 import com.jdevelopstation.l2ce.data.xml.holder.ClientVersionHolder;
 import com.jdevelopstation.l2ce.version.ClientVersion;
+import com.jdevelopstation.l2ce.version.node.ClientNodeAttribute;
+import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
 import com.jdevelopstation.l2ce.version.node.file.ClientFile;
 import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
-import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
 import com.jdevelopstation.l2ce.version.node.file.ClientFileNodeModifier;
 import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileForNodeImpl;
 import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileNodeImpl;
@@ -61,11 +64,13 @@ public class ClientVersionParser extends AbstractDirParser<ClientVersionHolder>
 
 
 			for(ClientFileNode node : file)
+			{
 				if(!validate(file, node))
 				{
 					info("File - pattern: " + pattern + " is invalid.");
 					continue Loop;
 				}
+			}
 
 			v.addFile(file);
 		}
@@ -77,18 +82,26 @@ public class ClientVersionParser extends AbstractDirParser<ClientVersionHolder>
 	{
 		if(node instanceof ClientFileForNodeImpl)
 		{
-			ClientFileForNodeImpl forNode = (ClientFileForNodeImpl)node;
+			ClientFileForNodeImpl forNode = (ClientFileForNodeImpl) node;
 			if(forNode.getFixed() > 0)
+			{
 				return true;
+			}
 
 			ClientFileNode forSizeNode = container.getNodeByName(forNode.getForName());
 			if(forSizeNode == null)
+			{
 				return false;
+			}
 			else
 			{
 				for(ClientFileNode sub : forNode.getNodes())
+				{
 					if(!validate(forNode, sub))
+					{
 						return false;
+					}
+				}
 			}
 		}
 		return true;
@@ -103,6 +116,7 @@ public class ClientVersionParser extends AbstractDirParser<ClientVersionHolder>
 				String name = nodeElement.attributeValue("name");
 				String reader = nodeElement.attributeValue("reader");
 				String value = nodeElement.attributeValue("value");
+				String hex = nodeElement.attributeValue("hex", "false");
 
 				ClientFileNodeModifier modifier = null;
 				Element modifierElement = nodeElement.element("modifier");
@@ -110,9 +124,18 @@ public class ClientVersionParser extends AbstractDirParser<ClientVersionHolder>
 				{
 					modifier = new ClientFileNodeModifier(modifierElement.attributeValue("pattern"));
 					for(Element sub : modifierElement.elements())
+					{
 						modifier.getNodeList().add(sub.attributeValue("name"));
+					}
 				}
-				con.add(new ClientFileNodeImpl(name, value, reader, modifier));
+
+				List<ClientNodeAttribute> attributes = new ArrayList<>();
+				for(Element attributeElement : nodeElement.elements("attribute"))
+				{
+					ClientNodeAttribute attribute = new ClientNodeAttribute(attributeElement.attributeValue("name"), attributeElement.attributeValue("expression"));
+					attributes.add(attribute);
+				}
+				con.add(new ClientFileNodeImpl(name, value, reader, modifier, Boolean.parseBoolean(hex), attributes));
 			}
 			else if(nodeElement.getName().equalsIgnoreCase("for"))
 			{

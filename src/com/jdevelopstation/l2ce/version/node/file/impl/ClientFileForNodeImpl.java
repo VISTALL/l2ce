@@ -43,7 +43,13 @@ public class ClientFileForNodeImpl extends ClientNodeContainer<ClientFileNode> i
 	}
 
 	@Override
-	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff)
+	public boolean isHex()
+	{
+		return false;
+	}
+
+	@Override
+	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff, long index)
 	{
 		long val;
 		if(_fixed > 0)
@@ -67,7 +73,9 @@ public class ClientFileForNodeImpl extends ClientNodeContainer<ClientFileNode> i
 			forNode.add(blockNode);
 
 			for(ClientFileNode sub : this)
-				sub.parse(blockNode, buff);
+			{
+				sub.parse(blockNode, buff, i);
+			}
 		}
 	}
 

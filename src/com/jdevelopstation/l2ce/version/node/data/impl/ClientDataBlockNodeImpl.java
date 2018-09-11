@@ -43,7 +43,9 @@ public class ClientDataBlockNodeImpl extends ClientNodeContainer<ClientDataNode>
 	{
 		Element next = e.addElement(_forNode.getForName());
 		for(ClientDataNode node : getNodes())
+		{
 			node.toXML(next);
+		}
 	}
 
 	@Override
