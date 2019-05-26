@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<version name="GoD_Orfen" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="version.xsd">
+	<file pattern="msconditiondata.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="skill_id" reader="UINT"/>
+			<node name="skill_level" reader="BYTE"/>
+			<node name="skill_sublevel" reader="SHORT"/>
+			<node name="?" reader="SHORT"/>
+			<node name="equiptype" reader="BYTE"/>
+			<node name="attack_item_types" reader="BYTE"/>
+			<for name="attack_item_types">
+				<node name="attack_item_type" reader="BYTE"/>
+			</for>
+			<node name="stattype" reader="BYTE"/>
+			<node name="statpercentage" reader="BYTE"/>
+			<node name="up" reader="BYTE"/>
+			<node name="hpconsume" reader="SHORT"/>
+			<node name="mpconsume1" reader="SHORT"/>
+			<node name="mpconsume2" reader="SHORT"/>
+			<node name="item_id" reader="UINT"/>
+			<node name="itemnum" reader="BYTE"/>
+
+			<node name="ultimateconsumegauge" reader="BYTE"/>
+
+			<node name="caster_buffs" reader="BYTE"/>
+			<for name="caster_buffs">
+				<node name="buff_id" reader="UINT"/>
+				<node name="buff_level" reader="SHORT"/>
+				<node name="buff_sublevel" reader="SHORT"/>
+			</for>
+			<node name="target_buffs" reader="BYTE"/>
+			<for name="target_buffs">
+				<node name="buff_id" reader="UINT"/>
+				<node name="buff_level" reader="SHORT"/>
+				<node name="buff_sublevel" reader="SHORT"/>
+			</for>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+</version>
