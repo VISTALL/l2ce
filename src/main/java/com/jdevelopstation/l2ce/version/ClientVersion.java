@@ -1,9 +1,9 @@
 package com.jdevelopstation.l2ce.version;
 
+import com.jdevelopstation.l2ce.version.node.file.ClientFile;
+
 import java.util.Set;
 import java.util.TreeSet;
-
-import com.jdevelopstation.l2ce.version.node.file.ClientFile;
 
 /**
  * @author VISTALL
@@ -11,7 +11,7 @@ import com.jdevelopstation.l2ce.version.node.file.ClientFile;
  */
 public class ClientVersion
 {
-	private final Set<ClientFile> _clientFiles = new TreeSet<ClientFile>();
+	private final Set<ClientFile> _clientFiles = new TreeSet<>();
 	private final String _name;
 
 	public ClientVersion(String name)
@@ -32,6 +32,18 @@ public class ClientVersion
 	public Set<ClientFile> getClientFiles()
 	{
 		return _clientFiles;
+	}
+
+	public ClientFile findClientFile(String name)
+	{
+		for(ClientFile clientFile : _clientFiles)
+		{
+			if(clientFile.match(name))
+			{
+				return clientFile;
+			}
+		}
+		return null;
 	}
 
 	@Override

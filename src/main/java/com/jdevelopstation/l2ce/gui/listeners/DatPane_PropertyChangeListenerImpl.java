@@ -1,11 +1,5 @@
 package com.jdevelopstation.l2ce.gui.listeners;
 
-import java.io.File;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.TreeSet;
-
-import org.apache.commons.lang3.ArrayUtils;
 import com.jdevelopstation.commons.properties.listeners.PropertyChangeListener;
 import com.jdevelopstation.commons.properties.listeners.PropertyEvent;
 import com.jdevelopstation.l2ce.data.xml.holder.ClientVersionHolder;
@@ -14,6 +8,12 @@ import com.jdevelopstation.l2ce.gui.pane.DatPane;
 import com.jdevelopstation.l2ce.properties.GeneralProperties;
 import com.jdevelopstation.l2ce.version.ClientVersion;
 import com.jdevelopstation.l2ce.version.node.file.ClientFile;
+import org.apache.commons.lang3.ArrayUtils;
+
+import java.io.File;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * @author VISTALL
@@ -45,16 +45,26 @@ public class DatPane_PropertyChangeListenerImpl implements PropertyChangeListene
 
 		ClientVersion v = ClientVersionHolder.getInstance().getCurrentVersion();
 		if(v == null)
+		{
 			return;
+		}
 		File dir = new File(GeneralProperties.WORKING_DIRECTORY);
 		if(!dir.exists())
+		{
 			return;
+		}
 
 		Set<FileLoadInfo> s = new TreeSet<FileLoadInfo>(new FileListComparator());
 		for(ClientFile cf : v.getClientFiles())
-		for(File f : dir.listFiles())
-			if(cf.getPattern().matcher(f.getName().toLowerCase()).find())
-				s.add(new FileLoadInfo(cf, f));
+		{
+			for(File f : dir.listFiles())
+			{
+				if(cf.match(f.getName()))
+				{
+					s.add(new FileLoadInfo(cf, f));
+				}
+			}
+		}
 
 		_datPane.getFileList().setListData(s.toArray(new FileLoadInfo[s.size()]));
 	}

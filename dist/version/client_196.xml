@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<version name="GoD_Salvation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="version.xsd">
+<version name="client_196" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="version.xsd">
 	<file pattern="msconditiondata.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
@@ -98,7 +98,7 @@
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="name" reader="UNICODE">
-				<attribute name="index" expression="$i" />
+				<attribute name="index" expression="$i"/>
 			</node>
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
@@ -111,8 +111,8 @@
 			<node name="IconTexNormal" reader="UINT"/>
 			<node name="IconTexOver" reader="UINT"/>
 			<node name="IconTexPushed" reader="UINT"/>
-			<node name="WorldLocX" reader="UINT"/>
-			<node name="WorldLocY" reader="UINT"/>
+			<node name="WorldLocX" reader="INT"/>
+			<node name="WorldLocY" reader="INT"/>
 			<node name="Width" reader="SHORT"/>
 			<node name="Height" reader="SHORT"/>
 			<node name="DescOffsetX" reader="SHORT"/>
@@ -131,6 +131,58 @@
 			<node name="unknown_1" reader="UINT"/>
 			<node name="teleport_price" reader="UINT"/>
 			<node name="unknown_2" reader="UINT"/>
+		</for>
+	</file>
+
+	<file pattern="HuntingZone-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT"/>
+			<node name="type" reader="UINT"/>
+
+			<node name="rc_level_min" reader="UINT"/>
+			<node name="rc_level_max" reader="UINT"/>
+
+			<node name="start_npc_x" reader="FLOAT"/>
+			<node name="start_npc_y" reader="FLOAT"/>
+			<node name="start_npc_z" reader="FLOAT"/>
+
+			<node name="desc" reader="ASCF"/>
+			<node name="search_zoneid" reader="UINT"/>
+			<node name="name" reader="ASCF"/>
+			<node name="regionid" reader="SHORT"/>
+			<node name="npc_id" reader="UINT"/>
+			<node name="quest_id" reader="BYTE"/>
+			<for name="quest_id">
+				<node name="quest_id_param" reader="SHORT"/>
+			</for>
+			<node name="instantzone_id" reader="UINT"/>
+		</for>
+	</file>
+
+	<file pattern="ZoneName-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="ID" reader="USHORT"/>
+			<node name="MapX" reader="USHORT"/>
+			<node name="MapY" reader="USHORT"/>
+			<node name="Top" reader="FLOAT"/>
+			<node name="Bottom" reader="FLOAT"/>
+			<node name="Name" reader="ASCF"/>
+			<node name="TownBtnLocX" reader="SHORT"/>
+			<node name="TownBtnLocY" reader="SHORT"/>
+			<node name="TownMapX" reader="INT"/>
+			<node name="TownMapY" reader="INT"/>
+			<node name="TownMapWidth" reader="SHORT"/>
+			<node name="TownMapHeight" reader="SHORT"/>
+			<node name="TownMapScale" reader="FLOAT"/>
+			<node name="TownMapTex" reader="INT"/>
+			<node name="Color" reader="USHORT"/>
+			<node name="Continent" reader="USHORT"/>
+			<node name="CurrentLayer" reader="USHORT"/>
+			<node name="TotalLayers" reader="USHORT"/>
+			<node name="TownCenterX" reader="UINT"/>
+			<node name="TownCenterY" reader="UINT"/>
 		</for>
 	</file>
 </version>

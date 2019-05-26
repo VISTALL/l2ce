@@ -1,16 +1,5 @@
 package com.jdevelopstation.l2ce.gui.etc;
 
-import java.awt.EventQueue;
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileFilter;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
 import com.jdevelopstation.l2ce.data.xml.holder.ClientVersionHolder;
 import com.jdevelopstation.l2ce.gui.pane.DatPane;
 import com.jdevelopstation.l2ce.gui.tasks.ListRepaintTask;
@@ -27,6 +16,16 @@ import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataForNodeImpl;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataNodeImpl;
 import com.jdevelopstation.l2ce.version.node.file.ClientFile;
 import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileNodeImpl;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.tuple.Pair;
+import org.apache.log4j.Logger;
+
+import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 /**
 * @author VISTALL
@@ -112,9 +111,11 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 			{
 				try
 				{
-					final File f = L2CryptSupport.getInstance().decode(_file, arg);
+					Pair<String, byte[]> f = L2CryptSupport.getInstance().decode(_file, arg);
 					if(f != null)
-						_clientData = _clientFile.parse(f);
+					{
+						_clientData = _clientFile.parse(f.getLeft(), f.getRight());
+					}
 				}
 				finally
 				{
@@ -292,11 +293,16 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 					GeneralProperties.LAST_IMPORT_DIRECTORY = f.getParent();
 
 					_clientData = new ClientData();
-					_clientData.fromXML(v, f.getAbsolutePath());
+					if(_clientData.fromXML(v, f))
+					{
+						JOptionPane.showMessageDialog(datPane, "Done");
 
-					JOptionPane.showMessageDialog(datPane, "Done");
-
-					EventQueue.invokeLater(new ListRepaintTask(datPane.getFileList()));
+						EventQueue.invokeLater(new ListRepaintTask(datPane.getFileList()));
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(datPane, "Fail");
+					}
 				}
 			}
 		});

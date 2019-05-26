@@ -6,12 +6,12 @@ import java.nio.ByteBuffer;
  * @author VISTALL
  * @since 2018-05-06
  */
-public class SHORT implements ReadWriteType<Long>
+public class USHORT implements ReadWriteType<Long>
 {
 	@Override
 	public Long read(ByteBuffer buffer)
 	{
-		return (long) buffer.getShort();
+		return buffer.getShort() & 0xFFFFL;
 	}
 
 	@Override

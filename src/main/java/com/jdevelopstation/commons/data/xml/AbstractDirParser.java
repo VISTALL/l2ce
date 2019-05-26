@@ -1,11 +1,12 @@
 package com.jdevelopstation.commons.data.xml;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.FileFilterUtils;
+import org.dom4j.io.SAXReader;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Collection;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.FileFilterUtils;
 
 /**
  * @author VISTALL
@@ -38,20 +39,31 @@ public abstract class AbstractDirParser<H extends AbstractHolder> extends Abstra
 			Collection<File> files = FileUtils.listFiles(dir, FileFilterUtils.suffixFileFilter(".xml"), FileFilterUtils.directoryFileFilter());
 
 			for(File f : files)
+			{
 				if(!f.isHidden())
+				{
 					if(!isIgnored(f))
-						try
-						{
-							parseDocument(new FileInputStream(f), f.getName());
-						}
-						catch(Exception e)
-						{
-							info("Exception: " + e + " in file: " + f.getName(), e);
-						}
+					{
+						parseFile(f);
+					}
+				}
+			}
 		}
 		catch(Exception e)
 		{
 			warn("Exception: " + e, e);
+		}
+	}
+
+	public void parseFile(File f)
+	{
+		try
+		{
+			parseDocument(new FileInputStream(f), f.getName());
+		}
+		catch(Exception e)
+		{
+			info("Exception: " + e + " in file: " + f.getName(), e);
 		}
 	}
 }

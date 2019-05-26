@@ -1,15 +1,15 @@
 package com.jdevelopstation.l2ce.version.node.file;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.regex.Pattern;
-
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
 import com.jdevelopstation.l2ce.version.node.data.ClientData;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.file.Files;
+import java.util.Locale;
+import java.util.regex.Pattern;
 
 /**
  * @author VISTALL
@@ -24,25 +24,11 @@ public class ClientFile extends ClientNodeContainer<ClientFileNode> implements C
 		_pattern = Pattern.compile(pattern.toLowerCase());
 	}
 
-	public ClientData parse(File f)
+	public ClientData parse(File file)
 	{
 		try
 		{
-			InputStream stream = new FileInputStream(f);
-			byte[] data = new byte[stream.available()];
-			stream.read(data);
-			stream.close();
-
-			ByteBuffer buf = ByteBuffer.wrap(data);
-			buf.order(ByteOrder.LITTLE_ENDIAN);
-
-			ClientData clientData = new ClientData(f.getName());
-			for(ClientFileNode node : getNodes())
-			{
-				node.parse(clientData, buf, -1);
-			}
-
-			return clientData;
+			return parse(file.getName(), Files.readAllBytes(file.toPath()));
 		}
 		catch(IOException e)
 		{
@@ -51,6 +37,24 @@ public class ClientFile extends ClientNodeContainer<ClientFileNode> implements C
 		}
 	}
 
+	public ClientData parse(String name, byte[] data)
+	{
+		ByteBuffer buf = ByteBuffer.wrap(data);
+		buf.order(ByteOrder.LITTLE_ENDIAN);
+
+		ClientData clientData = new ClientData(name);
+		for(ClientFileNode node : getNodes())
+		{
+			node.parse(clientData, buf, -1);
+		}
+
+		return clientData;
+	}
+
+	public boolean match(String fileName)
+	{
+		return getPattern().matcher(fileName.toLowerCase(Locale.US)).find();
+	}
 
 	@Override
 	public int compareTo(ClientFile o)

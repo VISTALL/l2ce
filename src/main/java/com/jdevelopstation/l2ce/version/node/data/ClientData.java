@@ -1,20 +1,5 @@
 package com.jdevelopstation.l2ce.version.node.data;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.Iterator;
-import java.util.Locale;
-
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentFactory;
-import org.dom4j.Element;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
 import com.jdevelopstation.l2ce.version.ClientVersion;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataBlockNodeImpl;
@@ -24,6 +9,20 @@ import com.jdevelopstation.l2ce.version.node.file.ClientFile;
 import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
 import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileForNodeImpl;
 import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileNodeImpl;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentFactory;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.Iterator;
 
 /**
  * @author VISTALL
@@ -43,38 +42,33 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 		_file = pattern;
 	}
 
-	public void fromXML(ClientVersion version, String in)
+	public boolean fromXML(ClientVersion version, File file)
 	{
-		File f = new File(in);
-		if(!f.exists())
-			return;
+		if(!file.exists())
+			return false;
 
 		SAXReader reader = new SAXReader();
 		reader.setValidation(false);
 
 		try
 		{
-			Document doc = reader.read(f);
+			Document doc = reader.read(file);
 			Element rootElement = doc.getRootElement();
 
 			_file = rootElement.attributeValue("name");
 
-			ClientFile clientFile = null;
-			for(ClientFile file : version.getClientFiles())
-				if(file.getPattern().matcher(_file.toLowerCase(Locale.US)).find())
-				{
-					clientFile = file;
-					break;
-				}
+			ClientFile clientFile = version.findClientFile(_file);
 
 			if(clientFile == null)
-				return;
+				return false;
 
 			read(this, clientFile, rootElement);
+			return true;
 		}
 		catch(DocumentException e)
 		{
 			log.error(e);
+			return false;
 		}
 	}
 

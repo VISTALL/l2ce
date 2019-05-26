@@ -1,5 +1,7 @@
 package com.jdevelopstation.l2ce.utils;
 
+import org.apache.commons.lang3.tuple.Pair;
+
 import java.io.File;
 
 /**
@@ -10,10 +12,14 @@ public interface L2CryptSupport
 {
 	static L2CryptSupport getInstance()
 	{
+		if(Boolean.TRUE)
+		{
+			return new L2CryptBuildIn();
+		}
 		return new L2EncDec();
 	}
 
-	File decode(File f, String code);
+	Pair<String, byte[]> decode(File f, String code);
 
 	void encode(File in, File out, String code, int encoding);
 }

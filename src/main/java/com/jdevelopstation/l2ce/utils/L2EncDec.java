@@ -1,10 +1,12 @@
 package com.jdevelopstation.l2ce.utils;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.tuple.Pair;
+import org.apache.log4j.Logger;
+
 import java.io.File;
 import java.io.IOException;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+import java.nio.file.Files;
 
 /**
  * @author VISTALL
@@ -14,7 +16,7 @@ public class L2EncDec implements L2CryptSupport
 {
 	private static final Logger log = Logger.getLogger(L2EncDec.class);
 
-	public File decode(File f, String code)
+	public Pair<String, byte[]> decode(File f, String code)
 	{
 		try
 		{
@@ -46,7 +48,7 @@ public class L2EncDec implements L2CryptSupport
 		//	if(retVal == 0)
 
 			Thread.sleep(1000L);
-			return out.exists() ? out : null;
+			return out.exists() ? Pair.of(f.getName(), Files.readAllBytes(out.toPath())) : null;
 
 			/*Process process = Runtime.getRuntime().exec("l2encdec\\l2encdec.exe "+ code+" "+ f.getAbsolutePath());
 			process.waitFor();
