@@ -5,6 +5,7 @@ import com.jdevelopstation.l2ce.version.node.ClientNodeAttribute;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
 import com.jdevelopstation.l2ce.version.node.data.ClientData;
 import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
+import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataBlockNodeImpl;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataForNodeImpl;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataNodeImpl;
 import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
@@ -110,7 +111,19 @@ public class ClientFileNodeImpl implements ClientFileNode
 							{
 								ClientDataNode l2gameValue = nodes.get(intValue);
 
-								node.setAttribute(attribute.getName(), String.valueOf(l2gameValue.getValue()));
+								if(!(l2gameValue instanceof ClientDataBlockNodeImpl))
+								{
+									break;
+								}
+
+								List<ClientDataNode> children = ((ClientDataBlockNodeImpl) l2gameValue).getNodes();
+								if(children.isEmpty())
+								{
+									break;
+								}
+
+								ClientDataNode child = children.get(0);
+								node.setAttribute(attribute.getName(), String.valueOf(child.getValue()));
 							}
 						}
 					}
