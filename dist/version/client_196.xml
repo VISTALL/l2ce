@@ -111,7 +111,7 @@
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="regionid" reader="SHORT">
-				<attribute name="index" expression="$i"/>
+				<attribute name="dataname" expression="$l2gamedataname"/>
 			</node>
 			<node name="IconTexNormal" reader="UINT"/>
 			<node name="IconTexOver" reader="UINT"/>
@@ -135,7 +135,7 @@
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="regionid" reader="SHORT">
-				<attribute name="index" expression="$i"/>
+				<attribute name="dataname" expression="$l2gamedataname"/>
 			</node>
 			<node name="IconTexNormal" reader="UINT"/>
 			<node name="IconTexOver" reader="UINT"/>
@@ -305,6 +305,38 @@
 			<node name="gfxscrnmsg" reader="ASCF"/>
 			<node name="gfxscrnparam" reader="ASCF"/>
 			<node name="type" reader="ASCF"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="npcname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT"/>
+			<node name="name" reader="ASCF">
+				<modifier pattern="%s(id:%d)">
+					<node name="name"/>
+					<node name="id"/>
+				</modifier>
+			</node>
+			<node name="description" reader="ASCF"/>
+			<node name="rgb" reader="UINT"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="npcname_Classic-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT"/>
+			<node name="name" reader="ASCF">
+				<modifier pattern="%s(id:%d)">
+					<node name="name"/>
+					<node name="id"/>
+				</modifier>
+			</node>
+			<node name="description" reader="ASCF"/>
+			<node name="rgb" reader="UINT"/>
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>

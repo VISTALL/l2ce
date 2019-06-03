@@ -26,6 +26,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Set;
 
 /**
  * @author VISTALL
@@ -40,15 +41,17 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 	private static final FileFilter TSV_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.TVSFilter.Text"), new String[]{"tsv"});
 
 	private final ClientFile _clientFile;
+	private final Set<FileLoadInfo> fileLoadInfos;
 	private final File _file;
 	private ClientData _clientData;
 
 	private boolean _disabled;
 
-	public FileLoadInfo(ClientFile c, File file)
+	public FileLoadInfo(ClientFile c, File file, Set<FileLoadInfo> fileLoadInfos)
 	{
 		_clientFile = c;
 		_file = file;
+		this.fileLoadInfos = fileLoadInfos;
 	}
 
 	@Override
@@ -124,7 +127,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 					Pair<String, byte[]> f = L2CryptSupport.getInstance().decode(_file, arg);
 					if(f != null)
 					{
-						_clientData = _clientFile.parse(f.getLeft(), f.getRight());
+						_clientData = _clientFile.parse(f.getLeft(), f.getRight(), fileLoadInfos);
 					}
 
 					FileLoadInfo.this.notify(dat, silent, false);

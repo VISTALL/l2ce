@@ -1,7 +1,9 @@
 package com.jdevelopstation.l2ce.version.node.file.impl;
 
 import java.nio.ByteBuffer;
+import java.util.Set;
 
+import com.jdevelopstation.l2ce.gui.etc.FileLoadInfo;
 import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
 import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
@@ -49,7 +51,7 @@ public class ClientFileForNodeImpl extends ClientNodeContainer<ClientFileNode> i
 	}
 
 	@Override
-	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff, long index)
+	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff, long index, Set<FileLoadInfo> fileLoadInfos)
 	{
 		long val;
 		if(_fixed > 0)
@@ -74,7 +76,7 @@ public class ClientFileForNodeImpl extends ClientNodeContainer<ClientFileNode> i
 
 			for(ClientFileNode sub : this)
 			{
-				sub.parse(blockNode, buff, i);
+				sub.parse(blockNode, buff, i, fileLoadInfos);
 			}
 		}
 	}

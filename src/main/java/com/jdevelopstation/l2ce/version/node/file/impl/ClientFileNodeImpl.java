@@ -1,15 +1,21 @@
 package com.jdevelopstation.l2ce.version.node.file.impl;
 
-import java.nio.ByteBuffer;
-import java.util.List;
-
+import com.jdevelopstation.l2ce.gui.etc.FileLoadInfo;
 import com.jdevelopstation.l2ce.version.node.ClientNodeAttribute;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
+import com.jdevelopstation.l2ce.version.node.data.ClientData;
 import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
+import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataForNodeImpl;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataNodeImpl;
 import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
 import com.jdevelopstation.l2ce.version.node.file.ClientFileNodeModifier;
 import com.jdevelopstation.l2ce.version.node.file.reader.ReadWriteType;
+import org.apache.commons.lang3.StringUtils;
+
+import java.io.File;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author VISTALL
@@ -34,7 +40,7 @@ public class ClientFileNodeImpl implements ClientFileNode
 		try
 		{
 			Class<?> clazz = Class.forName("com.jdevelopstation.l2ce.version.node.file.reader." + reader);
-			_partType = (ReadWriteType)clazz.newInstance();
+			_partType = (ReadWriteType) clazz.newInstance();
 		}
 		catch(Exception e)
 		{
@@ -48,7 +54,7 @@ public class ClientFileNodeImpl implements ClientFileNode
 	}
 
 	@Override
-	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff, long index)
+	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff, long index, Set<FileLoadInfo> fileLoadInfos)
 	{
 		ClientDataNodeImpl node = new ClientDataNodeImpl(this);
 		node.setValue(_value != null ? _value : _partType.read(buff));
@@ -63,6 +69,51 @@ public class ClientFileNodeImpl implements ClientFileNode
 				if("$i".equals(expression))
 				{
 					node.setAttribute(attribute.getName(), String.valueOf(index));
+				}
+				else if("$l2gamedataname".equals(expression))
+				{
+					Object value = node.getValue();
+					if(!(value instanceof Number))
+					{
+						continue;
+					}
+
+					int intValue = ((Number) value).intValue();
+
+					ClientData loadedClientData = null;
+					for(FileLoadInfo info : fileLoadInfos)
+					{
+						File file = info.getFile();
+						if(StringUtils.containsIgnoreCase(file.getName(), "l2gamedataname"))
+						{
+							ClientData clientData = info.getClientData();
+							if(clientData != null)
+							{
+								loadedClientData = clientData;
+								break;
+							}
+						}
+					}
+
+					if(loadedClientData == null)
+					{
+						continue;
+					}
+
+					for(ClientDataNode dataNode : loadedClientData.getNodes())
+					{
+						if(dataNode instanceof ClientDataForNodeImpl)
+						{
+							List<ClientDataNode> nodes = ((ClientDataForNodeImpl) dataNode).getNodes();
+
+							if(intValue < nodes.size() && intValue >= 0)
+							{
+								ClientDataNode l2gameValue = nodes.get(intValue);
+
+								node.setAttribute(attribute.getName(), String.valueOf(l2gameValue.getValue()));
+							}
+						}
+					}
 				}
 				else
 				{

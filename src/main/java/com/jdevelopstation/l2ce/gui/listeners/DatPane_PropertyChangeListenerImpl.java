@@ -54,18 +54,18 @@ public class DatPane_PropertyChangeListenerImpl implements PropertyChangeListene
 			return;
 		}
 
-		Set<FileLoadInfo> s = new TreeSet<FileLoadInfo>(new FileListComparator());
+		Set<FileLoadInfo> fileLoadInfos = new TreeSet<>(new FileListComparator());
 		for(ClientFile cf : v.getClientFiles())
 		{
 			for(File f : dir.listFiles())
 			{
 				if(cf.match(f.getName()))
 				{
-					s.add(new FileLoadInfo(cf, f));
+					fileLoadInfos.add(new FileLoadInfo(cf, f, fileLoadInfos));
 				}
 			}
 		}
 
-		_datPane.getFileList().setListData(s.toArray(new FileLoadInfo[s.size()]));
+		_datPane.getFileList().setListData(fileLoadInfos.toArray(new FileLoadInfo[fileLoadInfos.size()]));
 	}
 }
