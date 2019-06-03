@@ -12,7 +12,7 @@ public interface L2CryptSupport
 {
 	static L2CryptSupport getInstance()
 	{
-		if(Boolean.TRUE)
+		if(Boolean.FALSE)
 		{
 			return new L2CryptBuildIn();
 		}
@@ -21,5 +21,5 @@ public interface L2CryptSupport
 
 	Pair<String, byte[]> decode(File f, String code);
 
-	void encode(File in, File out, String code, int encoding);
+	void encode(File in, File out, String code, int encoding) throws Exception;
 }

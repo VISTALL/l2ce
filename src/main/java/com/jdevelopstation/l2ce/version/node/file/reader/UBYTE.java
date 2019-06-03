@@ -4,14 +4,14 @@ import java.nio.ByteBuffer;
 
 /**
  * @author VISTALL
- * @since 2018-05-06
+ * @since 2019-06-01
  */
-public class BYTE implements ReadWriteType<Long>
+public class UBYTE implements ReadWriteType<Long>
 {
 	@Override
 	public Long read(ByteBuffer buffer)
 	{
-		return Long.valueOf(buffer.get());
+		return buffer.get() & 0xFFL;
 	}
 
 	@Override
@@ -28,3 +28,4 @@ public class BYTE implements ReadWriteType<Long>
 		}
 	}
 }
+

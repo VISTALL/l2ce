@@ -8,6 +8,7 @@ module l2ce {
 	requires java.management;
 
 	requires dom4j;
+	requires l2crypt;
 	requires org.apache.commons.lang3;
 	requires org.apache.commons.io;
 	requires log4j;

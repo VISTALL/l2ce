@@ -28,16 +28,16 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 /**
-* @author VISTALL
-* @date 1:36/29.05.2011
-*/
+ * @author VISTALL
+ * @date 1:36/29.05.2011
+ */
 public class FileLoadInfo implements Comparable<FileLoadInfo>
 {
 	private static final Logger log = Logger.getLogger(FileLoadInfo.class);
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH_mm_ss_dd_MM_yyyy");
-	private static final FileFilter XML_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.XMLFilter.Text"), new String[] { "xml" });
-	private static final FileFilter CSV_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.CVSFilter.Text"), new String[] { "csv" });
-	private static final FileFilter TSV_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.TVSFilter.Text"), new String[] { "tsv" });
+	private static final FileFilter XML_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.XMLFilter.Text"), new String[]{"xml"});
+	private static final FileFilter CSV_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.CVSFilter.Text"), new String[]{"csv"});
+	private static final FileFilter TSV_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.TVSFilter.Text"), new String[]{"tsv"});
 
 	private final ClientFile _clientFile;
 	private final File _file;
@@ -58,8 +58,12 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 		if(_clientData != null)
 		{
 			for(ClientDataNode node : _clientData.getNodes())
+			{
 				if(node instanceof ClientDataForNodeImpl && ((ClientDataForNodeImpl) node).getForName().equals("data"))
+				{
 					count = ((ClientDataForNodeImpl) node).getNodes().size();
+				}
+			}
 		}
 		return _file.getName() + " [" + count + "]";
 	}
@@ -70,8 +74,12 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 		if(_clientData != null)
 		{
 			for(ClientDataNode node : _clientData.getNodes())
+			{
 				if(node instanceof ClientDataForNodeImpl && ((ClientDataForNodeImpl) node).getForName().equals("data"))
+				{
 					count = ((ClientDataForNodeImpl) node).getNodes().size();
+				}
+			}
 		}
 		return count;
 	}
@@ -100,7 +108,9 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 	public void load(final String arg, final DatPane dat, final boolean silent)
 	{
 		if(isDisabled())
+		{
 			return;
+		}
 
 		setDisabled(true);
 
@@ -116,37 +126,52 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 					{
 						_clientData = _clientFile.parse(f.getLeft(), f.getRight());
 					}
+
+					FileLoadInfo.this.notify(dat, silent, false);
 				}
-				finally
+				catch(Throwable e)
 				{
 					setDisabled(false);
 
-					EventQueue.invokeLater(new ListRepaintTask(dat.getFileList()));
-					
-					if (!silent)
-						JOptionPane.showMessageDialog(dat, "Done");
+					_log.error(e, e);
+
+					FileLoadInfo.this.notify(dat, silent, true);
 				}
 			}
 		}));
 	}
 
+	private void notify(DatPane dat, boolean silent, boolean failed)
+	{
+		setDisabled(false);
+
+		EventQueue.invokeLater(new ListRepaintTask(dat.getFileList()));
+
+		if(!silent)
+		{
+			JOptionPane.showMessageDialog(dat, failed ? "Failed" : "Done");
+		}
+	}
+
 	public void export(final DatPane dat)
 	{
-		@SuppressWarnings("serial")
-		final JFileChooser chooser = new JFileChooser(GeneralProperties.LAST_EXPORT_DIRECTORY)
+		@SuppressWarnings("serial") final JFileChooser chooser = new JFileChooser(GeneralProperties.LAST_EXPORT_DIRECTORY)
 		{
 			@Override
 			public void approveSelection()
 			{
 				File f = getSelectedFile();
 				//if file not accepted, missing extension
-				if (!getFileFilter().accept(f))
-					f = new File(f.getAbsolutePath()+"."+((ExtensionFileFilter)getFileFilter()).getFirstExtension());
-
-				if (f.exists())
+				if(!getFileFilter().accept(f))
 				{
-					int result = JOptionPane.showConfirmDialog(this, BundleUtils.getInstance().getBundle("DatPane.ExportButton.DialogExists.Message"), BundleUtils.getInstance().getBundle("DatPane.ExportButton.DialogExists.Title"), JOptionPane.YES_NO_CANCEL_OPTION);
-					switch (result)
+					f = new File(f.getAbsolutePath() + "." + ((ExtensionFileFilter) getFileFilter()).getFirstExtension());
+				}
+
+				if(f.exists())
+				{
+					int result = JOptionPane.showConfirmDialog(this, BundleUtils.getInstance().getBundle("DatPane.ExportButton.DialogExists.Message"), BundleUtils.getInstance().getBundle("DatPane" +
+							".ExportButton.DialogExists.Title"), JOptionPane.YES_NO_CANCEL_OPTION);
+					switch(result)
 					{
 						case JOptionPane.YES_OPTION:
 							super.approveSelection();
@@ -183,17 +208,21 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 					String saveFile = f.getAbsolutePath();
 
 					//if file not accepted, missing extension
-					if (!chooser.getFileFilter().accept(f))
-						saveFile += "."+((ExtensionFileFilter) chooser.getFileFilter()).getFirstExtension();
+					if(!chooser.getFileFilter().accept(f))
+					{
+						saveFile += "." + ((ExtensionFileFilter) chooser.getFileFilter()).getFirstExtension();
+					}
 
-					if (chooser.getFileFilter() == XML_FILTER)
+					if(chooser.getFileFilter() == XML_FILTER)
+					{
 						_clientData.toXML(saveFile);
-					else if (chooser.getFileFilter() == CSV_FILTER)
+					}
+					else if(chooser.getFileFilter() == CSV_FILTER)
 					{
 						//TODO: csv save
 						JOptionPane.showMessageDialog(MainFrame.getInstance(), "CSV not supported yet");
 					}
-					else if (chooser.getFileFilter() == TSV_FILTER)
+					else if(chooser.getFileFilter() == TSV_FILTER)
 					{
 						//TODO: tsv save
 						JOptionPane.showMessageDialog(MainFrame.getInstance(), "TSV not supported yet");
@@ -208,7 +237,9 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 	public void save(final DatPane dat)
 	{
 		if(GeneralProperties.SAVE_WITHOUT_DIALOG)
+		{
 			save0(_file);
+		}
 		else
 		{
 			//TODO [VISTALL] save dialog
@@ -219,7 +250,9 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 	private void save0(final File desc)
 	{
 		if(isDisabled() || _clientData == null)
+		{
 			return;
+		}
 
 		setDisabled(true);
 		EventQueue.invokeLater(new RunnableImpl()
@@ -272,7 +305,9 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 	{
 		final ClientVersion v = ClientVersionHolder.getInstance().getCurrentVersion();
 		if(v == null)
+		{
 			return;
+		}
 
 		final JFileChooser chooser = new JFileChooser(GeneralProperties.LAST_IMPORT_DIRECTORY);
 		chooser.setDialogType(JFileChooser.OPEN_DIALOG);
@@ -311,7 +346,9 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 	public void modify(final DatPane datPane)
 	{
 		if(_clientData == null || isDisabled())
+		{
 			return;
+		}
 
 		modify0(_clientData);
 
@@ -325,14 +362,18 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 		{
 			if(node instanceof ClientDataNodeImpl)
 			{
-				ClientDataNodeImpl dataNode = (ClientDataNodeImpl)node;
-				ClientFileNodeImpl fileNode = (ClientFileNodeImpl)dataNode.getFileNode();
+				ClientDataNodeImpl dataNode = (ClientDataNodeImpl) node;
+				ClientFileNodeImpl fileNode = (ClientFileNodeImpl) dataNode.getFileNode();
 
 				if(fileNode.getModifier() != null)
+				{
 					fileNode.getModifier().modify(dataNode, container);
+				}
 			}
 			else if(node instanceof ClientNodeContainer)
-				modify0((ClientNodeContainer<ClientDataNode>)node);
+			{
+				modify0((ClientNodeContainer<ClientDataNode>) node);
+			}
 		}
 	}
 

@@ -6,6 +6,8 @@
 			<node name="skill_id" reader="UINT"/>
 			<node name="skill_level" reader="BYTE"/>
 			<node name="skill_sublevel" reader="SHORT"/>
+			<node name="unknown_1" reader="BYTE"/>
+			<node name="unknown_2" reader="BYTE"/>
 			<node name="equiptype" reader="BYTE"/>
 			<node name="attack_item_types" reader="BYTE"/>
 			<for name="attack_item_types">
@@ -24,14 +26,14 @@
 
 			<node name="caster_buffs" reader="BYTE"/>
 			<for name="caster_buffs">
-				<node name="buff_id" reader="UINT"/>
-				<node name="buff_level" reader="SHORT"/>
+				<node name="buff_id" reader="USHORT"/>
+				<node name="buff_level" reader="BYTE"/>
 				<node name="buff_sublevel" reader="SHORT"/>
 			</for>
 			<node name="target_buffs" reader="BYTE"/>
 			<for name="target_buffs">
-				<node name="buff_id" reader="UINT"/>
-				<node name="buff_level" reader="SHORT"/>
+				<node name="buff_id" reader="USHORT"/>
+				<node name="buff_level" reader="BYTE"/>
 				<node name="buff_sublevel" reader="SHORT"/>
 			</for>
 		</for>
@@ -92,6 +94,7 @@
 			<node name="enchant_desc" reader="UINT"/>
 			<node name="enchant_desc_param" reader="UINT"/>
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
 
 	<file pattern="l2gamedataname.dat">
@@ -107,7 +110,9 @@
 	<file pattern="MinimapRegion.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
-			<node name="regionid" reader="SHORT"/>
+			<node name="regionid" reader="SHORT">
+				<attribute name="index" expression="$i"/>
+			</node>
 			<node name="IconTexNormal" reader="UINT"/>
 			<node name="IconTexOver" reader="UINT"/>
 			<node name="IconTexPushed" reader="UINT"/>
@@ -123,7 +128,33 @@
 				<node name="unk2" reader="INT"/>
 			</for>
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
+
+	<file pattern="MinimapRegion_Classic.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="regionid" reader="SHORT">
+				<attribute name="index" expression="$i"/>
+			</node>
+			<node name="IconTexNormal" reader="UINT"/>
+			<node name="IconTexOver" reader="UINT"/>
+			<node name="IconTexPushed" reader="UINT"/>
+			<node name="WorldLocX" reader="INT"/>
+			<node name="WorldLocY" reader="INT"/>
+			<node name="Width" reader="SHORT"/>
+			<node name="Height" reader="SHORT"/>
+			<node name="DescOffsetX" reader="SHORT"/>
+			<node name="DescOffsetY" reader="SHORT"/>
+			<node name="DescFontName" reader="UINT"/>
+			<node name="unk1" reader="SHORT_SHORT"/>
+			<for name="unk1">
+				<node name="unk2" reader="INT"/>
+			</for>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
 	<file pattern="teleportlist.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
@@ -132,6 +163,18 @@
 			<node name="teleport_price" reader="UINT"/>
 			<node name="unknown_2" reader="UINT"/>
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="teleportlist_Classic.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="teleport_id" reader="UINT"/>
+			<node name="unknown_1" reader="UINT"/>
+			<node name="teleport_price" reader="UINT"/>
+			<node name="unknown_2" reader="UINT"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
 
 	<file pattern="HuntingZone-[\w]+\.dat">
@@ -158,6 +201,34 @@
 			</for>
 			<node name="instantzone_id" reader="UINT"/>
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="HuntingZone_Classic-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT"/>
+			<node name="type" reader="UINT"/>
+
+			<node name="rc_level_min" reader="UINT"/>
+			<node name="rc_level_max" reader="UINT"/>
+
+			<node name="start_npc_x" reader="FLOAT"/>
+			<node name="start_npc_y" reader="FLOAT"/>
+			<node name="start_npc_z" reader="FLOAT"/>
+
+			<node name="desc" reader="ASCF"/>
+			<node name="search_zoneid" reader="UINT"/>
+			<node name="name" reader="ASCF"/>
+			<node name="regionid" reader="SHORT"/>
+			<node name="npc_id" reader="UINT"/>
+			<node name="quest_id" reader="BYTE"/>
+			<for name="quest_id">
+				<node name="quest_id_param" reader="SHORT"/>
+			</for>
+			<node name="instantzone_id" reader="UINT"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
 
 	<file pattern="ZoneName-[\w]+\.dat">
@@ -181,8 +252,60 @@
 			<node name="Continent" reader="USHORT"/>
 			<node name="CurrentLayer" reader="USHORT"/>
 			<node name="TotalLayers" reader="USHORT"/>
-			<node name="TownCenterX" reader="UINT"/>
-			<node name="TownCenterY" reader="UINT"/>
+			<node name="TownCenterX" reader="INT"/>
+			<node name="TownCenterY" reader="INT"/>
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="ZoneName_Classic-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="ID" reader="USHORT"/>
+			<node name="MapX" reader="USHORT"/>
+			<node name="MapY" reader="USHORT"/>
+			<node name="Top" reader="FLOAT"/>
+			<node name="Bottom" reader="FLOAT"/>
+			<node name="Name" reader="ASCF"/>
+			<node name="TownBtnLocX" reader="SHORT"/>
+			<node name="TownBtnLocY" reader="SHORT"/>
+			<node name="TownMapX" reader="INT"/>
+			<node name="TownMapY" reader="INT"/>
+			<node name="TownMapWidth" reader="SHORT"/>
+			<node name="TownMapHeight" reader="SHORT"/>
+			<node name="TownMapScale" reader="FLOAT"/>
+			<node name="TownMapTex" reader="INT"/>
+			<node name="Color" reader="USHORT"/>
+			<node name="Continent" reader="USHORT"/>
+			<node name="CurrentLayer" reader="USHORT"/>
+			<node name="TotalLayers" reader="USHORT"/>
+			<node name="TownCenterX" reader="INT"/>
+			<node name="TownCenterY" reader="INT"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="systemmsg-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT"/>
+			<node name="UNK_0" reader="UINT"/>
+			<node name="message" reader="ASCF"/>
+			<node name="group" reader="UINT"/>
+			<node name="color" reader="INT"/>
+			<node name="sound" reader="INT"/>
+			<node name="voice" reader="INT"/>
+			<node name="win" reader="UINT"/>
+			<node name="font" reader="UINT"/>
+			<node name="lftime" reader="UINT"/>
+			<node name="bkg" reader="UINT"/>
+			<node name="anim" reader="UINT"/>
+			<node name="scrnmsg" reader="ASCF"/>
+			<node name="scrnmsgparam" reader="ASCF"/>
+			<node name="gfxscrnmsg" reader="ASCF"/>
+			<node name="gfxscrnparam" reader="ASCF"/>
+			<node name="type" reader="ASCF"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
 </version>

@@ -67,7 +67,7 @@ public class L2EncDec implements L2CryptSupport
 		return null;
 	}
 
-	public void encode(File in, File out, String code, int encoding)
+	public void encode(File in, File out, String code, int encoding) throws Exception
 	{
 		try
 		{
