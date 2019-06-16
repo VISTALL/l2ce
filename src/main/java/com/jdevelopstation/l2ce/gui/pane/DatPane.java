@@ -1,33 +1,17 @@
 package com.jdevelopstation.l2ce.gui.pane;
 
-import java.awt.Dimension;
-import java.awt.Insets;
-
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
 import com.jdevelopstation.commons.properties.listeners.PropertyListener;
-import com.jdevelopstation.l2ce.gui.listeners.DatPane_ArgBoxItemListenerImpl;
-import com.jdevelopstation.l2ce.gui.listeners.DatPane_ClearButtonActionListenerImpl;
-import com.jdevelopstation.l2ce.gui.listeners.DatPane_ExportButtonActionListenerImpl;
-import com.jdevelopstation.l2ce.gui.listeners.DatPane_FileListListSelectionListenerImpl;
-import com.jdevelopstation.l2ce.gui.listeners.DatPane_ImportButtonActionListenerImpl;
-import com.jdevelopstation.l2ce.gui.listeners.DatPane_LoadButtonActionListenerImpl;
-import com.jdevelopstation.l2ce.gui.listeners.DatPane_ModifyButtonActionListenerImpl;
-import com.jdevelopstation.l2ce.gui.listeners.DatPane_PropertyChangeListenerImpl;
-import com.jdevelopstation.l2ce.gui.listeners.DatPane_SaveButtonActionListenerImpl;
+import com.jdevelopstation.l2ce.gui.etc.FileLoadInfo;
+import com.jdevelopstation.l2ce.gui.listeners.*;
 import com.jdevelopstation.l2ce.gui.renders.DatPane_FileListCellRenderer;
 import com.jdevelopstation.l2ce.properties.GeneralProperties;
 import com.jdevelopstation.l2ce.utils.BundleUtils;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author VISTALL
@@ -39,6 +23,7 @@ public class DatPane extends JPanel
 	private JPanel _contentPane;
 	private JButton _loadButton;
 	private JButton _saveButton;
+	private JButton saveNoCrypt;
 	private JButton _importButton;
 	private JButton _exportButton;
 	private JButton _clearButton;
@@ -54,6 +39,7 @@ public class DatPane extends JPanel
 		_exportButton.setText(BundleUtils.getInstance().getBundle("DatPane.ExportButton.Text"));
 		_importButton.setText(BundleUtils.getInstance().getBundle("DatPane.ImportButton.Text"));
 		_saveButton.setText(BundleUtils.getInstance().getBundle("DatPane.SaveButton.Text"));
+		saveNoCrypt.setText(BundleUtils.getInstance().getBundle("DatPane.SaveButtonNoCrypt.Text"));
 		_clearButton.setText(BundleUtils.getInstance().getBundle("DatPane.ClearButton.Text"));
 
 		PropertyListener.getInstance().addListener(GeneralProperties.class, new DatPane_PropertyChangeListenerImpl(this));
@@ -64,6 +50,13 @@ public class DatPane extends JPanel
 		_importButton.addActionListener(new DatPane_ImportButtonActionListenerImpl(this));
 		_saveButton.addActionListener(new DatPane_SaveButtonActionListenerImpl(this));
 		_modifyButton.addActionListener(new DatPane_ModifyButtonActionListenerImpl(this));
+
+		saveNoCrypt.addActionListener(e -> {
+			FileLoadInfo c = (FileLoadInfo) getFileList().getSelectedValue();
+			if(c == null)
+				return;
+			c.save(this, false);
+		});
 
 		_arg.setModel(new DefaultComboBoxModel(new String[]{
 				"-s",
@@ -93,6 +86,11 @@ public class DatPane extends JPanel
 	public JButton getSaveButton()
 	{
 		return _saveButton;
+	}
+
+	public JButton getSaveNoCrypt()
+	{
+		return saveNoCrypt;
 	}
 
 	public JButton getImportButton()
@@ -138,29 +136,35 @@ public class DatPane extends JPanel
 		final JPanel panel1 = new JPanel();
 		panel1.setLayout(new GridLayoutManager(5, 1, new Insets(0, 0, 0, 0), -1, -1));
 		_contentPane.add(panel1, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
-		final JPanel panel2 = new JPanel();
-		panel2.setLayout(new GridLayoutManager(5, 1, new Insets(0, 0, 0, 0), -1, -1));
-		panel1.add(panel2, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_EAST, GridConstraints.FILL_VERTICAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(101, 119), null, 0, false));
+
+		final JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new GridLayoutManager(6, 1, new Insets(0, 0, 0, 0), -1, -1));
+		panel1.add(buttonPanel, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_EAST, GridConstraints.FILL_VERTICAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(101, 119), null, 0, false));
 		_loadButton = new JButton();
 		_loadButton.setEnabled(false);
 		_loadButton.setText("Load");
-		panel2.add(_loadButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(77, 25), null, 0, false));
+		buttonPanel.add(_loadButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(77, 25), null, 0, false));
 		_saveButton = new JButton();
 		_saveButton.setEnabled(false);
 		_saveButton.setText("Save");
-		panel2.add(_saveButton, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(77, 25), null, 0, false));
+		buttonPanel.add(_saveButton, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(77, 25), null, 0, false));
+		saveNoCrypt = new JButton();
+		saveNoCrypt.setEnabled(false);
+		saveNoCrypt.setText("Save (no crypt)");
+		buttonPanel.add(saveNoCrypt, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED,
+				null, new Dimension(77, 25), null, 0, false));
 		_importButton = new JButton();
 		_importButton.setEnabled(false);
 		_importButton.setText("Import");
-		panel2.add(_importButton, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+		buttonPanel.add(_importButton, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 		_exportButton = new JButton();
 		_exportButton.setEnabled(false);
 		_exportButton.setText("Export");
-		panel2.add(_exportButton, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+		buttonPanel.add(_exportButton, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 		_modifyButton = new JButton();
 		_modifyButton.setEnabled(false);
 		_modifyButton.setText("Modify");
-		panel2.add(_modifyButton, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+		buttonPanel.add(_modifyButton, new GridConstraints(5, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 		final Spacer spacer1 = new Spacer();
 		panel1.add(spacer1, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
 		_clearButton = new JButton();

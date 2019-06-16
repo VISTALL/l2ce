@@ -47,7 +47,11 @@ public class L2EncDec implements L2CryptSupport
 		//	System.out.println("Ret val: "+retVal);
 		//	if(retVal == 0)
 
-			Thread.sleep(1000L);
+			int exitValue = process.waitFor();
+			if(exitValue != 0)
+			{
+				throw new IllegalArgumentException("wrong exit");
+			}
 			return out.exists() ? Pair.of(f.getName(), Files.readAllBytes(out.toPath())) : null;
 
 			/*Process process = Runtime.getRuntime().exec("l2encdec\\l2encdec.exe "+ code+" "+ f.getAbsolutePath());
@@ -56,15 +60,10 @@ public class L2EncDec implements L2CryptSupport
 			if(retVal == 0)
 				return new File("dec-" + f.getName());*/
 		}
-		catch(IOException e)
-		{
-			log.error(e);
-		}
-		catch (InterruptedException e)
+		catch(Exception e)
 		{
 			throw new RuntimeException(e);
 		}
-		return null;
 	}
 
 	public void encode(File in, File out, String code, int encoding) throws Exception

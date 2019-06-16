@@ -45,7 +45,9 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 	public boolean fromXML(ClientVersion version, File file)
 	{
 		if(!file.exists())
+		{
 			return false;
+		}
 
 		SAXReader reader = new SAXReader();
 		reader.setValidation(false);
@@ -60,7 +62,9 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 			ClientFile clientFile = version.findClientFile(_file);
 
 			if(clientFile == null)
+			{
 				return false;
+			}
 
 			read(this, clientFile, rootElement);
 			return true;
@@ -81,14 +85,20 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 			ClientDataNode dataNode = container.get(i);
 			ClientFileNode fileNode = container2.get(i);
 			if(dataNode.isHidden())
+			{
 				continue;
+			}
 
 			if(dataNode instanceof ClientDataNodeImpl)
 			{
 				if(fileNode.getValue() != null)
+				{
 					dataNode.setValue(fileNode.getValue());
+				}
 				else
+				{
 					dataNode.setValue(xmlElement.element(dataNode.getName()).getText());
+				}
 			}
 			else if(dataNode instanceof ClientDataForNodeImpl)
 			{
@@ -116,7 +126,9 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 
 					Long val = (Long) node.getValue();
 					if(val == Long.MIN_VALUE)
+					{
 						node.setValue(index);
+					}
 				}
 			}
 		}
@@ -164,7 +176,9 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 		byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
 
 		for(ClientDataNode node : this)
+		{
 			write(node, byteBuffer);
+		}
 
 		int position = byteBuffer.position();
 		byteBuffer.position(0);
@@ -197,7 +211,9 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 		{
 			ClientNodeContainer<ClientDataNode> container = (ClientNodeContainer) node;
 			for(ClientDataNode n : container)
+			{
 				write(n, buffer);
+			}
 		}
 	}
 
@@ -205,21 +221,25 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 	{
 		File f = new File(out);
 		if(f.exists())
+		{
 			f.delete();
+		}
 
 		try
 		{
 			Document doc = DocumentFactory.getInstance().createDocument();
 
 			FileOutputStream fos = new FileOutputStream(f);
-			OutputFormat format = OutputFormat.createPrettyPrint();
-			format.setIndent("\t");
+			OutputFormat format = new OutputFormat("\t", false, "UTF-8");
+			format.setNewlines(true);
 
 			Element rootElement = doc.addElement("out");
 			rootElement.addAttribute("name", _file);
 
 			for(ClientDataNode node : getNodes())
+			{
 				node.toXML(rootElement);
+			}
 
 			XMLWriter writer = new XMLWriter(fos, format);
 			writer.write(doc);

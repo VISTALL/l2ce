@@ -8,6 +8,84 @@
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
+	<file pattern="npcgrp.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="npc_id" reader="UINT"/>
+			<node name="class_name" reader="UNICODE"/>
+			<node name="mesh_name" reader="UNICODE"/>
+			<node name="texture_name" reader="UINT"/>
+			<for name="texture_name">
+				<node name="class" reader="UNICODE"/>
+			</for>
+			<node name="texture_name_second" reader="UINT"/>
+			<for name="texture_name_second">
+				<node name="class" reader="UNICODE"/>
+			</for>
+			<node name="property_list" reader="SHORT_SHORT"/>
+			<for name="property_list">
+				<node name="param_property_list" reader="UINT"/>
+			</for>
+			<node name="npc_speed" reader="FLOAT"/>
+			<node name="unknown_0_size" reader="UINT"/>
+			<for name="unknown_0_size">
+				<node name="unknown_0" reader="UINT"/>
+			</for>
+			<node name="attack_sound1" reader="UINT"/>
+			<for name="attack_sound1">
+				<node name="param_attack_sound1" reader="UNICODE"/>
+			</for>
+			<node name="defense_sound1" reader="UINT"/>
+			<for name="defense_sound1">
+				<node name="param_defense_sound1" reader="UNICODE"/>
+			</for>
+			<node name="damage_sound" reader="UINT"/>
+			<for name="damage_sound">
+				<node name="param_damage_sound" reader="UNICODE"/>
+			</for>
+			<node name="deco_effect" reader="UINT"/>
+			<for name="deco_effect">
+				<node name="param_deco_effect" reader="UNICODE"/>
+				<node name="param_deco_effect_scale" reader="FLOAT"/>
+			</for>
+			<node name="unknown_1s" reader="SHORT_SHORT"/>
+			<for name="unknown_1s">
+				<node name="unknown_1" reader="UINT"/>
+			</for>
+			<node name="unknown_2s" reader="SHORT_SHORT"/>
+			<for name="unknown_2s">
+				<node name="unknown_2" reader="UINT"/>
+			</for>
+			<node name="attack_effect" reader="UNICODE"/>
+			<node name="unknown_2" reader="UINT"/>
+			<node name="sound_vol" reader="FLOAT"/>
+			<node name="sound_radius" reader="FLOAT"/>
+			<node name="sound_random" reader="FLOAT"/>
+			<node name="social" reader="UINT"/>
+			<node name="hpshowable" reader="UINT"/>
+			<node name="dialog_sound" reader="UINT"/>
+			<for name="dialog_sound">
+				<node name="param_dialog_sound" reader="ASCF"/>
+			</for>
+			<node name="some_new_thing" reader="UINT"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+	<file pattern="npcname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT"/>
+			<node name="name" reader="ASCF">
+				<modifier pattern="%s(id:%d)">
+					<node name="name"/>
+					<node name="id"/>
+				</modifier>
+			</node>
+			<node name="description" reader="ASCF"/>
+			<node name="rgb" reader="UINT"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
 	<file pattern="itemname-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">

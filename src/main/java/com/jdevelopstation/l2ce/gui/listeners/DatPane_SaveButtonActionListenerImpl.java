@@ -1,10 +1,10 @@
 package com.jdevelopstation.l2ce.gui.listeners;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import com.jdevelopstation.l2ce.gui.etc.FileLoadInfo;
 import com.jdevelopstation.l2ce.gui.pane.DatPane;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author VISTALL
@@ -25,6 +25,6 @@ public class DatPane_SaveButtonActionListenerImpl implements ActionListener
 		FileLoadInfo c = (FileLoadInfo) _datPane.getFileList().getSelectedValue();
 		if(c == null)
 			return;
-		c.save(_datPane);
+		c.save(_datPane, true);
 	}
 }

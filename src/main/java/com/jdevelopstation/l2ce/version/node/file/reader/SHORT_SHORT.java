@@ -66,7 +66,7 @@ public class SHORT_SHORT implements ReadWriteType<Integer>
 		buff.put(b);
 	}
 
-	private static byte[] compactIntToByteArray(int v)
+	public byte[] compactIntToByteArray(int v)
 	{
 		boolean negative = v < 0;
 		v = Math.abs(v);

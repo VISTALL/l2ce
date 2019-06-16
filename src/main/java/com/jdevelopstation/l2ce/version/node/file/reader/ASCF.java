@@ -1,8 +1,7 @@
 package com.jdevelopstation.l2ce.version.node.file.reader;
 
 import java.nio.ByteBuffer;
-
-import org.apache.commons.lang3.StringUtils;
+import java.nio.charset.Charset;
 
 /**
  * @author VISTALL
@@ -10,96 +9,69 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class ASCF implements ReadWriteType<String>
 {
+	private static final SHORT_SHORT compactImpl = new SHORT_SHORT();
+	private static Charset utf16leCharset = Charset.forName("utf-16le");
+	private static Charset defaultCharset = Charset.forName("cp1252");
+
+	private static final boolean isRaw = true;
+
 	@Override
 	public String read(ByteBuffer buff)
 	{
-		int size = buff.get() & 0xFF;
-		if(size == 0)
-			return StringUtils.EMPTY;
-
-		if(size >= 192)
+		int len = compactImpl.read(buff);
+		if(len == 0)
 		{
-			buff.position(buff.position() - 1);
-			size = buff.getShort() & 0xFFFF;
+			return "";
 		}
-
-		if(size >= Short.MAX_VALUE)
-			buff.position(buff.position() + 1);
-
-		if(size >= 128)
-		{
-			if(buff.getChar(buff.position()) == 0)
-				return StringUtils.EMPTY;
-
-			StringBuilder b = new StringBuilder();
-
-			char d = 0;
-			while((d = buff.getChar()) != 0)
-				b.append(d);
-
-			return b.toString();
-		}
-		else
-		{
-			StringBuilder b = new StringBuilder();
-
-			byte d = 0;
-			while((d = buff.get()) != 0)
-				b.append((char) d);
-
-			return b.toString();
-		}
+		byte[] bytes = new byte[len > 0 ? len : -2 * len];
+		buff.get(bytes);
+		return checkAndReplaceNewLine(isRaw, new String(bytes, 0, bytes.length - (len > 0 ? 1 : 2), len > 0 ? defaultCharset : utf16leCharset).intern());
 	}
 
 	@Override
 	public void write(Object val, ByteBuffer buff)
 	{
-		if(val instanceof String)
+		if(!(val instanceof String))
 		{
-			String value = (String) val;
-			int length = value.length() + 1;
-
-			if(!value.isEmpty())
-			{
-				char[] chars = value.toCharArray();
-
-				boolean unicode = false;
-
-				for(char c : value.toCharArray())
-					if(c > 255 && c != 1081)
-						unicode = true;
-
-				if(length >= 64)
-				{
-					if(unicode)
-						buff.put((byte) (length + 128));
-					else
-						buff.put((byte) length);
-					buff.put((byte)(length >> 8));
-				}
-				else
-				{
-					// set highest bit cause to indicate it is Unicode
-					if(unicode)
-						length += 128;
-
-					buff.put((byte) length);
-				}
-
-				if(unicode)
-				{
-					for(char c : chars)
-						buff.putChar(c);
-					buff.put((byte) 0x00);
-				}
-				else
-				{
-					for(char c : chars)
-						buff.put((byte)c);
-				}
-			}
-
-			buff.put((byte) 0); //term
+			throw new UnsupportedOperationException();
 		}
+
+		String stringValue = (String) val;
+		if(stringValue.isEmpty())
+		{
+			compactImpl.write(0, buff);
+			return;
+		}
+
+		if(!isRaw)
+		{
+			stringValue = checkAndReplaceNewLine(stringValue);
+		}
+		stringValue = stringValue + '\000';
+
+		boolean def = defaultCharset.newEncoder().canEncode(stringValue);
+		byte[] bytes = stringValue.getBytes(def ? defaultCharset : utf16leCharset);
+		byte[] bSize = compactImpl.compactIntToByteArray(def ? bytes.length : -bytes.length / 2);
+
+		buff.put(bSize);
+		buff.put(bytes);
+	}
+
+	public static String checkAndReplaceNewLine(String str)
+	{
+		if(str.contains("\\r\\n"))
+		{
+			str = str.replace("\\r\\n", "\r\n");
+		}
+		return str;
+	}
+
+	public static String checkAndReplaceNewLine(boolean isRaw, String str)
+	{
+		if(!isRaw && str.contains("\r\n"))
+		{
+			str = str.replace("\r\n", "\\r\\n");
+		}
+		return str;
 	}
 }

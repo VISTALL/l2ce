@@ -25,6 +25,7 @@ import javax.swing.filechooser.FileFilter;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Set;
 
@@ -237,20 +238,19 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 		});
 	}
 
-	public void save(final DatPane dat)
+	public void save(final DatPane dat, boolean crypt)
 	{
 		if(GeneralProperties.SAVE_WITHOUT_DIALOG)
 		{
-			save0(_file);
+			save0(_file, crypt);
 		}
 		else
 		{
 			//TODO [VISTALL] save dialog
 		}
-
 	}
 
-	private void save0(final File desc)
+	private void save0(final File desc, boolean crypt)
 	{
 		if(isDisabled() || _clientData == null)
 		{
@@ -292,7 +292,14 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 
 					_clientData.toDat(temp);
 
-					L2CryptSupport.getInstance().encode(temp, desc, "-h", 413);
+					if(crypt)
+					{
+						L2CryptSupport.getInstance().encode(temp, desc, "-h", 413);
+					}
+					else
+					{
+						Files.copy(temp.toPath(), desc.toPath());
+					}
 
 					JOptionPane.showMessageDialog(MainFrame.getInstance(), "Done");
 				}

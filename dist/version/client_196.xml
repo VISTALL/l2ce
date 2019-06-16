@@ -340,4 +340,267 @@
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
+
+	<file pattern="npcgrp.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="npc_id" reader="USHORT"/>
+			<node name="class_name" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="mesh_name" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="texture_name" reader="CNTR"/>
+			<for name="texture_name">
+				<node name="class" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="texture_name_second" reader="UINT"/>
+			<for name="texture_name_second">
+				<node name="param_texture_name_second" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="property_list" reader="CNTR"/>
+			<for name="property_list">
+				<node name="param_property_list" reader="USHORT"/>
+			</for>
+			<node name="npc_speed" reader="FLOAT"/>
+			<node name="attack_sound1" reader="CNTR"/>
+			<for name="attack_sound1" >
+				<node name="param_attack_sound1" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="defense_sound1" reader="CNTR"/>
+			<for name="defense_sound1">
+				<node name="param_defense_sound1" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="damage_sound" reader="CNTR"/>
+			<for name="damage_sound">
+				<node name="param_damage_sound" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="deco_effect" reader="CNTR"/>
+			<for name="deco_effect">
+				<node name="param_deco_effect" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+				<node name="param_deco_effect_scale" reader="FLOAT"/>
+			</for>
+			<node name="quest" reader="CNTR"/>
+			<for name="quest">
+				<node name="quest_be" reader="USHORT"/>
+				<node name="quest_step" reader="UBYTE"/>
+			</for>
+			<node name="attack_effect" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="sound_vol" reader="UBYTE"/>
+			<node name="sound_radius" reader="UBYTE"/>
+			<node name="sound_random" reader="UBYTE"/>
+			<node name="social" reader="UBYTE"/>
+			<node name="hpshowable" reader="UBYTE"/>
+			<node name="dialog_sound" reader="UINT"/>
+			<for name="dialog_sound">
+				<node name="param_dialog_sound" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="Silhouette" reader="UBYTE"/>
+			<node name="summon_sort" reader="UBYTE"/>
+			<node name="summon_max_count" reader="UBYTE"/>
+			<node name="summon_grade" reader="UBYTE"/>
+			<node name="drawscale" reader="FLOAT"/>
+			<node name="use_zoomincam" reader="FLOAT"/>
+			<node name="npc_icon_name" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="sound_priority" reader="UBYTE"/>
+			<node name="ground_high" reader="USHORT"/>
+			<node name="ground_low" reader="USHORT"/>
+			<node name="collision_radius" reader="FLOAT"/>
+			<node name="collision_radius_2" reader="FLOAT"/>
+			<node name="collision_height" reader="FLOAT"/>
+			<node name="collision_height_2" reader="FLOAT"/>
+			<node name="slot_lhand" reader="UINT"/>
+			<node name="slot_rhand" reader="UINT"/>
+			<node name="slot_chest" reader="UINT"/>
+			<node name="org_hp" reader="DOUBLE"/>
+			<node name="org_mp" reader="DOUBLE"/>
+			<node name="npc_type" reader="SHORT"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="npcgrp_Classic.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="npc_id" reader="USHORT"/>
+			<node name="class_name" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="mesh_name" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="texture_name" reader="CNTR"/>
+			<for name="texture_name">
+				<node name="class" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="texture_name_second" reader="UINT"/>
+			<for name="texture_name_second">
+				<node name="param_texture_name_second" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="property_list" reader="CNTR"/>
+			<for name="property_list">
+				<node name="param_property_list" reader="USHORT"/>
+			</for>
+			<node name="npc_speed" reader="FLOAT"/>
+			<node name="attack_sound1" reader="CNTR"/>
+			<for name="attack_sound1">
+				<node name="param_attack_sound1" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="defense_sound1" reader="CNTR"/>
+			<for name="defense_sound1">
+				<node name="param_defense_sound1" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="damage_sound" reader="CNTR"/>
+			<for name="damage_sound">
+				<node name="param_damage_sound" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="deco_effect" reader="CNTR"/>
+			<for name="deco_effect">
+				<node name="param_deco_effect" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+				<node name="param_deco_effect_scale" reader="FLOAT"/>
+			</for>
+			<node name="quest" reader="CNTR"/>
+			<for name="quest">
+				<node name="quest_be" reader="USHORT"/>
+				<node name="quest_step" reader="UBYTE"/>
+			</for>
+			<node name="attack_effect" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="sound_vol" reader="UBYTE"/>
+			<node name="sound_radius" reader="UBYTE"/>
+			<node name="sound_random" reader="UBYTE"/>
+			<node name="social" reader="UBYTE"/>
+			<node name="hpshowable" reader="UBYTE"/>
+			<node name="dialog_sound" reader="UINT"/>
+			<for name="dialog_sound">
+				<node name="param_dialog_sound" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="Silhouette" reader="UBYTE"/>
+			<node name="summon_sort" reader="UBYTE"/>
+			<node name="summon_max_count" reader="UBYTE"/>
+			<node name="summon_grade" reader="UBYTE"/>
+			<node name="drawscale" reader="FLOAT"/>
+			<node name="use_zoomincam" reader="FLOAT"/>
+			<node name="npc_icon_name" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="sound_priority" reader="UBYTE"/>
+			<node name="ground_high" reader="USHORT"/>
+			<node name="ground_low" reader="USHORT"/>
+			<node name="collision_radius" reader="FLOAT"/>
+			<node name="collision_radius_2" reader="FLOAT"/>
+			<node name="collision_height" reader="FLOAT"/>
+			<node name="collision_height_2" reader="FLOAT"/>
+			<node name="slot_lhand" reader="UINT"/>
+			<node name="slot_rhand" reader="UINT"/>
+			<node name="slot_chest" reader="UINT"/>
+			<node name="org_hp" reader="DOUBLE"/>
+			<node name="org_mp" reader="DOUBLE"/>
+			<node name="npc_type" reader="SHORT"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="castlename-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="namber" reader="UINT"/>
+			<node name="tag" reader="UINT"/>
+			<node name="id" reader="UINT"/>
+			<node name="name" reader="ASCF"/>
+			<node name="loc" reader="ASCF"/>
+			<node name="desc" reader="ASCF"/>
+			<node name="mark" reader="INT"/>
+			<node name="markgray" reader="INT"/>
+			<node name="flagicon" reader="INT"/>
+			<node name="mercname" reader="ASCF"/>
+			<node name="regionid" reader="USHORT"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="factionname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="faction_id" reader="UINT"/>
+			<node name="faction_name" reader="ASCF"/>
+			<node name="emblem_texture" reader="INT"/>
+			<node name="emblem_big_texture" reader="INT"/>
+			<node name="faction_desc" reader="ASCF"/>
+			<node name="faction_npc" reader="CNTR"/>
+			<for name="faction_npc">
+				<node name="param_faction_npc" reader="UINT"/>
+			</for>
+			<node name="faction_area" reader="CNTR"/>
+			<for name="faction_area">
+				<node name="param_faction_area" reader="USHORT"/>
+			</for>
+			<node name="regionid" reader="USHORT"/>
+			<node name="monsterbook_use" reader="USHORT"/>
+			<node name="level_count" reader="UINT"/>
+			<for name="level_count">
+				<node name="faction_level" reader="USHORT"/>
+				<node name="level_icon" reader="INT"/>
+				<node name="level_quest" reader="CNTR"/>
+				<for name="level_quest">
+					<node name="param_level_quest" reader="UINT"/>
+				</for>
+
+				<node name="reward_list1" reader="ASCF"/>
+				<node name="reward_desc1" reader="ASCF"/>
+				<node name="reward_group1" reader="UINT"/>
+
+				<node name="reward_list2" reader="ASCF"/>
+				<node name="reward_desc2" reader="ASCF"/>
+				<node name="reward_group2" reader="UINT"/>
+
+				<node name="reward_list3" reader="ASCF"/>
+				<node name="reward_desc3" reader="ASCF"/>
+				<node name="reward_group3" reader="UINT"/>
+
+				<node name="reward_list4" reader="ASCF"/>
+				<node name="reward_desc4" reader="ASCF"/>
+				<node name="reward_group4" reader="UINT"/>
+
+				<node name="reward_list5" reader="ASCF"/>
+				<node name="reward_desc5" reader="ASCF"/>
+				<node name="reward_group5" reader="UINT"/>
+			</for>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
 </version>

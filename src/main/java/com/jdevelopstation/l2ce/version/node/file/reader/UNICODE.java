@@ -11,15 +11,21 @@ public class UNICODE implements ReadWriteType<String>
 	@Override
 	public String read(ByteBuffer buff)
 	{
-		int size = buff.getInt();
-		int real = size / 2;
+		int bytesCount = buff.getInt();
 
-		StringBuilder stringBuilder = new StringBuilder(size);
+		int charsCount = bytesCount / 2;
 
-		for (int i = 0; i < real; i++)
-			stringBuilder.append(buff.getChar());
+		char[] chars = new char[charsCount];
 
-		return stringBuilder.toString();
+		for(int i = 0; i < charsCount; i ++)
+		{
+			chars[i] = buff.getChar();
+		}
+
+		// normalize Windows lineseparator
+		String text = new String(chars);
+		text = text.replace("\r\n", "\n");
+		return text;
 	}
 
 	@Override
@@ -27,10 +33,15 @@ public class UNICODE implements ReadWriteType<String>
 	{
 		if(val instanceof String)
 		{
-			String stringVal = (String)val;
-			buff.putInt(stringVal.length() / 2);
-			for(char c : stringVal.toCharArray())
+			String stringVal = (String) val;
+			stringVal = stringVal.replace("\n", "\r\n");
+
+			buff.putInt(stringVal.length() * 2);
+			for(int i = 0; i < stringVal.length(); i++)
+			{
+				char c = stringVal.charAt(i);
 				buff.putChar(c);
+			}
 		}
 	}
 }
