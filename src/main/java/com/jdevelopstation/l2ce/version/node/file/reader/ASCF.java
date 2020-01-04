@@ -13,8 +13,6 @@ public class ASCF implements ReadWriteType<String>
 	private static Charset utf16leCharset = Charset.forName("utf-16le");
 	private static Charset defaultCharset = Charset.forName("cp1252");
 
-	private static final boolean isRaw = true;
-
 	@Override
 	public String read(ByteBuffer buff)
 	{
@@ -25,7 +23,9 @@ public class ASCF implements ReadWriteType<String>
 		}
 		byte[] bytes = new byte[len > 0 ? len : -2 * len];
 		buff.get(bytes);
-		return checkAndReplaceNewLine(isRaw, new String(bytes, 0, bytes.length - (len > 0 ? 1 : 2), len > 0 ? defaultCharset : utf16leCharset).intern());
+		String text = new String(bytes, 0, bytes.length - (len > 0 ? 1 : 2), len > 0 ? defaultCharset : utf16leCharset).intern();
+		text = text.replace("\r\n", "\n");
+		return text;
 	}
 
 	@Override
@@ -43,10 +43,8 @@ public class ASCF implements ReadWriteType<String>
 			return;
 		}
 
-		if(!isRaw)
-		{
-			stringValue = checkAndReplaceNewLine(stringValue);
-		}
+		stringValue = stringValue.replace("\n", "\r\n");
+
 		stringValue = stringValue + '\000';
 
 		boolean def = defaultCharset.newEncoder().canEncode(stringValue);
@@ -55,23 +53,5 @@ public class ASCF implements ReadWriteType<String>
 
 		buff.put(bSize);
 		buff.put(bytes);
-	}
-
-	public static String checkAndReplaceNewLine(String str)
-	{
-		if(str.contains("\\r\\n"))
-		{
-			str = str.replace("\\r\\n", "\r\n");
-		}
-		return str;
-	}
-
-	public static String checkAndReplaceNewLine(boolean isRaw, String str)
-	{
-		if(!isRaw && str.contains("\r\n"))
-		{
-			str = str.replace("\r\n", "\\r\\n");
-		}
-		return str;
 	}
 }

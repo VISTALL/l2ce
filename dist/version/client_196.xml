@@ -43,12 +43,16 @@
 	<file pattern="pawnanimdata.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
-			<node name="name_mapid" reader="UINT"/>
+			<node name="name_mapid" reader="UINT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
 			<node name="texture_params" reader="UINT"/>
 			<for name="texture_params">
 				<node name="index_param" reader="UINT"/>
 				<node name="index_num" reader="UINT"/>
-				<node name="param_mapid" reader="UINT"/>
+				<node name="param_mapid" reader="UINT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
 			</for>
 			<node name="int_params" reader="SHORT_SHORT"/>
 			<for name="int_params">
@@ -73,6 +77,31 @@
 	</file>
 
 	<file pattern="skillname-[\w]+\.dat">
+		<node name="data" reader="SHORT_SHORT"/>
+		<for name="data">
+			<node name="name" reader="ASCF"/>
+			<node name="index" reader="UINT"/>
+		</for>
+		<node name="size1" reader="UINT"/>
+		<for name="size1">
+			<node name="skill_id" reader="UINT"/>
+			<node name="skill_level" reader="SHORT"/>
+			<node name="skill_sublevel" reader="SHORT"/>
+			<node name="prev_skill_id" reader="UINT"/>
+			<node name="prev_skill_level" reader="SHORT"/>
+			<node name="prev_skill_sublevel" reader="SHORT"/>
+			<node name="name" reader="UINT"/>
+			<node name="desc" reader="UINT"/>
+			<node name="desc_param" reader="UINT"/>
+			<node name="enchant_name" reader="UINT"/>
+			<node name="enchant_name_param" reader="UINT"/>
+			<node name="enchant_desc" reader="UINT"/>
+			<node name="enchant_desc_param" reader="UINT"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="skillname_Classic-[\w]+\.dat">
 		<node name="data" reader="SHORT_SHORT"/>
 		<for name="data">
 			<node name="name" reader="ASCF"/>
@@ -307,6 +336,14 @@
 			<node name="type" reader="ASCF"/>
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="npcstring-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT"/>
+			<node name="text" reader="ASCF"/>
+		</for>
 	</file>
 
 	<file pattern="npcname-[\w]+\.dat">
@@ -600,6 +637,178 @@
 				<node name="reward_desc5" reader="ASCF"/>
 				<node name="reward_group5" reader="UINT"/>
 			</for>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="itemname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT"/>
+			<node name="name" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="additionalname" reader="ASCF"/>
+			<node name="description" reader="ASCF"/>
+			<node name="popup" reader="SHORT"/>
+			<node name="default_action" reader="ASCF"/>
+			<node name="use_order" reader="UINT"/>
+			<node name="name_class" reader="SHORT"/>
+			<node name="color" reader="BYTE"/>
+			<node name="Tooltip_Texture" reader="INT"/>
+			<node name="is_trade" reader="BYTE"/>
+			<node name="is_drop" reader="BYTE"/>
+			<node name="is_destruct" reader="BYTE"/>
+			<node name="is_private_store" reader="BYTE"/>
+			<node name="keep_type" reader="BYTE"/>
+			<node name="is_npctrade" reader="BYTE"/>
+			<node name="is_commission_store" reader="BYTE"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="EtcItemgrp.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="tag" reader="BYTE"/>
+			<node name="object_id" reader="UINT"/>
+			<node name="drop_type" reader="BYTE"/>
+			<node name="drop_anim_type" reader="BYTE"/>
+			<node name="drop_radius" reader="BYTE"/>
+			<node name="drop_height" reader="BYTE"/>
+			<node name="drop_texture" reader="BYTE"/>
+			<for name="drop_texture">
+				<node name="drop_mesh" reader="INT"/>
+				<node name="drop_texture2" reader="BYTE"/>
+				<for name="drop_texture2">
+					<node name="drop_tex1" reader="INT"/>
+				</for>
+			</for>
+
+			<node name="icon1" reader="INT"/>
+			<node name="icon2" reader="INT"/>
+			<node name="icon3" reader="INT"/>
+			<node name="icon4" reader="INT"/>
+			<node name="icon5" reader="INT"/>
+
+			<node name="durability" reader="SHORT"/>
+			<node name="weight" reader="SHORT"/>
+			<node name="material_type" reader="BYTE"/>
+			<node name="crystallizable" reader="BYTE"/>
+			<node name="related_quest_id" reader="BYTE"/>
+			<for name="related_quest_id">
+				<node name="quest_id" reader="SHORT"/>
+			</for>
+			<node name="color" reader="BYTE"/>
+			<node name="is_attribution" reader="BYTE"/>
+			<node name="property_params" reader="SHORT"/>
+			<node name="icon_panel" reader="INT"/>
+			<node name="complete_item_dropsound_type" reader="INT"/>
+			<node name="inventory_type" reader="BYTE"/>
+			<!-- MTX_NEW2 -->
+			<node name="mesh" reader="BYTE"/>
+			<for name="mesh">
+				<node name="tab" reader="INT"/>
+			</for>
+			<node name="texture" reader="BYTE"/>
+			<for name="texture">
+				<node name="tab1" reader="INT"/>
+			</for>
+			<node name="drop_sound" reader="INT"/>
+			<node name="equip_sound" reader="INT"/>
+			<node name="consume_type" reader="BYTE"/>
+			<node name="etcitem_type" reader="UINT"/>
+			<node name="crystal_type" reader="BYTE"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="AnimationCombo.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="name" reader="INT">
+				<attribute name="index" expression="$i"/>
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="anim0" reader="ASCF"/>
+			<node name="anim1" reader="ASCF"/>
+			<node name="anim2" reader="ASCF"/>
+			<node name="loop" reader="INT"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="skillgrp.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="skill_id" reader="USHORT"/>
+			<node name="skill_level" reader="BYTE"/>
+			<node name="skill_sublevel" reader="SHORT"/>
+			<node name="operate_type" reader="BYTE"/>
+			<!-- TODO 0-16 -->
+			<!--
+				//активные
+				case 0: //
+				case 1: //
+				case 2: //
+				case 3: //
+				case 4: //
+				case 5:	//
+				case 6:	// Переключающиеся умения ( тоглы )
+				case 7: // Трансформации
+				case 8:	// Маг резисты
+				//пассивки
+				case 11: // Владения пухами / шмотом
+				case 12: // Резисты
+				case 13: // Рассовые
+				case 14: // Классовые
+				case 15: // Клановые
+				case 16: // Предметные
+		-->
+			<node name="resist_cast" reader="BYTE"/>
+			<!--
+			resist_cast=0		обычная
+			resist_cast=1		каричнивая обвотка
+			resist_cast=2		зеленая обвотка
+			resist_cast=3		синия обвотка
+			resist_cast=4		красная обвотка
+			resist_cast=5		скилы с иконками ( которые переключаются дуал кастом и тд )
+			resist_cast=6		скрытые скилы
+		-->
+			<node name="MagicType" reader="BYTE"/>
+			<!-- TODO 0-4 -->
+			<node name="mp_consume" reader="SHORT"/>
+			<node name="cast_range" reader="UINT"/>
+			<node name="cast_style" reader="BYTE"/>
+			<node name="hit_time" reader="FLOAT"/>
+			<node name="cool_time" reader="FLOAT"/>
+			<node name="reuse_delay" reader="FLOAT"/>
+			<node name="effect_point" reader="UINT"/>
+			<node name="is_magic" reader="BYTE"/>
+			<!--
+			is_magic=0		P ( физ )
+			is_magic=1		M ( маг )
+			is_magic=3		S ( песни / танцы )
+			is_magic=4		E ( воскришения )
+		-->
+			<node name="origin_skill" reader="SHORT"/>
+			<node name="is_double" reader="BYTE"/>
+			<node name="animation" reader="UINT"/>
+			<for name="animation">
+				<node name="param_animation" reader="INT"/>
+			</for>
+			<node name="skill_visual_effect" reader="INT"/>
+			<node name="icon" reader="INT"/>
+			<node name="icon_panel" reader="INT"/>
+			<node name="debuff" reader="BYTE"/>
+			<node name="icon_type" reader="BYTE"/>
+			<node name="enchant_skill_level" reader="BYTE"/>
+			<node name="enchant_icon" reader="INT"/>
+			<node name="hp_consume" reader="SHORT"/>
+			<node name="rumble_self" reader="BYTE"/>
+			<!-- TODO -1 8 9 13 14 -->
+			<node name="rumble_target" reader="BYTE"/>
+			<!-- TODO 0 -1 10 11 -->
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
