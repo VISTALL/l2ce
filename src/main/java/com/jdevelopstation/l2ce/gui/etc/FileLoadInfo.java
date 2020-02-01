@@ -1,5 +1,18 @@
 package com.jdevelopstation.l2ce.gui.etc;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.Set;
+
+import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.tuple.Pair;
+import org.apache.log4j.Logger;
 import com.jdevelopstation.l2ce.data.xml.holder.ClientVersionHolder;
 import com.jdevelopstation.l2ce.gui.pane.DatPane;
 import com.jdevelopstation.l2ce.gui.tasks.ListRepaintTask;
@@ -16,18 +29,6 @@ import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataForNodeImpl;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataNodeImpl;
 import com.jdevelopstation.l2ce.version.node.file.ClientFile;
 import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileNodeImpl;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.tuple.Pair;
-import org.apache.log4j.Logger;
-
-import javax.swing.*;
-import javax.swing.filechooser.FileFilter;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.text.SimpleDateFormat;
-import java.util.Set;
 
 /**
  * @author VISTALL
@@ -58,18 +59,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 	@Override
 	public String toString()
 	{
-		long count = 0;
-		if(_clientData != null)
-		{
-			for(ClientDataNode node : _clientData.getNodes())
-			{
-				if(node instanceof ClientDataForNodeImpl && ((ClientDataForNodeImpl) node).getForName().equals("data"))
-				{
-					count = ((ClientDataForNodeImpl) node).getNodes().size();
-				}
-			}
-		}
-		return _file.getName() + " [" + count + "]";
+		return _file.getName() + " [" + getDataSize() + "]";
 	}
 
 	public long getDataSize()
@@ -79,7 +69,7 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 		{
 			for(ClientDataNode node : _clientData.getNodes())
 			{
-				if(node instanceof ClientDataForNodeImpl && ((ClientDataForNodeImpl) node).getForName().equals("data"))
+				if(node instanceof ClientDataForNodeImpl && ((ClientDataForNodeImpl) node).getForName().equals(_clientFile.getDataNodeName()))
 				{
 					count = ((ClientDataForNodeImpl) node).getNodes().size();
 				}

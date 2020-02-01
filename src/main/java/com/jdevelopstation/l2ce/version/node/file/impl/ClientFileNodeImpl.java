@@ -1,5 +1,13 @@
 package com.jdevelopstation.l2ce.version.node.file.impl;
 
+import java.io.File;
+import java.nio.ByteBuffer;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.commons.lang3.StringUtils;
 import com.jdevelopstation.l2ce.gui.etc.FileLoadInfo;
 import com.jdevelopstation.l2ce.version.node.ClientNodeAttribute;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
@@ -9,14 +17,9 @@ import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataBlockNodeImpl;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataForNodeImpl;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataNodeImpl;
 import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
+import com.jdevelopstation.l2ce.version.node.file.ClientFileNodeContext;
 import com.jdevelopstation.l2ce.version.node.file.ClientFileNodeModifier;
 import com.jdevelopstation.l2ce.version.node.file.reader.ReadWriteType;
-import org.apache.commons.lang3.StringUtils;
-
-import java.io.File;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.Set;
 
 /**
  * @author VISTALL
@@ -54,8 +57,34 @@ public class ClientFileNodeImpl implements ClientFileNode
 		return myAttributes;
 	}
 
+	private Map<String, String> buildArguments(ClientFileNodeContext context)
+	{
+		Map<String, String> map = new HashMap<>();
+		for(ClientDataNode dataNode : context.getFileNode())
+		{
+			if(dataNode instanceof ClientDataForNodeImpl)
+			{
+				for(ClientDataNode clientDataNode : (ClientDataForNodeImpl) dataNode)
+				{
+					if(clientDataNode instanceof ClientDataBlockNodeImpl)
+					{
+						ClientDataNode indexNode = ((ClientDataBlockNodeImpl) clientDataNode).getNodeByName("index");
+						ClientDataNode nameNode = ((ClientDataBlockNodeImpl) clientDataNode).getNodeByName("name");
+
+						if(indexNode != null && nameNode != null)
+						{
+							map.put(String.valueOf(indexNode.getValue()), String.valueOf(nameNode.getValue()));
+						}
+					}
+				}
+			}
+		}
+
+		return map;
+	}
+
 	@Override
-	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff, long index, Set<FileLoadInfo> fileLoadInfos)
+	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff, long index, Set<FileLoadInfo> fileLoadInfos, ClientFileNodeContext context)
 	{
 		ClientDataNodeImpl node = new ClientDataNodeImpl(this);
 		node.setValue(_value != null ? _value : _partType.read(buff));
@@ -70,6 +99,26 @@ public class ClientFileNodeImpl implements ClientFileNode
 				if("$i".equals(expression))
 				{
 					node.setAttribute(attribute.getName(), String.valueOf(index));
+				}
+				else if("$l2skillargument".equals(expression))
+				{
+					Object value = node.getValue();
+					if(!(value instanceof Number))
+					{
+						continue;
+					}
+
+					Map<String, String> arguments = context.get("arguments");
+					if(arguments == null)
+					{
+						context.put("arguments", arguments = buildArguments(context));
+					}
+
+					String arg = arguments.get(String.valueOf(value));
+					if(arg != null)
+					{
+						node.setAttribute(attribute.getName(), arg);
+					}
 				}
 				else if("$l2gamedataname".equals(expression))
 				{

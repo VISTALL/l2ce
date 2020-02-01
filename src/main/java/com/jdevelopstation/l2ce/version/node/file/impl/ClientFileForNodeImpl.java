@@ -4,11 +4,12 @@ import java.nio.ByteBuffer;
 import java.util.Set;
 
 import com.jdevelopstation.l2ce.gui.etc.FileLoadInfo;
-import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
-import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
+import com.jdevelopstation.l2ce.version.node.data.ClientDataNode;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataBlockNodeImpl;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataForNodeImpl;
+import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
+import com.jdevelopstation.l2ce.version.node.file.ClientFileNodeContext;
 import com.jdevelopstation.l2ce.version.node.file.reader.ReadWriteType;
 
 /**
@@ -51,7 +52,7 @@ public class ClientFileForNodeImpl extends ClientNodeContainer<ClientFileNode> i
 	}
 
 	@Override
-	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff, long index, Set<FileLoadInfo> fileLoadInfos)
+	public void parse(ClientNodeContainer<ClientDataNode> parent, ByteBuffer buff, long index, Set<FileLoadInfo> fileLoadInfos, ClientFileNodeContext context)
 	{
 		long val;
 		if(_fixed > 0)
@@ -76,7 +77,7 @@ public class ClientFileForNodeImpl extends ClientNodeContainer<ClientFileNode> i
 
 			for(ClientFileNode sub : this)
 			{
-				sub.parse(blockNode, buff, i, fileLoadInfos);
+				sub.parse(blockNode, buff, i, fileLoadInfos, context);
 			}
 		}
 	}

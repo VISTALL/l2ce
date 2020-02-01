@@ -3,10 +3,12 @@
 	<xs:element name="version" type="versionType"/>
 	<xs:complexType name="fileType" mixed="true">
 		<xs:sequence>
-			<xs:element type="nodeType" name="node" //>
+			<xs:element type="nodeType" name="node"/>
 			<xs:element type="forType" name="for"/>
-			<xs:element type="modifierType" name="modifier" /		</xs:sequence>
+			<xs:element type="modifierType" name="modifier"/>
+		</xs:sequence>
 		<xs:attribute type="xs:string" name="pattern" use="required"/>
+		<xs:attribute type="xs:string" name="node-name" use="optional"/>
 	</xs:complexType>
 	<xs:complexType name="versionType">
 		<xs:sequence>
@@ -16,7 +18,7 @@
 	</xs:complexType>
 	<xs:complexType name="forType" mixed="true">
 		<xs:choice maxOccurs="unbounded">
-			<xs:element type="nodeType" name="node" maxOccurs="unbounded" />
+			<xs:element type="nodeType" name="node" maxOccurs="unbounded"/>
 			<xs:element type="forType" name="for" maxOccurs="unbounded"/>
 		</xs:choice>
 		<xs:attribute type="xs:string" name="name" use="optional"/>

@@ -76,27 +76,83 @@
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
 
-	<file pattern="skillname-[\w]+\.dat">
-		<node name="data" reader="SHORT_SHORT"/>
-		<for name="data">
+	<file pattern="skillname-[\w]+\.dat" node-name="skill">
+		<node name="argument" reader="SHORT_SHORT"/>
+		<for name="argument">
 			<node name="name" reader="ASCF"/>
 			<node name="index" reader="UINT"/>
 		</for>
-		<node name="size1" reader="UINT"/>
-		<for name="size1">
-			<node name="skill_id" reader="UINT"/>
-			<node name="skill_level" reader="SHORT"/>
-			<node name="skill_sublevel" reader="SHORT"/>
-			<node name="prev_skill_id" reader="UINT"/>
-			<node name="prev_skill_level" reader="SHORT"/>
-			<node name="prev_skill_sublevel" reader="SHORT"/>
-			<node name="name" reader="UINT"/>
-			<node name="desc" reader="UINT"/>
-			<node name="desc_param" reader="UINT"/>
-			<node name="enchant_name" reader="UINT"/>
-			<node name="enchant_name_param" reader="UINT"/>
-			<node name="enchant_desc" reader="UINT"/>
-			<node name="enchant_desc_param" reader="UINT"/>
+		<node name="skill" reader="UINT"/>
+		<for name="skill">
+			<node name="skill_id" reader="USHORT"/>
+			<node name="skill_level" reader="USHORT"/>
+			<node name="skill_sublevel" reader="CNTR"/>
+
+			<node name="name" reader="UINT">
+				<attribute name="value" expression="$l2skillargument"/>
+			</node>
+
+			<node name="desc" reader="UINT">
+				<attribute name="value" expression="$l2skillargument"/>
+			</node>
+			<node name="desc_param" reader="UINT">
+				<attribute name="value" expression="$l2skillargument"/>
+			</node>
+			<node name="enchant_name" reader="UINT">
+				<attribute name="value" expression="$l2skillargument"/>
+			</node>
+			<node name="enchant_name_param" reader="UINT">
+				<attribute name="value" expression="$l2skillargument"/>
+			</node>
+			<node name="enchant_desc" reader="UINT">
+				<attribute name="value" expression="$l2skillargument"/>
+			</node>
+			<node name="enchant_desc_param" reader="UINT">
+				<attribute name="value" expression="$l2skillargument"/>
+			</node>
+		</for>
+	</file>
+
+	<file pattern="recipe.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="name" reader="ASCF"/>
+			<node name="id" reader="UINT"/>
+			<node name="recipe_id" reader="UINT"/>
+			<node name="level" reader="UINT"/>
+			<node name="product_id" reader="UINT"/>
+			<node name="product_num" reader="UINT"/>
+			<node name="is_showtree" reader="UINT"/>
+			<node name="is_multiple_product" reader="UINT"/>
+			<node name="mp_consume" reader="UINT"/>
+			<node name="success_rate" reader="UINT"/>
+			<node name="material" reader="UINT"/>
+			<for name="material">
+				<node name="itemId" reader="UINT"/>
+				<node name="count" reader="UINT"/>
+				<node name="recipe_id" reader="UINT"/>
+			</for>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="recipe-c.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="name" reader="ASCF"/>
+			<node name="id" reader="UINT"/>
+			<node name="recipe_id" reader="UINT"/>
+			<node name="level" reader="UINT"/>
+			<node name="product_id" reader="UINT"/>
+			<node name="product_num" reader="UINT"/>
+			<node name="mp_consume" reader="UINT"/>
+			<node name="success_rate" reader="UINT"/>
+			<node name="material" reader="UINT"/>
+			<node name="foundation_product_id" reader="UINT"/>
+			<for name="material">
+				<node name="itemId" reader="UINT"/>
+				<node name="count" reader="UINT"/>
+			</for>
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>

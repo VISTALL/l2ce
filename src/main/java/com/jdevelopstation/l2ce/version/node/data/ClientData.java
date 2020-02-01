@@ -1,5 +1,19 @@
 package com.jdevelopstation.l2ce.version.node.data;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.Iterator;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentFactory;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
 import com.jdevelopstation.l2ce.version.ClientVersion;
 import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
 import com.jdevelopstation.l2ce.version.node.data.impl.ClientDataBlockNodeImpl;
@@ -9,20 +23,6 @@ import com.jdevelopstation.l2ce.version.node.file.ClientFile;
 import com.jdevelopstation.l2ce.version.node.file.ClientFileNode;
 import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileForNodeImpl;
 import com.jdevelopstation.l2ce.version.node.file.impl.ClientFileNodeImpl;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentFactory;
-import org.dom4j.Element;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.Iterator;
 
 /**
  * @author VISTALL
@@ -231,6 +231,7 @@ public class ClientData extends ClientNodeContainer<ClientDataNode>
 
 			FileOutputStream fos = new FileOutputStream(f);
 			OutputFormat format = new OutputFormat("\t", false, "UTF-8");
+			format.setExpandEmptyElements(false);
 			format.setNewlines(true);
 
 			Element rootElement = doc.addElement("out");

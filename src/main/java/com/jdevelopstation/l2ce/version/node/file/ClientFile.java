@@ -1,9 +1,5 @@
 package com.jdevelopstation.l2ce.version.node.file;
 
-import com.jdevelopstation.l2ce.gui.etc.FileLoadInfo;
-import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
-import com.jdevelopstation.l2ce.version.node.data.ClientData;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -13,6 +9,10 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import com.jdevelopstation.l2ce.gui.etc.FileLoadInfo;
+import com.jdevelopstation.l2ce.version.node.ClientNodeContainer;
+import com.jdevelopstation.l2ce.version.node.data.ClientData;
+
 /**
  * @author VISTALL
  * @date 8:04/18.05.2011
@@ -21,9 +21,22 @@ public class ClientFile extends ClientNodeContainer<ClientFileNode> implements C
 {
 	private final Pattern _pattern;
 
+	private final String dataNodeName;
+
 	public ClientFile(String pattern)
 	{
+		this(pattern, "data");
+	}
+
+	public ClientFile(String pattern, String dataNodeName)
+	{
+		this.dataNodeName = dataNodeName;
 		_pattern = Pattern.compile(pattern.toLowerCase());
+	}
+
+	public String getDataNodeName()
+	{
+		return dataNodeName;
 	}
 
 	public ClientData parse(File file, Set<FileLoadInfo> fileLoadInfos)
@@ -47,7 +60,7 @@ public class ClientFile extends ClientNodeContainer<ClientFileNode> implements C
 		ClientData clientData = new ClientData(name);
 		for(ClientFileNode node : getNodes())
 		{
-			node.parse(clientData, buf, -1, fileLoadInfos);
+			node.parse(clientData, buf, -1, fileLoadInfos, new ClientFileNodeContext(clientData));
 		}
 
 		return clientData;

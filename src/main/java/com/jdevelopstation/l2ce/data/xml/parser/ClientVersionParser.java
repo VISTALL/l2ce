@@ -58,7 +58,8 @@ public class ClientVersionParser extends AbstractDirParser<ClientVersionHolder>
 		for(Element fileElement : rootElement.elements())
 		{
 			String pattern = fileElement.attributeValue("pattern");
-			ClientFile file = new ClientFile(pattern);
+			String nodeName = fileElement.attributeValue("node-name");
+			ClientFile file = nodeName == null ? new ClientFile(pattern) : new ClientFile(pattern, nodeName);
 
 			parseNodes(file, fileElement);
 
