@@ -4,16 +4,22 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.jdevelopstation.l2ce.version.node.file.reader.*;
 
 /**
  * @author VISTALL
  * @date 2:58/27.06.2011
  */
-public class Test
+public class TestReading
 {
 	public static void main(String... arg) throws Exception
 	{
-		InputStream stream = new FileInputStream("W:\\_github.com\\VISTALL\\l2ce\\dist\\dec-pawnanimdata.dat");
+		InputStream stream = new FileInputStream("W:\\_github.com\\VISTALL\\l2ce\\dist\\l2encdec\\dec-OneDayReward-e.dat");
 		byte[] data = new byte[stream.available()];
 		stream.read(data);
 		ByteBuffer buf = ByteBuffer.wrap(data);
@@ -23,13 +29,87 @@ public class Test
 		System.out.println("SIZE: " + val);
 		for(int i = 0; i < val; i++)
 		{
-			//long character = new UINT().read(buf);
 
-			System.out.println(printData(buf, 800));
-			break;
+			long id = new UINT().read(buf);
+			long reward_id = new UINT().read(buf);
+			String name = new ASCF().read(buf);
+			int rCount = new UINT().read(buf).intValue();
+			String desc = new ASCF().read(buf);
+			String target = new ASCF().read(buf);
+
+			int classFilter = new BYTE().read(buf).byteValue();
+			Integer[] classFilters = new Integer[classFilter];
+			for(int j = 0; j < classFilter; j++)
+			{
+				classFilters[j] = new INT().read(buf);
+			}
+
+			long reset_period = new UINT().read(buf);
+			long condition_count = new UINT().read(buf);
+			long condition_level = new UINT().read(buf);
+			long a4 = new UINT().read(buf);
+			long a5 = new UINT().read(buf);
+			long a6 = new UINT().read(buf);
+
+
+			long location = new UINT().read(buf);
+			int a8 = new BYTE().read(buf).byteValue();
+			Integer[] can_condition_day = new Integer[a8];
+			for(int j = 0; j < a8; j++)
+			{
+				can_condition_day[j] = new UINT().read(buf).intValue();
+			}
+
+			long unk1 = new UINT().read(buf);
+
+			// a7
+			// bottom3
+
+			
+			List<AbstractMap.SimpleEntry> items = new ArrayList<>();
+			for(int j = 0; j < rCount; j++)
+			{
+				int itemId = new INT().read(buf);
+				int count = new INT().read(buf);
+
+				items.add(new AbstractMap.SimpleEntry(itemId, count));
+			}
+
+			for(int j = 0; j < location; j++)
+			{
+				System.out.println(new FLOAT().read(buf));
+				System.out.println(new FLOAT().read(buf));
+				System.out.println(new FLOAT().read(buf));
+				System.out.println(new FLOAT().read(buf));
+
+			}
+
+			print("id", id, "reward_id", reward_id, "target", target, "reset_period", reset_period, "condition_count", condition_count, "condition_level", condition_level, "a4", a4, "a5", a5, "a6", a6, "a7", location, "bottom3", unk1, "can_condition_day", Arrays.asList(can_condition_day), "items", items, Arrays.asList(classFilters), name, desc);
+
+//			if(i == 107)
+//			{
+//				System.out.println(printData(buf, 800));
+//				break;
+//			}
 		}
 
 		System.out.println("last: " + buf.remaining());
+	}
+
+	private static void print(Object... arg)
+	{
+		StringBuilder builder = new StringBuilder();
+		for(int i = 0; i < arg.length; i++)
+		{
+			if(i != 0)
+			{
+				builder.append(" | ");
+			}
+
+			builder.append(arg[i]);
+		}
+
+		System.out.println(builder);
 	}
 
 	public static int ReadByteCount(ByteBuffer f)

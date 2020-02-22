@@ -146,4 +146,70 @@
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage" />
 	</file>
+	<file pattern="questname-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="index" reader="UINT"/>
+			<node name="quest_id" reader="UINT"/>
+			<node name="quest_step" reader="INT"/>
+			<node name="title" reader="ASCF"/>
+			<node name="sub_name" reader="ASCF"/>
+			<node name="desc" reader="ASCF"/>
+			<node name="item_ids" reader="SHORT_SHORT"/>
+			<for name="item_ids">
+				<node name="id" reader="UINT"/>
+			</for>
+			<node name="item_counts" reader="SHORT_SHORT"/>
+			<for name="item_counts">
+				<node name="count" reader="UINT"/>
+			</for>
+			
+			<node name="target_loc_x" reader="FLOAT"/>
+			<node name="target_loc_y" reader="FLOAT"/>
+			<node name="target_loc_z" reader="FLOAT"/>
+
+			<node name="min_level" reader="UINT"/>
+			<node name="max_level" reader="UINT"/>
+			<node name="type" reader="UINT"/>
+
+			<node name="target_name" reader="ASCF"/>
+			<node name="get_item_in_quest" reader="UINT"/>
+			<node name="UNK_1" reader="UINT"/>
+			<node name="UNK_2" reader="UINT"/>
+
+			<node name="contact_npc_id" reader="UINT"/>
+			<node name="contact_npc_x" reader="FLOAT"/>
+			<node name="contact_npc_y" reader="FLOAT"/>
+			<node name="contact_npc_z" reader="FLOAT"/>
+
+			<node name="q_requirement" reader="ASCF"/>
+			<node name="quest_intro" reader="ASCF"/>
+			<node name="class_limits" reader="SHORT_SHORT"/>
+			<for name="class_limits">
+				<node name="class_id" reader="UINT"/>
+			</for>
+			<node name="have_items" reader="SHORT_SHORT"/>
+			<for name="have_items">
+				<node name="item_id" reader="UINT"/>
+			</for>
+			<node name="clan_pet_quest" reader="UINT"/>
+			<node name="req_quest_complete" reader="UINT"/>
+			<node name="UNK_3" reader="UINT"/>
+			<node name="search_zoneid" reader="UINT"/>
+			<node name="UNK_4" reader="UINT"/>
+			<node name="reward_item_ids" reader="SHORT_SHORT"/>
+			<for name="reward_item_ids">
+				<node name="id" reader="UINT"/>
+			</for>
+			<node name="reward_item_counts" reader="SHORT_SHORT"/>
+			<for name="reward_item_counts">
+				<node name="count" reader="UINT"/>
+			</for>
+			<node name="pre_levels" reader="SHORT_SHORT"/>
+			<for name="pre_levels">
+				<node name="level" reader="UINT"/>
+			</for>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
 </version>

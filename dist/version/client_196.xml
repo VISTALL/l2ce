@@ -262,6 +262,252 @@
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
 
+	<file pattern="OneDayReward-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT"/>
+			<node name="reward_id" reader="UINT"/>
+
+			<node name="name" reader="ASCF"/>
+			<node name="reward" reader="UINT"/>
+			<node name="desc" reader="ASCF"/>
+			<node name="target" reader="ASCF"/>
+
+			<node name="class_filter" reader="BYTE" />
+
+			<for name="class_filter">
+				<node name="class_id" reader="INT"/>
+			</for>
+
+			<node name="reset_period" reader="UINT"/>
+			<node name="condition_count" reader="UINT"/>
+			<node name="condition_level" reader="UINT"/>
+
+			<node name="can_condition_level_min" reader="UINT"/>
+			<node name="can_condition_level_max" reader="UINT"/>
+			<node name="unk1" reader="UINT"/>
+
+			<node name="location" reader="UINT"/>
+			<node name="condition_day" reader="BYTE"/>
+			<for name="condition_day">
+				<node name="day" reader="UINT"/>
+			</for>
+
+			<node name="category" reader="UINT"/>
+
+			<for name="reward">
+				<node name="item_id" reader="UINT"/>
+				<node name="item_count" reader="UINT"/>
+			</for>
+
+			<for name="location">
+				<node name="x" reader="FLOAT"/>
+				<node name="y" reader="FLOAT"/>
+				<node name="z" reader="FLOAT"/>
+				<node name="scale" reader="FLOAT"/>
+			</for>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="QuestName-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="tag" reader="UINT"/>
+			<node name="id" reader="UINT"/>
+			<node name="level" reader="INT"/>
+			<node name="title" reader="ASCF"/>
+			<node name="sub_name" reader="ASCF"/>
+			<node name="desc" reader="ASCF"/>
+			<node name="goal_id" reader="CNTR"/>
+			<for name="goal_id">
+				<node name="param_goal_id" reader="UINT"/>
+			</for>
+			<node name="goal_type" reader="CNTR"/>
+			<for name="goal_type">
+				<node name="param_goal_type" reader="UINT"/>
+			</for>
+			<node name="goal_num" reader="CNTR"/>
+			<for name="goal_num">
+				<node name="param_goal_num" reader="UINT"/>
+			</for>
+
+			<node name="target_loc_x" reader="FLOAT"/>
+			<node name="target_loc_y" reader="FLOAT"/>
+			<node name="target_loc_z" reader="FLOAT"/>
+
+			<!-- TODO goal_num_disp -->
+			<node name="add_target_locs" reader="CNTR"/>
+			<for name="add_target_locs">
+				<node name="quest_x1" reader="FLOAT"/>
+				<node name="quest_y2" reader="FLOAT"/>
+				<node name="quest_z3" reader="FLOAT"/>
+			</for>
+			<node name="q_level" reader="CNTR"/>
+			<for name="q_level">
+				<node name="param_q_level" reader="UINT"/>
+			</for>
+			<node name="lvl_min" reader="UINT"/>
+			<!-- TODO -->
+			<node name="lvl_max" reader="UINT"/>
+			<!-- TODO -->
+			<node name="quest_type" reader="UINT"/>
+			<!-- TODO -->
+			<node name="entity_name" reader="ASCF"/>
+			<!-- TODO -->
+			<node name="get_item_in_quest" reader="UINT"/>
+			<!-- TODO -->
+			<node name="UNK_1" reader="UINT"/>
+			<!-- TODO -->
+			<node name="UNK_2" reader="UINT"/>
+			<!-- TODO -->
+			<node name="start_npc_id" reader="CNTR"/>
+			<for name="start_npc_id">
+				<node name="param_start_npc_id" reader="UINT"/>
+			</for>
+			
+			<node name="start_npc_loc_x" reader="FLOAT"/>
+			<node name="start_npc_loc_y" reader="FLOAT"/>
+			<node name="start_npc_loc_z" reader="FLOAT"/>
+
+			<node name="q_requirement" reader="ASCF"/>
+			<node name="quest_intro" reader="ASCF"/>
+			<node name="class_limit" reader="CNTR"/>
+			<for name="class_limit">
+				<node name="param_class_limit" reader="UINT"/>
+			</for>
+
+			<node name="have_item" reader="CNTR"/>
+			<for name="have_item">
+				<node name="param_have_item" reader="UINT"/>
+			</for>
+
+			<node name="clan_pet_quest" reader="UINT"/>
+			<node name="cleared_quest" reader="UINT"/>
+
+			<node name="mark_type" reader="INT"/>
+			<node name="category_id" reader="UINT"/>
+			<node name="priority_level" reader="UINT"/>
+			<node name="search_zoneid" reader="UINT"/>
+			<node name="iscategory" reader="UINT"/>
+			<node name="reward_id" reader="CNTR"/>
+			<for name="reward_id">
+				<node name="param_reward_id" reader="UINT"/>
+			</for>
+			<node name="reward_num" reader="CNTR"/>
+			<for name="reward_num">
+				<node name="param_reward_num" reader="LONG"/>
+			</for>
+			<node name="pre_level" reader="CNTR"/>
+			<for name="pre_level">
+				<node name="param_pre_level" reader="UINT"/>
+			</for>
+			<node name="faction_id" reader="UINT"/>
+			<node name="faction_min" reader="UINT"/>
+			<node name="faction_max" reader="UINT"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="QuestName_Classic-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="tag" reader="UINT"/>
+			<node name="id" reader="UINT"/>
+			<node name="level" reader="UINT"/>
+			<node name="title" reader="ASCF"/>
+			<node name="sub_name" reader="ASCF"/>
+			<node name="desc" reader="ASCF"/>
+			<node name="goal_id" reader="CNTR"/>
+			<for name="goal_id">
+				<node name="param_goal_id" reader="UINT"/>
+			</for>
+			<node name="goal_type" reader="CNTR"/>
+			<for name="goal_type">
+				<node name="param_goal_type" reader="UINT"/>
+			</for>
+			<node name="goal_num" reader="CNTR"/>
+			<for name="goal_num">
+				<node name="param_goal_num" reader="UINT"/>
+			</for>
+
+			<node name="target_loc_x" reader="FLOAT"/>
+			<node name="target_loc_y" reader="FLOAT"/>
+			<node name="target_loc_z" reader="FLOAT"/>
+
+			<!-- TODO goal_num_disp -->
+			<node name="add_target_locs" reader="CNTR"/>
+			<for name="add_target_locs">
+				<node name="quest_x1" reader="FLOAT"/>
+				<node name="quest_y2" reader="FLOAT"/>
+				<node name="quest_z3" reader="FLOAT"/>
+			</for>
+			<node name="q_level" reader="CNTR"/>
+			<for name="q_level">
+				<node name="param_q_level" reader="UINT"/>
+			</for>
+			<node name="lvl_min" reader="UINT"/>
+			<!-- TODO -->
+			<node name="lvl_max" reader="UINT"/>
+			<!-- TODO -->
+			<node name="quest_type" reader="UINT"/>
+			<!-- TODO -->
+			<node name="entity_name" reader="ASCF"/>
+			<!-- TODO -->
+			<node name="get_item_in_quest" reader="UINT"/>
+			<!-- TODO -->
+			<node name="UNK_1" reader="UINT"/>
+			<!-- TODO -->
+			<node name="UNK_2" reader="UINT"/>
+			<!-- TODO -->
+			<node name="start_npc_id" reader="CNTR"/>
+			<for name="start_npc_id">
+				<node name="param_start_npc_id" reader="UINT"/>
+			</for>
+			<node name="start_npc_loc_x" reader="FLOAT"/>
+
+			<node name="start_npc_loc_y" reader="FLOAT"/>
+			<node name="start_npc_loc_z" reader="FLOAT"/>
+
+			<node name="q_requirement" reader="ASCF"/>
+			<node name="quest_intro" reader="ASCF"/>
+			<node name="class_limit" reader="CNTR"/>
+			<for name="class_limit">
+				<node name="param_class_limit" reader="UINT"/>
+			</for>
+
+			<node name="have_item" reader="CNTR"/>
+			<for name="have_item">
+				<node name="param_have_item" reader="UINT"/>
+			</for>
+
+			<node name="clan_pet_quest" reader="UINT"/>
+			<node name="cleared_quest" reader="UINT"/>
+
+			<node name="mark_type" reader="INT"/>
+			<node name="category_id" reader="UINT"/>
+			<node name="priority_level" reader="UINT"/>
+			<node name="search_zoneid" reader="UINT"/>
+			<node name="iscategory" reader="UINT"/>
+			<node name="reward_id" reader="CNTR"/>
+			<for name="reward_id">
+				<node name="param_reward_id" reader="UINT"/>
+			</for>
+			<node name="reward_num" reader="CNTR"/>
+			<for name="reward_num">
+				<node name="param_reward_num" reader="LONG"/>
+			</for>
+			<node name="pre_level" reader="CNTR"/>
+			<for name="pre_level">
+				<node name="param_pre_level" reader="UINT"/>
+			</for>
+			<node name="faction_id" reader="UINT"/>
+			<node name="faction_min" reader="UINT"/>
+			<node name="faction_max" reader="UINT"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
 	<file pattern="HuntingZone-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
