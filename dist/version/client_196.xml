@@ -273,7 +273,7 @@
 			<node name="desc" reader="ASCF"/>
 			<node name="target" reader="ASCF"/>
 
-			<node name="class_filter" reader="BYTE" />
+			<node name="class_filter" reader="BYTE"/>
 
 			<for name="class_filter">
 				<node name="class_id" reader="INT"/>
@@ -310,7 +310,7 @@
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
 
-	<file pattern="QuestName-[\w]+\.dat">
+	<file pattern="QuestName-[\w]+\.dat" pattern-classic="QuestName_Classic-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="tag" reader="UINT"/>
@@ -365,7 +365,7 @@
 			<for name="start_npc_id">
 				<node name="param_start_npc_id" reader="UINT"/>
 			</for>
-			
+
 			<node name="start_npc_loc_x" reader="FLOAT"/>
 			<node name="start_npc_loc_y" reader="FLOAT"/>
 			<node name="start_npc_loc_z" reader="FLOAT"/>
@@ -409,133 +409,27 @@
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
 
-	<file pattern="QuestName_Classic-[\w]+\.dat">
+	<file pattern="QuestMarkConditionData.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
-			<node name="tag" reader="UINT"/>
-			<node name="id" reader="UINT"/>
-			<node name="level" reader="UINT"/>
-			<node name="title" reader="ASCF"/>
-			<node name="sub_name" reader="ASCF"/>
-			<node name="desc" reader="ASCF"/>
-			<node name="goal_id" reader="CNTR"/>
-			<for name="goal_id">
-				<node name="param_goal_id" reader="UINT"/>
+			<node name="quest_id" reader="UINT"/>
+			<node name="npc_id" reader="UINT"/>
+			<node name="race_filter" reader="CNTR"/>
+			<for name="race_filter">
+				<node name="race" reader="UINT"/>
 			</for>
-			<node name="goal_type" reader="CNTR"/>
-			<for name="goal_type">
-				<node name="param_goal_type" reader="UINT"/>
+			<node name="class_filter" reader="CNTR"/>
+			<for name="class_filter">
+				<node name="class" reader="UINT"/>
 			</for>
-			<node name="goal_num" reader="CNTR"/>
-			<for name="goal_num">
-				<node name="param_goal_num" reader="UINT"/>
-			</for>
-
-			<node name="target_loc_x" reader="FLOAT"/>
-			<node name="target_loc_y" reader="FLOAT"/>
-			<node name="target_loc_z" reader="FLOAT"/>
-
-			<!-- TODO goal_num_disp -->
-			<node name="add_target_locs" reader="CNTR"/>
-			<for name="add_target_locs">
-				<node name="quest_x1" reader="FLOAT"/>
-				<node name="quest_y2" reader="FLOAT"/>
-				<node name="quest_z3" reader="FLOAT"/>
-			</for>
-			<node name="q_level" reader="CNTR"/>
-			<for name="q_level">
-				<node name="param_q_level" reader="UINT"/>
-			</for>
-			<node name="lvl_min" reader="UINT"/>
-			<!-- TODO -->
-			<node name="lvl_max" reader="UINT"/>
-			<!-- TODO -->
-			<node name="quest_type" reader="UINT"/>
-			<!-- TODO -->
-			<node name="entity_name" reader="ASCF"/>
-			<!-- TODO -->
-			<node name="get_item_in_quest" reader="UINT"/>
-			<!-- TODO -->
-			<node name="UNK_1" reader="UINT"/>
-			<!-- TODO -->
-			<node name="UNK_2" reader="UINT"/>
-			<!-- TODO -->
-			<node name="start_npc_id" reader="CNTR"/>
-			<for name="start_npc_id">
-				<node name="param_start_npc_id" reader="UINT"/>
-			</for>
-			<node name="start_npc_loc_x" reader="FLOAT"/>
-
-			<node name="start_npc_loc_y" reader="FLOAT"/>
-			<node name="start_npc_loc_z" reader="FLOAT"/>
-
-			<node name="q_requirement" reader="ASCF"/>
-			<node name="quest_intro" reader="ASCF"/>
-			<node name="class_limit" reader="CNTR"/>
-			<for name="class_limit">
-				<node name="param_class_limit" reader="UINT"/>
-			</for>
-
-			<node name="have_item" reader="CNTR"/>
-			<for name="have_item">
-				<node name="param_have_item" reader="UINT"/>
-			</for>
-
-			<node name="clan_pet_quest" reader="UINT"/>
-			<node name="cleared_quest" reader="UINT"/>
-
-			<node name="mark_type" reader="INT"/>
-			<node name="category_id" reader="UINT"/>
-			<node name="priority_level" reader="UINT"/>
-			<node name="search_zoneid" reader="UINT"/>
-			<node name="iscategory" reader="UINT"/>
-			<node name="reward_id" reader="CNTR"/>
-			<for name="reward_id">
-				<node name="param_reward_id" reader="UINT"/>
-			</for>
-			<node name="reward_num" reader="CNTR"/>
-			<for name="reward_num">
-				<node name="param_reward_num" reader="LONG"/>
-			</for>
-			<node name="pre_level" reader="CNTR"/>
-			<for name="pre_level">
-				<node name="param_pre_level" reader="UINT"/>
-			</for>
-			<node name="faction_id" reader="UINT"/>
-			<node name="faction_min" reader="UINT"/>
-			<node name="faction_max" reader="UINT"/>
-		</for>
-		<node name="file_end" reader="ASCF" value="SafePackage"/>
-	</file>
-
-	<file pattern="HuntingZone-[\w]+\.dat">
-		<node name="data" reader="UINT"/>
-		<for name="data">
-			<node name="id" reader="UINT"/>
-			<node name="type" reader="UINT"/>
-
-			<node name="rc_level_min" reader="UINT"/>
-			<node name="rc_level_max" reader="UINT"/>
-
 			<node name="start_npc_x" reader="FLOAT"/>
 			<node name="start_npc_y" reader="FLOAT"/>
 			<node name="start_npc_z" reader="FLOAT"/>
-
-			<node name="desc" reader="ASCF"/>
-			<node name="search_zoneid" reader="UINT"/>
-			<node name="name" reader="ASCF"/>
-			<node name="regionid" reader="SHORT"/>
-			<node name="npc_id" reader="UINT"/>
-			<node name="quest_id" reader="BYTE"/>
-			<for name="quest_id">
-				<node name="quest_id_param" reader="SHORT"/>
-			</for>
-			<node name="instantzone_id" reader="UINT"/>
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
 
-	<file pattern="HuntingZone_Classic-[\w]+\.dat">
+	<file pattern="HuntingZone-[\w]+\.dat" pattern-classic="HuntingZone_Classic-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="id" reader="UINT"/>
@@ -708,7 +602,7 @@
 			</for>
 			<node name="npc_speed" reader="FLOAT"/>
 			<node name="attack_sound1" reader="CNTR"/>
-			<for name="attack_sound1" >
+			<for name="attack_sound1">
 				<node name="param_attack_sound1" reader="INT">
 					<attribute name="dataname" expression="$l2gamedataname"/>
 				</node>
@@ -980,18 +874,32 @@
 			<node name="drop_height" reader="BYTE"/>
 			<node name="drop_texture" reader="BYTE"/>
 			<for name="drop_texture">
-				<node name="drop_mesh" reader="INT"/>
+				<node name="drop_mesh" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
 				<node name="drop_texture2" reader="BYTE"/>
 				<for name="drop_texture2">
-					<node name="drop_tex1" reader="INT"/>
+					<node name="drop_tex1" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
 				</for>
 			</for>
 
-			<node name="icon1" reader="INT"/>
-			<node name="icon2" reader="INT"/>
-			<node name="icon3" reader="INT"/>
-			<node name="icon4" reader="INT"/>
-			<node name="icon5" reader="INT"/>
+			<node name="icon1" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="icon2" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="icon3" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="icon4" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="icon5" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
 
 			<node name="durability" reader="SHORT"/>
 			<node name="weight" reader="SHORT"/>
@@ -1004,23 +912,47 @@
 			<node name="color" reader="BYTE"/>
 			<node name="is_attribution" reader="BYTE"/>
 			<node name="property_params" reader="SHORT"/>
-			<node name="icon_panel" reader="INT"/>
-			<node name="complete_item_dropsound_type" reader="INT"/>
+			<node name="icon_panel" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="complete_item_dropsound_type" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
 			<node name="inventory_type" reader="BYTE"/>
 			<!-- MTX_NEW2 -->
 			<node name="mesh" reader="BYTE"/>
 			<for name="mesh">
-				<node name="tab" reader="INT"/>
+				<node name="tab" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
 			</for>
 			<node name="texture" reader="BYTE"/>
 			<for name="texture">
-				<node name="tab1" reader="INT"/>
+				<node name="tab1" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
 			</for>
-			<node name="drop_sound" reader="INT"/>
-			<node name="equip_sound" reader="INT"/>
+			<node name="drop_sound" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="equip_sound" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
 			<node name="consume_type" reader="BYTE"/>
 			<node name="etcitem_type" reader="UINT"/>
 			<node name="crystal_type" reader="BYTE"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+
+	<file pattern="ClassTree.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT"/>
+			<node name="class_list" reader="CNTR"/>
+			<for name="class_list">
+				<node name="class_id" reader="UINT"/>
+			</for>
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
@@ -1111,6 +1043,172 @@
 			<!-- TODO -1 8 9 13 14 -->
 			<node name="rumble_target" reader="BYTE"/>
 			<!-- TODO 0 -1 10 11 -->
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+	<file pattern="RaidData.dat" pattern-classic="RaidData_Classic.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT"/>
+			<node name="raid_id" reader="UINT"/>
+			<node name="raid_lvl" reader="UINT"/>
+			<node name="search_zoneid" reader="UINT"/>
+			<node name="start_npc_x" reader="FLOAT"/>
+			<node name="start_npc_y" reader="FLOAT"/>
+			<node name="start_npc_z" reader="FLOAT"/>
+			<node name="desc" reader="ASCF"/>
+			<node name="rc_level_min" reader="UBYTE"/>
+			<node name="rc_level_max" reader="UBYTE"/>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+	<file pattern="CharGrp.dat" pattern-classic="CharGrp_Classic.dat">
+		<for name="data" fixed="19">
+			<for name="hair" fixed="11">
+				<for name="class_name" fixed="15">
+					<node name="ahair_mesh0" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
+					<node name="ahair_texture0" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
+					<node name="bhair_mesh0" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
+					<node name="bhair_texture0" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
+				</for>
+			</for>
+			<node name="face_mesh" reader="UINT"/>
+			<for name="face_mesh">
+				<node name="param_face_mesh" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="face_texture" reader="UINT"/>
+			<for name="face_texture">
+				<node name="param_face_texture" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="beard_mesh" reader="UINT"/>
+			<for name="beard_mesh">
+				<node name="param_beard_mesh" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="beard_texture" reader="UINT"/>
+			<for name="beard_texture">
+				<node name="param_beard_texture" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<for name="test" fixed="63">
+				<node name="chest" reader="UINT"/>
+				<for name="chest" >
+					<node name="param_chest" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
+				</for>
+				<node name="legs" reader="UINT"/>
+				<for name="legs">
+					<node name="param_legs" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
+				</for>
+				<node name="feet" reader="UINT"/>
+				<for name="feet">
+					<node name="param_feet" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
+				</for>
+				<node name="gloves" reader="UINT"/>
+				<for name="gloves">
+					<node name="param_gloves" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
+				</for>
+				<node name="parse1" reader="BYTE"/>
+				<for name="parse1">
+					<node name="param_parse1" reader="BYTE"/>
+				</for>
+				<node name="parse2" reader="BYTE"/>
+				<for name="parse2">
+					<node name="param_parse2" reader="BYTE"/>
+				</for>
+				<node name="global_chest" reader="UINT"/>
+				<for name="global_chest">
+					<node name="param_global_chest" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
+				</for>
+				<node name="global_legs" reader="UINT"/>
+				<for name="global_legs">
+					<node name="param_global_legs" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
+				</for>
+				<node name="global_feet" reader="UINT"/>
+				<for name="global_feet">
+					<node name="param_global_feet" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
+				</for>
+				<node name="global_gloves" reader="UINT"/>
+				<for name="global_gloves">
+					<node name="param_global_gloves" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
+				</for>
+			</for>
+			<node name="attack_effect" reader="INT">
+				<attribute name="dataname" expression="$l2gamedataname"/>
+			</node>
+			<node name="walkanimframe" reader="UINT"/>
+			<node name="attack_sound" reader="CNTR"/>
+			<for name="attack_sound">
+				<node name="param_attack_sound" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="defense_sound" reader="CNTR"/>
+			<for name="defense_sound">
+				<node name="param_defense_sound" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="damage_sound" reader="CNTR"/>
+			<for name="damage_sound">
+				<node name="param_damage_sound" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<for name="voice_sound_weapon" fixed="17">
+				<node name="voice_sound_weapon1" reader="UINT"/>
+				<for name="voice_sound_weapon1">
+					<node name="param_voice_sound_weapon1" reader="INT">
+						<attribute name="dataname" expression="$l2gamedataname"/>
+					</node>
+				</for>
+			</for>
+			<node name="unk1" reader="UINT"/>
+			<node name="class_name" reader="ASCF"/>
+			<node name="race" reader="UINT"/>
+			<node name="class_id" reader="UINT"/>
+			<node name="class_type" reader="UINT"/>
+			<node name="m_hair_mesh" reader="UINT"/>
+			<for name="m_hair_mesh"> <!-- male hair mesh? -->
+				<node name="param_m_hair_mesh" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
+			<node name="f_hair_mesh" reader="UINT"/>
+			<for name="f_hair_mesh"> <!-- female hair mesh? -->
+				<node name="param_f_hair_mesh" reader="INT">
+					<attribute name="dataname" expression="$l2gamedataname"/>
+				</node>
+			</for>
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>

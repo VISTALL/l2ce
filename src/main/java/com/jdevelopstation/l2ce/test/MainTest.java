@@ -1,14 +1,14 @@
 package com.jdevelopstation.l2ce.test;
 
+import java.io.File;
+import java.util.Collections;
+
 import com.jdevelopstation.commons.logging.Log4JHelper;
 import com.jdevelopstation.l2ce.data.xml.holder.ClientVersionHolder;
 import com.jdevelopstation.l2ce.data.xml.parser.ClientVersionParser;
 import com.jdevelopstation.l2ce.version.ClientVersion;
 import com.jdevelopstation.l2ce.version.node.data.ClientData;
 import com.jdevelopstation.l2ce.version.node.file.ClientFile;
-
-import java.io.File;
-import java.util.Collections;
 
 /**
  * @author VISTALL
@@ -24,7 +24,7 @@ public class MainTest
 		ClientVersion version = ClientVersionHolder.getInstance().getVersion("GoD_Salvation");
 		ClientFile f = null;
 		for(ClientFile f2 : version.getClientFiles())
-			if(f2.getPattern().matcher("msconditiondata.dat").find())
+			if(f2.match("msconditiondata.dat"))
 				f = f2;
 		if(f == null)
 			return;

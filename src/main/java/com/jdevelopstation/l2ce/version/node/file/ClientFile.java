@@ -19,19 +19,21 @@ import com.jdevelopstation.l2ce.version.node.data.ClientData;
  */
 public class ClientFile extends ClientNodeContainer<ClientFileNode> implements Comparable<ClientFile>
 {
-	private final Pattern _pattern;
+	private final Pattern pattern;
+	private final Pattern patternClassic;
 
 	private final String dataNodeName;
 
-	public ClientFile(String pattern)
+	public ClientFile(String pattern, String patternClassic)
 	{
-		this(pattern, "data");
+		this(pattern, patternClassic, "data");
 	}
 
-	public ClientFile(String pattern, String dataNodeName)
+	public ClientFile(String pattern, String patternClassic, String dataNodeName)
 	{
 		this.dataNodeName = dataNodeName;
-		_pattern = Pattern.compile(pattern.toLowerCase());
+		this.pattern = Pattern.compile(pattern.toLowerCase(Locale.US), Pattern.CASE_INSENSITIVE);
+		this.patternClassic = patternClassic == null ? null : Pattern.compile(patternClassic.toLowerCase(Locale.US), Pattern.CASE_INSENSITIVE);
 	}
 
 	public String getDataNodeName()
@@ -68,17 +70,29 @@ public class ClientFile extends ClientNodeContainer<ClientFileNode> implements C
 
 	public boolean match(String fileName)
 	{
-		return getPattern().matcher(fileName.toLowerCase(Locale.US)).find();
+		if(pattern.matcher(fileName.toLowerCase(Locale.US)).find())
+		{
+			return true;
+		}
+
+		if(patternClassic != null)
+		{
+			if(patternClassic.matcher(fileName.toLowerCase(Locale.US)).find())
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override
 	public int compareTo(ClientFile o)
 	{
-		return o._pattern.pattern().compareTo(_pattern.pattern());
+		return o.pattern.pattern().compareTo(pattern.pattern());
 	}
 
 	public Pattern getPattern()
 	{
-		return _pattern;
+		return pattern;
 	}
 }
