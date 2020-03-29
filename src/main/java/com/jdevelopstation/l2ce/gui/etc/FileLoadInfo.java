@@ -39,8 +39,6 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 	private static final Logger log = Logger.getLogger(FileLoadInfo.class);
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH_mm_ss_dd_MM_yyyy");
 	private static final FileFilter XML_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.XMLFilter.Text"), new String[]{"xml"});
-	private static final FileFilter CSV_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.CVSFilter.Text"), new String[]{"csv"});
-	private static final FileFilter TSV_FILTER = new ExtensionFileFilter(BundleUtils.getInstance().getBundle("DatPane.TVSFilter.Text"), new String[]{"tsv"});
 
 	private final ClientFile _clientFile;
 	private final Set<FileLoadInfo> fileLoadInfos;
@@ -185,8 +183,6 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 		chooser.setAcceptAllFileFilterUsed(false);
 		chooser.setSelectedFile(new File(_file.getName().replace(".dat", "")));
 		chooser.addChoosableFileFilter(XML_FILTER);
-		chooser.addChoosableFileFilter(CSV_FILTER);
-		chooser.addChoosableFileFilter(TSV_FILTER);
 		chooser.setFileFilter(XML_FILTER);
 		EventQueue.invokeLater(new RunnableImpl()
 		{
@@ -210,16 +206,6 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 					if(chooser.getFileFilter() == XML_FILTER)
 					{
 						_clientData.toXML(saveFile);
-					}
-					else if(chooser.getFileFilter() == CSV_FILTER)
-					{
-						//TODO: csv save
-						JOptionPane.showMessageDialog(MainFrame.getInstance(), "CSV not supported yet");
-					}
-					else if(chooser.getFileFilter() == TSV_FILTER)
-					{
-						//TODO: tsv save
-						JOptionPane.showMessageDialog(MainFrame.getInstance(), "TSV not supported yet");
 					}
 
 					JOptionPane.showMessageDialog(dat, "Done");
@@ -309,11 +295,15 @@ public class FileLoadInfo implements Comparable<FileLoadInfo>
 			return;
 		}
 
+		File maybeXmlFile = new File(GeneralProperties.LAST_IMPORT_DIRECTORY, _file.getName().replace(".dat", ".xml"));
+
 		final JFileChooser chooser = new JFileChooser(GeneralProperties.LAST_IMPORT_DIRECTORY);
 		chooser.setDialogType(JFileChooser.OPEN_DIALOG);
+		if(maybeXmlFile.exists())
+		{
+			chooser.setSelectedFile(maybeXmlFile);
+		}
 		chooser.addChoosableFileFilter(XML_FILTER);
-		chooser.addChoosableFileFilter(CSV_FILTER);
-		chooser.addChoosableFileFilter(TSV_FILTER);
 		chooser.setDialogTitle(BundleUtils.getInstance().getBundle("DatPane.ImportButton.Dialog.Title"));
 
 		EventQueue.invokeLater(new RunnableImpl()

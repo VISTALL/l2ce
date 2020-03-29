@@ -837,7 +837,7 @@
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
 
-	<file pattern="itemname-[\w]+\.dat">
+	<file pattern="itemname-[\w]+\.dat" pattern-classic="itemname_classic-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="id" reader="UINT"/>
@@ -1046,7 +1046,7 @@
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
-	<file pattern="RaidData.dat" pattern-classic="RaidData_Classic.dat">
+	<file pattern="RaidData-[\w]+\.dat" pattern-classic="RaidData_Classic-[\w]+\.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="id" reader="UINT"/>
@@ -1208,6 +1208,17 @@
 				<node name="param_f_hair_mesh" reader="INT">
 					<attribute name="dataname" expression="$l2gamedataname"/>
 				</node>
+			</for>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+	<file pattern="servername-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="UINT"/>
+			<node name="name" reader="UINT"/>
+			<for name="name">
+				<node name="param_name" reader="ASCF"/>
 			</for>
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
