@@ -701,7 +701,7 @@
 			</for>
 			<node name="item_counts" reader="SHORT_SHORT" />
 			<for name="item_counts">
-				<node name="count" reader="UINT" />
+				<node name="count" reader="INT" />
 			</for>
 			<node name="target_loc_x" reader="FLOAT" />
 			<node name="target_loc_y" reader="FLOAT" />

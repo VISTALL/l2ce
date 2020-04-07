@@ -329,7 +329,7 @@
 			</for>
 			<node name="goal_num" reader="CNTR"/>
 			<for name="goal_num">
-				<node name="param_goal_num" reader="UINT"/>
+				<node name="param_goal_num" reader="INT"/>
 			</for>
 
 			<node name="target_loc_x" reader="FLOAT"/>
