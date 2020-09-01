@@ -76,7 +76,7 @@
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
 
-	<file pattern="skillname-[\w]+\.dat" node-name="skill">
+	<file pattern="skillname-[\w]+\.dat" pattern-classic="skillname_Classic-[\w]+\.dat" node-name="skill">
 		<node name="argument" reader="SHORT_SHORT"/>
 		<for name="argument">
 			<node name="name" reader="ASCF"/>
@@ -111,6 +111,7 @@
 				<attribute name="value" expression="$l2skillargument"/>
 			</node>
 		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
 
 	<file pattern="recipe.dat">
@@ -153,31 +154,6 @@
 				<node name="itemId" reader="UINT"/>
 				<node name="count" reader="UINT"/>
 			</for>
-		</for>
-		<node name="file_end" reader="ASCF" value="SafePackage"/>
-	</file>
-
-	<file pattern="skillname_Classic-[\w]+\.dat">
-		<node name="data" reader="SHORT_SHORT"/>
-		<for name="data">
-			<node name="name" reader="ASCF"/>
-			<node name="index" reader="UINT"/>
-		</for>
-		<node name="size1" reader="UINT"/>
-		<for name="size1">
-			<node name="skill_id" reader="UINT"/>
-			<node name="skill_level" reader="SHORT"/>
-			<node name="skill_sublevel" reader="SHORT"/>
-			<node name="prev_skill_id" reader="UINT"/>
-			<node name="prev_skill_level" reader="SHORT"/>
-			<node name="prev_skill_sublevel" reader="SHORT"/>
-			<node name="name" reader="UINT"/>
-			<node name="desc" reader="UINT"/>
-			<node name="desc_param" reader="UINT"/>
-			<node name="enchant_name" reader="UINT"/>
-			<node name="enchant_name_param" reader="UINT"/>
-			<node name="enchant_desc" reader="UINT"/>
-			<node name="enchant_desc_param" reader="UINT"/>
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
@@ -972,7 +948,7 @@
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
 
-	<file pattern="skillgrp.dat">
+	<file pattern="skillgrp.dat" pattern-classic="skillgrp_classic.dat">
 		<node name="data" reader="UINT"/>
 		<for name="data">
 			<node name="skill_id" reader="USHORT"/>
@@ -1220,6 +1196,93 @@
 			<for name="name">
 				<node name="param_name" reader="ASCF"/>
 			</for>
+		</for>
+		<node name="file_end" reader="ASCF" value="SafePackage"/>
+	</file>
+	<file pattern="PledgeMission-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="id" reader="USHORT"/>
+			<node name="category" reader="UBYTE"/>
+			<node name="is_repeat" reader="UBYTE"/>
+			<node name="name" reader="ASCF"/>
+			<node name="pledge_level" reader="UBYTE"/>
+			<node name="c_pledge_mastery" reader="USHORT"/>
+			<node name="min_level" reader="UBYTE"/>
+			<node name="max_level" reader="UBYTE"/>
+			<node name="job_main" reader="UBYTE"/>
+			<node name="job_dual" reader="UBYTE"/>
+			<node name="job_sub" reader="UBYTE"/>
+			<node name="pre_mission_id" reader="USHORT"/>
+
+			<!-- Begin: Not Confirmed -->
+			<node name="start_date" reader="UINT"/>
+			<node name="start_time" reader="UINT"/>
+			<node name="end_date" reader="UINT"/>
+			<node name="end_time" reader="UINT"/>
+			<node name="activate_time" reader="USHORT"/>
+			<node name="deactivate_time" reader="USHORT"/>
+			<node name="unknown_bytes" reader="USHORT"/>
+			<node name="available_day" reader="CNTR"/>
+			<for name="available_day">
+				<!-- unk type -->
+				<node name="day" reader="UBYTE"/>
+			</for>
+			<!-- End: Not Confirmed -->
+
+			<node name="goal_desc" reader="ASCF"/>
+			<node name="goal_count" reader="UINT"/>
+
+			<node name="reward_pledge_name_value" reader="UINT"/>
+			<node name="reward_pvp_point" reader="UINT"/>
+
+			<node name="reward_items" reader="CNTR"/>
+			<for name="reward_items">
+				<node name="itemId" reader="UINT"/>
+				<node name="itemCount" reader="UINT"/>
+			</for>
+			<node name="file_end" reader="ASCF" value="SafePackage"/>
+		</for>
+	</file>
+
+	<file pattern="PledgeMasteryInfo-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="mastery_id" reader="USHORT"/>
+			<node name="mastery_type" reader="USHORT"/>
+			<node name="mastery_name" reader="ASCF"/>
+
+			<node name="req_mastery" reader="CNTR"/>
+			<for name="req_mastery">
+				<node name="mastery" reader="USHORT"/>
+			</for>
+			<node name="and_or" reader="UINT"/>
+
+			<node name="req_point" reader="UINT"/>
+			<node name="req_namevalue" reader="UINT"/>
+
+			<node name="pledge_skill" reader="CNTR"/>
+			<for name="pledge_skill">
+				<node name="skill_1" reader="UINT"/>
+			</for>
+
+			<node name="mastery_skill" reader="CNTR"/>
+			<for name="mastery_skill">
+				<node name="skill_1" reader="UINT"/>
+			</for>
+
+			<node name="duration" reader="UINT"/>
+			<node name="merit" reader="ASCF"/>
+			<node name="description" reader="ASCF"/>
+			<node name="file_end" reader="ASCF" value="SafePackage"/>
+		</for>
+	</file>
+
+	<file pattern="SysString-[\w]+\.dat">
+		<node name="data" reader="UINT"/>
+		<for name="data">
+			<node name="stringID" reader="UINT"/>
+			<node name="string" reader="ASCF"/>
 		</for>
 		<node name="file_end" reader="ASCF" value="SafePackage"/>
 	</file>
